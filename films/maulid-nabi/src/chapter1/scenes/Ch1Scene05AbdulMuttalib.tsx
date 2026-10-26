@@ -43,8 +43,9 @@ export const Ch1Scene05AbdulMuttalib: React.FC<{ dur: number }> = ({ dur }) => {
           focus(T.toAM + 60, N.am, 1.3),
           { f: T.years + 20, x: 0, y: 70, zoom: 1.0 },
           { f: T.toAT - 10, x: 0, y: 70, zoom: 1.0 },
-          focus(T.toAT + 40, N.abuTalib, 1.22),
-          focus(dur, N.abuTalib, 1.26),
+          // frame Abu Talib together with the name he now looks after
+          focus(T.toAT + 40, { x: (N.abuTalib.x + N.muhammad.x) / 2, y: (N.abuTalib.y + N.muhammad.y) / 2 }, 1.08),
+          focus(dur, { x: (N.abuTalib.x + N.muhammad.x) / 2, y: (N.abuTalib.y + N.muhammad.y) / 2 }, 1.12),
         ]}
         drift={0.5}
       >
