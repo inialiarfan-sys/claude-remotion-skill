@@ -1,0 +1,24 @@
+{
+  "name": "maulid-nabi-film",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Paper-cut cinematic short: The Birth of the Beloved Prophet Muhammad ﷺ (9:16, no narration)",
+  "scripts": {
+    "audio": "node scripts/gen-audio.mjs",
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render": "remotion render src/index.ts MaulidNabi out/maulid-nabi.mp4 --codec h264 --crf 17"
+  },
+  "dependencies": {
+    "@fontsource/amiri": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@remotion/cli": "^4.0.538",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "^4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}
