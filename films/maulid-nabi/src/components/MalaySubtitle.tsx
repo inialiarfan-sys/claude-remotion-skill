@@ -95,3 +95,6 @@ export const MalaySubtitle: React.FC<{
     </div>
   );
 };
+
+// narrative caption style: the film's "storyteller" lines, set like a manuscript gloss
+export const STORY = { size: 46, italic: true, weight: 500, tracking: 0.01, ornament: false, maxWidth: 880 } as const;

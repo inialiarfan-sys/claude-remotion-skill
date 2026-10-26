@@ -51,6 +51,15 @@ Where a detail could not be checked against a primary text, this file says so, a
 | Not verified here | The exact Tirmidhi hadith number and its grading. These are deliberately absent from the film. |
 | Status | **Widely held / historical** |
 
+## 3a. Narrative captions added in revision 2 (Scenes 2 and 3)
+
+| Caption (Malay) | Basis | Status |
+|---|---|---|
+| "Sebuah lembah tandus di tengah Semenanjung Tanah Arab" | Geography of Makkah, described in the Qur'an as «بِوَادٍ غَيْرِ ذِي زَرْعٍ», "a valley without cultivation" (Ibrahim 14:37). | **Established** (descriptive) |
+| "Kira-kira 53 tahun sebelum Hijrah" | Ibn 'Abbas: the Prophet ﷺ was sent at forty, stayed in Makkah thirteen years, then was commanded to emigrate. This is in Sahih al-Bukhari, Kitab Manaqib al-Ansar; the number 3851 is recalled, not verified in this session. 40 + 13 = 53. The word "kira-kira" (about) is used because sources differ by about a year. | **Established** (approximate) |
+| "Pada suatu malam di Makkah… lahirlah seorang insan daripada seorang ibu yang mulia, Aminah binti Wahb." | His mother is Aminah bint Wahb, unanimously in the sirah (Ibn Ishaq/Ibn Hisham). The birth at night follows the common sirah narrative. Muslim 1162 establishes the day (Monday), not the hour, so "suatu malam" is narrative framing. | **Established** (mother); **widely held** (night) |
+| "Malam itu bagaikan siang, kerana telah lahir pembawa cahaya petunjuk buat sekalian alam." | **A simile, not a historical claim.** "Bagaikan" (as if) and "cahaya petunjuk" (light of guidance) make it figurative, echoing Qur'an 5:15 and 21:107. The film does not depict or claim a physical light at the birth. A separate report, from al-'Irbad ibn Sariyah in Musnad Ahmad, that his mother saw a light which lit the palaces of Syam, has a grading that could not be verified here, so it is not shown. | **Figurative** |
+
 ## 4. The shaking of Kisra's palace and the fall of its balconies (Scene 4)
 
 | Field | Record |
@@ -82,6 +91,8 @@ The film shows only the exterior of an ancient Makkan house, lit by ordinary oil
 - The fire sanctuary is a generic Sasanian-style fire temple interior, with a pointed niche and a stepped fire altar (*atashdan*). The film does not name a specific temple.
 
 ## Claims that still need checking before publication
+
+0. **Bukhari 3851**, Ibn 'Abbas's report on the ages (40 + 13): confirm the hadith number.
 
 1. **Sahih Muslim 1162 wording.** Compare against sunnah.com or a printed edition. It was confirmed only through indexed copies.
 2. **Al-Dhahabi's verdict on the Makhzum ibn Hani' report.** Locate it in *Tarikh al-Islam* (sirah volume) or *al-Sirah al-Nabawiyyah*. It is attributed only through secondary sources.

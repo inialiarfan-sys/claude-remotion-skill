@@ -4,7 +4,7 @@ export const FPS = 30;
 export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
-const BOUNDARIES_S = [0, 8, 18, 28, 40, 50, 62, 80];
+const BOUNDARIES_S = [0, 8, 18, 36, 48, 58, 70, 88];
 // overlap (frames) of each cut: 1→2, 2→3, 3→4, 4→5, 5→6, 6→7
 export const OVERLAPS = [36, 30, 30, 36, 40, 36];
 

@@ -11,6 +11,7 @@ import { MalaySubtitle } from "../components/MalaySubtitle";
 import { clamp } from "../components/textMotion";
 import { noise1 } from "../random";
 import { sec } from "../timeline";
+import { STORY } from "../components/MalaySubtitle";
 
 const C = theme.colors;
 
@@ -25,7 +26,7 @@ export const Scene03BirthScene: React.FC<{ dur: number }> = ({ dur }) => {
   // natural lamp flicker
   const flicker = 0.88 + noise1(frame / 6, 2) * 0.07 + noise1(frame / 17, 5) * 0.05;
   // gentle shift in the night: the horizon softens and the house warms
-  const shift = interpolate(frame, [sec(2.5), sec(8.5)], [0, 1], { ...clamp, easing: theme.ease.soft });
+  const shift = interpolate(frame, [sec(3), sec(16)], [0, 1], { ...clamp, easing: theme.ease.soft });
   const lamp = (0.75 + shift * 0.25) * flicker;
 
   const HX = 250;
@@ -166,8 +167,25 @@ export const Scene03BirthScene: React.FC<{ dur: number }> = ({ dur }) => {
           )}
         />
       </CinematicCamera>
-      <ArabicTitle text="مُحَمَّدُ بْنُ عَبْدِ اللَّهِ ﷺ" start={sec(2.6)} end={sec(9.9)} top={330} size={98} revealLen={44} />
-      <MalaySubtitle text="Muhammad bin Abdullah ﷺ" start={sec(3.4)} end={sec(9.9)} top={590} size={54} tracking={0.05} />
+      <MalaySubtitle text="Pada suatu malam di Makkah…" {...STORY} size={54} start={sec(0.9)} end={sec(5.4)} top={420} />
+      <MalaySubtitle
+        text="…lahirlah seorang insan daripada seorang ibu yang mulia, Aminah binti Wahb."
+        {...STORY}
+        size={52}
+        start={sec(5.8)}
+        end={sec(10.6)}
+        top={380}
+      />
+      <ArabicTitle text="مُحَمَّدُ بْنُ عَبْدِ اللَّهِ ﷺ" start={sec(10.8)} end={sec(17.9)} top={330} size={98} revealLen={44} />
+      <MalaySubtitle text="Muhammad bin Abdullah ﷺ" start={sec(11.6)} end={sec(17.9)} top={590} size={54} tracking={0.05} />
+      {/* a simile about guidance — not a depiction of a miraculous light */}
+      <MalaySubtitle
+        text="Malam itu bagaikan siang, kerana telah lahir pembawa cahaya petunjuk buat sekalian alam."
+        {...STORY}
+        start={sec(13.2)}
+        end={sec(17.9)}
+        top={1560}
+      />
       <Grade warmth={0.1} />
       <PaperOverlay />
       <Grain />

@@ -10,6 +10,7 @@ import { ArabicTitle } from "../components/ArabicTitle";
 import { MalaySubtitle } from "../components/MalaySubtitle";
 import { mulberry32 } from "../random";
 import { sec } from "../timeline";
+import { STORY } from "../components/MalaySubtitle";
 
 const C = theme.colors;
 // moonless desert night: sand and brick shifted toward blue
@@ -154,10 +155,12 @@ export const Scene02AncientArabia: React.FC<{ dur: number }> = ({ dur }) => {
           )}
         />
       </CinematicCamera>
-      <ArabicTitle text="مَكَّةُ الْمُكَرَّمَةُ" start={sec(1.6)} end={sec(5.6)} top={430} size={118} />
-      <MalaySubtitle text="MAKKAH AL-MUKARRAMAH" start={sec(2.3)} end={sec(5.6)} top={680} size={46} />
-      <ArabicTitle text="عَامُ الْفِيلِ" start={sec(6.1)} end={sec(9.9)} top={440} size={124} />
-      <MalaySubtitle text="Tahun Gajah" start={sec(6.8)} end={sec(9.9)} top={700} size={52} tracking={0.08} />
+      <ArabicTitle text="مَكَّةُ الْمُكَرَّمَةُ" start={sec(1.2)} end={sec(5.4)} top={430} size={118} />
+      <MalaySubtitle text="MAKKAH AL-MUKARRAMAH" start={sec(1.9)} end={sec(5.4)} top={680} size={46} />
+      <MalaySubtitle text="Sebuah lembah tandus di tengah Semenanjung Tanah Arab" {...STORY} start={sec(2.7)} end={sec(5.4)} top={790} />
+      <ArabicTitle text="عَامُ الْفِيلِ" start={sec(5.8)} end={sec(9.9)} top={440} size={124} />
+      <MalaySubtitle text="Tahun Gajah" start={sec(6.4)} end={sec(9.9)} top={700} size={52} tracking={0.08} />
+      <MalaySubtitle text="Kira-kira 53 tahun sebelum Hijrah" {...STORY} start={sec(7.1)} end={sec(9.9)} top={810} />
       <Grade warmth={0.08} />
       <PaperOverlay />
       <Grain />
