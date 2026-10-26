@@ -381,3 +381,54 @@ function bell(out, start, f, amp, decay = 2.2) {
   bell(out, secs(0.32), 2240, 0.4, 7);
   wav("clink.wav", out, 0.4);
 }
+
+// ---------- Chapter 1 opening upgrade ----------
+
+// one soft paper snap: a very short band-passed tick with a tiny body
+function snap(out, start, amp) {
+  const len = secs(0.03);
+  const bp = biquad().set("bp", 1900 + rand() * 900, 1.6);
+  let ph = 0;
+  for (let i = 0; i < len && start + i < out.length; i++) {
+    const t = i / len;
+    ph += (2 * Math.PI * 210) / SR;
+    out[start + i] += (bp(white()) * 1.4 + Math.sin(ph) * 0.25) * amp * Math.exp(-t * 7);
+  }
+}
+
+// pop-up mountains: 22 snaps, one every 2 frames at 30 fps (matches the scene stagger)
+{
+  const N = secs(1.7);
+  const out = new Float32Array(N);
+  for (let i = 0; i < 22; i++) snap(out, secs((i * 2) / 30), 0.55 + rand() * 0.45);
+  wav("paper_pop.wav", out, 0.4);
+}
+
+// a single snap for a pin landing on the map
+{
+  const out = new Float32Array(secs(0.2));
+  snap(out, 0, 1);
+  wav("paper_tick.wav", out, 0.35);
+}
+
+// reed pen (qalam) on paper: a few short, scratchy strokes over ~1.5 s
+{
+  const N = secs(1.6);
+  const out = new Float32Array(N);
+  const strokes = [[0.02, 0.22], [0.3, 0.16], [0.5, 0.28], [0.84, 0.14], [1.02, 0.24], [1.3, 0.18]];
+  for (const [t0, d] of strokes) {
+    const start = secs(t0);
+    const len = secs(d);
+    const bp1 = biquad().set("bp", 3200 + rand() * 600, 2.2);
+    const bp2 = biquad().set("bp", 6800, 3);
+    let grain = 1;
+    for (let i = 0; i < len; i++) {
+      const t = i / len;
+      if (i % 360 === 0) grain = 0.55 + rand() * 0.45;
+      const env = Math.min(1, t * 14) * Math.min(1, (1 - t) * 8);
+      const n = white();
+      out[start + i] += (bp1(n) + bp2(n) * 0.45) * env * grain;
+    }
+  }
+  wav("qalam_scratch.wav", out, 0.3);
+}

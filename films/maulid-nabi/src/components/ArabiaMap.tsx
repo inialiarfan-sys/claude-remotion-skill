@@ -70,7 +70,13 @@ const line = (proj: Projection, pts: LonLat[]) =>
   }).join(" ");
 
 /** Seas, coasts and the Hijaz range as cut-paper pieces on the parchment. */
-export const MapShapes: React.FC<{ p: Paint; proj: Projection; k: number }> = ({ p, proj, k }) => {
+export const MapShapes: React.FC<{
+  p: Paint;
+  proj: Projection;
+  k: number;
+  /** pop-up book mode: per-mountain rise 0..1 (north → south index); adds cast shadows */
+  rise?: (i: number) => number;
+}> = ({ p, proj, k, rise }) => {
   const redSea = [...ARABIA_WEST, [43.3, 11.6] as LonLat, ...[...AFRICA].reverse(), ...SINAI_WEST, ...SINAI_EAST];
   const eastSea = [
     [43.5, 12.7] as LonLat,
@@ -117,7 +123,17 @@ export const MapShapes: React.FC<{ p: Paint; proj: Projection; k: number }> = ({
       {ridge.map((ll, i) => {
         const [x, y] = proj(ll);
         const h = Math.min(k * (0.28 + (i % 3) * 0.08), 46);
-        return <path key={"m" + i} d={`M${x - h * 0.7} ${y} L${x} ${y - h} L${x + h * 0.7} ${y} Z`} fill={p(i % 2 ? "#a07a4e" : "#8c6840")} />;
+        const tri = <path d={`M${x - h * 0.7} ${y} L${x} ${y - h} L${x + h * 0.7} ${y} Z`} fill={p(i % 2 ? "#a07a4e" : "#8c6840")} />;
+        if (!rise) return <g key={"m" + i}>{tri}</g>;
+        const r = rise(i);
+        if (r <= 0.001) return null;
+        return (
+          <g key={"m" + i}>
+            {/* the standing paper tab casts a shadow away from the lamp */}
+            <path d={`M${x - h * 0.7} ${y} L${x + h * 0.55 * r} ${y - h * 0.35 * r} L${x + h * 0.7} ${y} Z`} fill="#3a2410" opacity={0.3 * Math.min(1, r)} />
+            <g transform={`translate(${x} ${y}) scale(1 ${r}) translate(${-x} ${-y})`}>{tri}</g>
+          </g>
+        );
       })}
     </g>
   );
@@ -191,7 +207,8 @@ export const MapMarker: React.FC<{
         </>
       )}
       {ar ? (
-        <text x={tx} y={y - 4 * s} fontFamily={arabicStack} fontWeight={700} fontSize={30 * s} fill={C.ink} textAnchor={anchor} direction="rtl">
+        // with direction="rtl" the anchor is mirrored: "end" is the text's left edge
+        <text x={tx} y={y - 4 * s} fontFamily={arabicStack} fontWeight={700} fontSize={30 * s} fill={C.ink} textAnchor={side === "right" ? "end" : "start"} direction="rtl">
           {ar}
         </text>
       ) : null}

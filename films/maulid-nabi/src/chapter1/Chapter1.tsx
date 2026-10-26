@@ -5,7 +5,7 @@ import { sec } from "../timeline";
 import { PageTransition } from "../components/PageTransition";
 import { Bed, Sfx } from "../components/Sound";
 import { CH1_SLOTS, CH1_TOTAL } from "./timeline";
-import { Ch1Scene01Book, CH1_S1_APERTURE } from "./scenes/Ch1Scene01Book";
+import { Ch1Scene01Book, CH1_S1_APERTURE, CH1_S1_BEATS as S1B } from "./scenes/Ch1Scene01Book";
 import { Ch1Scene02FirstYear } from "./scenes/Ch1Scene02FirstYear";
 import { Ch1Scene03BaniSaad } from "./scenes/Ch1Scene03BaniSaad";
 import { Ch1Scene04Abwa } from "./scenes/Ch1Scene04Abwa";
@@ -26,8 +26,9 @@ const Soundtrack: React.FC = () => (
       dur={CH1_TOTAL}
       env={[
         [0, 0],
-        [40, 0.1],
-        [S2.from, 0.12],
+        [30, 0.04],
+        [S1B.markers, 0.05],
+        [S2.from, 0.26],
         [S2.from + 40, 0.36],
         [S2.from + sec(6), 0.12],
         [S3.from + sec(6), 0.12],
@@ -80,10 +81,30 @@ const Soundtrack: React.FC = () => (
         [S9.from + 20, 0],
       ]}
     />
-    {/* scene 1 — the book on the table */}
-    <Sfx at={sec(2.3) - 3} file="cover_open.wav" volume={0.8} />
-    <Sfx at={sec(4.2) - 2} file="paper_unfold.wav" volume={0.55} />
-    <Sfx at={sec(4.7) - 2} file="paper_unfold.wav" volume={0.45} />
+    {/* scene 1 — the book on the table, every sound tied to a visible action */}
+    <Bed
+      file="fire_loop.wav"
+      from={0}
+      dur={S2.from + 40}
+      env={[
+        [0, 0],
+        [20, 0.05],
+        [S2.from - 20, 0.05],
+        [S2.from + 30, 0],
+      ]}
+    />
+    <Sfx at={S1B.flap - 2} file="paper_unfold.wav" volume={0.32} />
+    <Sfx at={S1B.cover - 3} file="cover_open.wav" volume={0.5} />
+    <Sfx at={S1B.coverLand - 1} file="book_close.wav" volume={0.7} />
+    <Sfx at={S1B.unfold - 2} file="paper_unfold.wav" volume={0.8} />
+    <Sfx at={S1B.unfold + 8} file="paper_unfold.wav" volume={0.65} />
+    <Sfx at={S1B.ridge - 1} file="paper_pop.wav" volume={0.45} />
+    <Sfx at={S1B.title} file="qalam_scratch.wav" volume={0.4} />
+    <Sfx at={S1B.bab - 2} file="paper_slide.wav" volume={0.55} />
+    {[0, 6, 12].map((d) => (
+      <Sfx key={d} at={S1B.markers + d} file="paper_tick.wav" volume={0.35} />
+    ))}
+    <Sfx at={S1B.makkah} file="paper_tick.wav" volume={0.45} />
     <Sfx at={S2.from - 4} file="paper_slide.wav" volume={0.6} />
     {/* scene 2 — into the dwelling; family tree page */}
     <Sfx at={S2.from + sec(8.2) - 3} file="paper_slide.wav" volume={0.4} />

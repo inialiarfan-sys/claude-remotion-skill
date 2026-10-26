@@ -91,7 +91,7 @@ Each scene is also registered as its own composition (`Bab1Scene01` … `Bab1Sce
 
 | # | Time | Scene | What happens | Transition out |
 |---|---|---|---|---|
-| 1 | 0:00–0:15 | The book of sirah | A book on a wooden table opens. A folded map of Arabia unfolds and the camera flies to Makkah. سِيرَةُ النَّبِيِّ مُحَمَّدٍ ﷺ, PERJALANAN HIDUP RASULULLAH SAW, BAB 1 — ZAMAN KANAK-KANAK | Push into the map; Makkah opens as an aperture |
+| 1 | 0:00–0:15 | The book of sirah | **Hook:** an extreme close-up of the gilded medallion as lamplight rakes across it. A pull-back reveals the book on a writing table (oil lamp, inkwell and qalam, a cloth in the foreground). The leather envelope flap lifts, then the cover drops open with spring weight. The folded map unfolds and the Hijaz mountains pop up like a pop-up book. The camera pushes in as سِيرَةُ النَّبِيِّ مُحَمَّدٍ ﷺ is inked onto the cartouche, with PERJALANAN HIDUP RASULULLAH SAW and a BAB 1 tab. It then pulls back as place pins land, and flies to Makkah. Every sound is tied to a visible action. | Push into the map; Makkah opens as an aperture |
 | 2 | 0:15–0:35 | First year | A camera move through the mountains reveals the Ka'bah. A doorway of light leads into a dwelling with an empty cradle. A family-tree page names Aminah and Abdullah (*wafat sebelum Baginda lahir*). Then ANAK YATIM and Ad-Duha 93:6. | Page turn |
 | 3 | 0:35–0:55 | Halimah al-Sa'diyah | A map route from Makkah to Bani Sa'd (approximate), then a dive into an encampment of tents, flock, palms and camels through one day and night | Slow page turn |
 | 4 | 0:55–1:15 | Loss of his mother | A map route from Yathrib to al-Abwa', then a dusk plain with a resting caravan and an acacia. USIA 6 TAHUN, then the two captions. | Shadow sweep |

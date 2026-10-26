@@ -291,3 +291,46 @@ export const TableTop: React.FC<{ p: Paint; top: number }> = ({ p, top }) => (
     <path d={`M-400 ${top} L1480 ${top} L1480 ${top + 14} L-400 ${top + 14} Z`} fill={p("#5a3820")} />
   </g>
 );
+
+// ---------------------------------------------------------------------------
+// Clay oil lamp with a living flame; `flicker` (≈0.8–1.1) scales the flame.
+// ---------------------------------------------------------------------------
+export const OilLamp: React.FC<{ p: Paint; x: number; y: number; s?: number; flicker: number; sway: number }> = ({
+  p,
+  x,
+  y,
+  s = 1,
+  flicker,
+  sway,
+}) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <ellipse cx={0} cy={6} rx={92} ry={16} fill="#000000" opacity={0.35} />
+    <path d="M-80 0 Q-86 -40 -30 -46 L40 -44 Q70 -40 96 -22 L118 -20 Q126 -12 116 -6 L80 -4 Q40 6 -40 6 Q-76 6 -80 0 Z" fill={p("#9a5a32")} />
+    <path d="M-80 -20 Q-112 -34 -104 -6 Q-98 6 -80 -4" fill="none" stroke={p("#7a4426")} strokeWidth={9} />
+    <ellipse cx={-10} cy={-44} rx={30} ry={7} fill={p("#5a3018")} />
+    <path d="M-60 -24 Q0 -36 70 -26" stroke={p("#c08050")} strokeWidth={3} fill="none" opacity={0.7} />
+    {/* flame from the nozzle */}
+    <g transform={`translate(112 -22) rotate(${sway}) scale(${flicker})`}>
+      <path d="M0 0 Q-16 -24 -2 -58 Q4 -42 12 -34 Q20 -18 0 0 Z" fill={p(theme.colors.flameOrange)} />
+      <path d="M0 -2 Q-8 -18 0 -38 Q8 -20 0 -2 Z" fill={p(theme.colors.flameYellow)} />
+    </g>
+  </g>
+);
+
+// Glazed inkwell with a reed pen (qalam) laid beside it
+export const InkwellQalam: React.FC<{ p: Paint; x: number; y: number; s?: number }> = ({ p, x, y, s = 1 }) => (
+  <g transform={`translate(${x} ${y}) scale(${s})`}>
+    <ellipse cx={10} cy={8} rx={70} ry={16} fill="#000000" opacity={0.35} />
+    <path d="M-44 0 L-40 -64 Q0 -76 40 -64 L44 0 Q0 12 -44 0 Z" fill={p("#1f3d48")} />
+    <ellipse cx={0} cy={-66} rx={40} ry={11} fill={p("#2c5562")} />
+    <ellipse cx={0} cy={-66} rx={20} ry={6} fill={p("#0a0a0c")} />
+    <path d="M-30 -30 Q0 -38 30 -30" stroke={p("#4a8090")} strokeWidth={3} fill="none" opacity={0.6} />
+    <g transform="translate(-150 40) rotate(-24)">
+      <rect x={0} y={-5} width={260} height={10} rx={5} fill={p("#b8955e")} />
+      <path d="M260 -5 L300 0 L260 5 Z" fill={p("#8a6a3a")} />
+      {[50, 120, 190].map((nx) => (
+        <rect key={nx} x={nx} y={-6} width={4} height={12} fill={p("#8a6a3a")} />
+      ))}
+    </g>
+  </g>
+);
