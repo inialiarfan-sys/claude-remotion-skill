@@ -10,7 +10,9 @@ type Cam = { x: number; y: number; zoom: number };
 const CameraCtx = createContext<Cam>({ x: 0, y: 0, zoom: 1 });
 export const useCamera = () => useContext(CameraCtx);
 
-const sample = (keys: CamKey[], frame: number): Cam => {
+// camera state at a frame (without handheld drift) — lets scenes compute where
+// a world point sits on screen, e.g. to open a transition from it
+export const sampleCamera = (keys: CamKey[], frame: number): Cam => {
   if (frame <= keys[0].f) return keys[0];
   for (let i = 0; i < keys.length - 1; i++) {
     const a = keys[i];
@@ -39,7 +41,7 @@ export const CinematicCamera: React.FC<{
   children: React.ReactNode;
 }> = ({ keys, drift = 1, shake, children }) => {
   const frame = useCurrentFrame();
-  const base = sample(keys, frame);
+  const base = sampleCamera(keys, frame);
   const s = shake ? shake(frame) : { x: 0, y: 0 };
   const cam = {
     x: base.x + noise1(frame / 70, 3) * 4 * drift + s.x,
@@ -62,4 +64,10 @@ export const useDepth = (depth: number, bleed = 400): React.CSSProperties => {
     transformOrigin: `${bleed + WIDTH / 2}px ${bleed + HEIGHT / 2}px`,
     willChange: "transform",
   };
+};
+
+// screen position of a world point on a layer at `depth`, for a camera state
+export const toScreen = (cam: { x: number; y: number; zoom: number }, px: number, py: number, depth = 1): [number, number] => {
+  const s = 1 + (cam.zoom - 1) * depth;
+  return [WIDTH / 2 + s * (px - WIDTH / 2) - cam.x * depth, HEIGHT / 2 + s * (py - HEIGHT / 2) - cam.y * depth];
 };

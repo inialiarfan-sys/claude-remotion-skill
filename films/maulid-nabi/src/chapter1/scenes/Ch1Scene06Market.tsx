@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { arabicStack, latinStack, theme } from "../../theme";
 import { CinematicCamera } from "../../components/CinematicCamera";
 import { PaperLayer } from "../../components/PaperLayer";
@@ -8,7 +8,7 @@ import { House, Palm } from "../../components/Architecture";
 import { Caravan, Kaaba, Stall } from "../../components/Props";
 import { PageSurface } from "../../components/Book";
 import { MapMarker, MapRoute, MapShapes, PLACES, projection } from "../../components/ArabiaMap";
-import { MalaySubtitle, STORY } from "../../components/MalaySubtitle";
+import { ScrollCaption } from "../../components/WorldCaption";
 import { IllustrationNote } from "../../components/IllustrationNote";
 import { ridgePath } from "../../components/shapes";
 import { clamp, rtlSweepMask } from "../../components/textMotion";
@@ -16,25 +16,52 @@ import { sec } from "../../timeline";
 import { QURAYSH_106_2 } from "../verses";
 
 const C = theme.colors;
-const T = { map: sec(12.4), routes: sec(13.2), syam: sec(16.0) };
+const T = { scroll1: sec(1.2), scroll2: sec(7.0), map: sec(12.4), routes: sec(13.2), syam: sec(16.0) };
+export const CH1_S6_BEATS = { ...T, stalls: [0, 1, 2, 3, 4].map((i) => sec(0.8) + i * 14), markers: [sec(13.2) - 10, sec(13.2) + 70, sec(13.2) + 90] };
 const CARD = { x: 90, y: 430, w: 900, h: 980 };
 const MAP_K = 36;
 const proj = projection(CARD.w / 2 - 6.8 * MAP_K, 20, MAP_K, 33, 33.5);
+const STALLS = [
+  { x: -240, st: ["#8a3b2a", "#e8d2a8"] as [string, string] },
+  { x: 60, st: ["#2e4a7a", "#e8d2a8"] as [string, string] },
+  { x: 360, st: ["#6a7a3a", "#f0dcb0"] as [string, string] },
+  { x: 660, st: ["#a05a2c", "#f0e0c0"] as [string, string] },
+  { x: 960, st: ["#5a3a6a", "#e8d2a8"] as [string, string] },
+];
 
 export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const card = spring({ frame: frame - T.map, fps, config: theme.spring.gentle });
   const end = dur - 32;
+  // the map card unfolds from its centre fold
+  const unfold = interpolate(frame, [T.map, T.map + 24], [0, 1], { ...clamp, easing: theme.ease.out });
   const cardExit = interpolate(frame, [end - 12, end], [0, 1], { ...clamp, easing: theme.ease.in });
   const routeT = (a: number) => interpolate(frame, [a, a + 70], [0, 1], { ...clamp, easing: theme.ease.inOut });
   const verse = interpolate(frame, [T.routes + 60, T.routes + 110], [0, 1], { ...clamp, easing: theme.ease.soft });
 
   return (
     <AbsoluteFill style={{ background: C.void }}>
-      <CinematicCamera keys={[{ f: 0, x: -130, y: 20, zoom: 1.12 }, { f: dur, x: 120, y: -10, zoom: 1.04 }]}>
+      {/* tracking shot: the camera travels with the arriving caravan */}
+      <CinematicCamera keys={[{ f: 0, x: 160, y: 20, zoom: 1.1 }, { f: T.map + 20, x: -150, y: -10, zoom: 1.05 }, { f: dur, x: -170, y: -14, zoom: 1.06 }]}>
         <Sky stops={[["#5a86b8", 0], ["#a8c0d0", 40], ["#f2dcae", 68]]} glow={{ x: 820, y: 700, r: 600, color: "rgba(255,240,200,0.5)" }} />
         <PaperLayer depth={0.12} shadow={10} rim="rgba(255,240,210,0.4)" render={(p) => <path d={ridgePath(601, { x0: -420, x1: 1500, base: 1040, amp: 420, peaks: 4, bottom: 1500 })} fill={p("#9a7470")} />} />
+        {/* pigeons lifting over the rooftops */}
+        <PaperLayer
+          depth={0.22}
+          shadow={4}
+          texture={0}
+          render={(p) => (
+            <g>
+              {[0, 1, 2, 3].map((i) => {
+                const t = frame - sec(2) - i * 5;
+                if (t < 0) return null;
+                const x = 300 + i * 50 + t * (2.4 + i * 0.2);
+                const y = 1090 - t * (1.6 - i * 0.15) + Math.sin(t / 8 + i) * 6;
+                const f = Math.sin(t / 2.6 + i) * 9;
+                return <path key={i} d={`M${x - 13} ${y - f} Q${x - 5} ${y - 3} ${x} ${y} Q${x + 5} ${y - 3} ${x + 13} ${y - f} L${x} ${y + 3} Z`} fill={p("#4a4048")} />;
+              })}
+            </g>
+          )}
+        />
         <PaperLayer
           depth={0.3}
           shadow={14}
@@ -48,18 +75,12 @@ export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
             </g>
           )}
         />
-        {/* the market street: stalls whose goods are set out one by one */}
+        {/* the market street: awnings lift in the breeze, goods are set out one by one */}
         <PaperLayer
           depth={0.55}
           shadow={18}
           render={(p) =>
-            [
-              { x: -240, st: ["#8a3b2a", "#e8d2a8"] as [string, string] },
-              { x: 60, st: ["#2e4a7a", "#e8d2a8"] as [string, string] },
-              { x: 360, st: ["#6a7a3a", "#f0dcb0"] as [string, string] },
-              { x: 660, st: ["#a05a2c", "#f0e0c0"] as [string, string] },
-              { x: 960, st: ["#5a3a6a", "#e8d2a8"] as [string, string] },
-            ].map((s, i) => (
+            STALLS.map((s, i) => (
               <Stall
                 key={i}
                 p={p}
@@ -67,8 +88,9 @@ export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
                 base={1420}
                 w={250}
                 stripes={s.st}
-                arrange={interpolate(frame, [sec(0.8) + i * 14, sec(4) + i * 14], [0, 1], clamp)}
+                arrange={interpolate(frame, [CH1_S6_BEATS.stalls[i], sec(4) + i * 14], [0, 1], clamp)}
                 seed={i * 13 + 5}
+                flutter={frame / 11 + i * 1.7}
               />
             ))
           }
@@ -97,10 +119,10 @@ export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
         />
         <Dust seed={611} count={40} area={{ x: -100, y: 1000, w: 1300, h: 800 }} color="#fff0c8" size={2.4} rise={0.2} depth={0.7} opacity={0.6} />
       </CinematicCamera>
-      <MalaySubtitle text="MEMBESAR DI BAWAH JAGAAN ABU TALIB." start={sec(1.2)} end={sec(6.6)} top={240} size={46} tracking={0.08} maxWidth={940} />
-      <MalaySubtitle text="MAKKAH: PUSAT PERDAGANGAN DAN PERSINGGAHAN KAFILAH." start={sec(7.0)} end={sec(12.2)} top={240} size={44} tracking={0.06} maxWidth={940} />
+      <ScrollCaption lines={["MEMBESAR DI BAWAH JAGAAN ABU TALIB."]} start={T.scroll1} end={sec(6.6)} top={200} size={40} />
+      <ScrollCaption lines={["MAKKAH: PUSAT PERDAGANGAN", "DAN PERSINGGAHAN KAFILAH."]} start={T.scroll2} end={sec(12.2)} top={200} size={40} />
       {/* map card: the trade routes north to al-Sham and south to Yemen */}
-      {frame >= T.map - 2 && frame <= end ? (
+      {unfold > 0 && frame <= end ? (
         <div
           style={{
             position: "absolute",
@@ -108,19 +130,20 @@ export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
             top: CARD.y,
             width: CARD.w,
             height: CARD.h,
-            opacity: Math.min(1, card * 1.4) * (1 - cardExit),
-            transform: `translateY(${interpolate(card, [0, 1], [60, 0]) - cardExit * 20}px) rotate(${interpolate(card, [0, 1], [-2, 0])}deg)`,
+            opacity: 1 - cardExit,
+            clipPath: `inset(${(1 - unfold) * 50}% 0 ${(1 - unfold) * 50}% 0)`,
+            transform: `translateY(${-cardExit * 20}px) scaleY(${interpolate(unfold, [0, 1], [1.06, 1])})`,
             boxShadow: "0 30px 70px rgba(0,0,0,0.6)",
           }}
         >
           <PageSurface w={CARD.w} h={CARD.h}>
-            <svg width={CARD.w} height={CARD.h} style={{ position: "absolute", inset: 0 }}>
+            <svg width={CARD.w} height={CARD.h} style={{ position: "absolute", inset: 0, filter: "drop-shadow(1px 2px 1.5px rgba(60,30,10,0.35))" }}>
               <MapShapes p={(c) => c} proj={proj} k={MAP_K} />
-              <MapRoute proj={proj} via={[PLACES.makkah, [39.4, 23.5], PLACES.yathrib, [38.0, 27.5], [36.8, 30.5], PLACES.syam]} t={routeT(T.routes)} width={6} />
-              <MapRoute proj={proj} via={[PLACES.makkah, [41.0, 19.5], [42.8, 17.0], PLACES.yaman]} t={routeT(T.routes + 20)} width={6} color="#2e4378" />
-              <MapMarker proj={proj} ll={PLACES.makkah} at={T.routes - 10} ar="مكة" ms="MAKKAH" k={MAP_K} side="left" scale={1.1} />
-              <MapMarker proj={proj} ll={PLACES.syam} at={T.routes + 70} ar="الشام" ms="SYAM" k={MAP_K} scale={1.1} />
-              <MapMarker proj={proj} ll={PLACES.yaman} at={T.routes + 90} ar="اليمن" ms="YAMAN" k={MAP_K} scale={1.1} color="#2e4378" />
+              <MapRoute proj={proj} via={[PLACES.makkah, [39.4, 23.5], PLACES.yathrib, [38.0, 27.5], [36.8, 30.5], PLACES.syam]} t={routeT(T.routes)} width={6} icon="camel" />
+              <MapRoute proj={proj} via={[PLACES.makkah, [41.0, 19.5], [42.8, 17.0], PLACES.yaman]} t={routeT(T.routes + 20)} width={6} color="#2e4378" icon="camel" />
+              <MapMarker proj={proj} ll={PLACES.makkah} at={CH1_S6_BEATS.markers[0]} ar="مكة" ms="MAKKAH" k={MAP_K} side="left" scale={1.1} />
+              <MapMarker proj={proj} ll={PLACES.syam} at={CH1_S6_BEATS.markers[1]} ar="الشام" ms="SYAM" k={MAP_K} scale={1.1} />
+              <MapMarker proj={proj} ll={PLACES.yaman} at={CH1_S6_BEATS.markers[2]} ar="اليمن" ms="YAMAN" k={MAP_K} scale={1.1} color="#2e4378" />
             </svg>
             <div style={{ position: "absolute", left: 0, right: 0, top: 735, textAlign: "center", opacity: verse }}>
               <div dir="rtl" lang="ar" style={{ fontFamily: arabicStack, fontWeight: 700, fontSize: 52, lineHeight: 1.7, color: C.ink, ...rtlSweepMask(verse) }}>
@@ -132,18 +155,19 @@ export const Ch1Scene06Market: React.FC<{ dur: number }> = ({ dur }) => {
               <div style={{ fontFamily: latinStack, fontWeight: 700, fontSize: 24, letterSpacing: "0.1em", color: C.goldDeep, marginTop: 4 }}>SURAH QURAISY 106:2</div>
             </div>
           </PageSurface>
+          <AbsoluteFill style={{ background: `linear-gradient(180deg, transparent 40%, rgba(60,35,10,${0.45 * (1 - unfold)}) 50%, transparent 60%)` }} />
         </div>
       ) : null}
-      <MalaySubtitle
-        text="Menurut riwayat sirah, Baginda pernah mengikuti kafilah Abu Talib ke Syam."
-        {...STORY}
-        size={42}
+      <ScrollCaption
+        lines={["Menurut riwayat sirah, Baginda pernah", "mengikuti kafilah Abu Talib ke Syam."]}
+        sub="Riwayat al-Tirmidhi dan kitab-kitab sirah · tiada butiran tambahan dipaparkan"
         start={T.syam}
         end={end}
-        top={1450}
+        top={1440}
+        size={36}
+        subSize={24}
       />
-      <IllustrationNote start={T.syam + 10} end={end} top={1600} text="Riwayat al-Tirmidhi dan kitab-kitab sirah · tiada butiran tambahan dipaparkan" />
-      <IllustrationNote start={sec(1.2)} end={T.map} />
+      <IllustrationNote start={T.scroll1} end={T.map} />
       <Grade warmth={0.1} />
       <PaperOverlay />
       <Grain />

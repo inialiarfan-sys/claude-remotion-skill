@@ -162,7 +162,8 @@ export const MapRoute: React.FC<{
   width?: number;
   dashed?: boolean;
   head?: boolean;
-}> = ({ proj, via, t, color = C.flameRed, width = 5, dashed = true, head = true }) => {
+  icon?: "dot" | "camel"; // what travels at the head of the route
+}> = ({ proj, via, t, color = C.flameRed, width = 5, dashed = true, head = true, icon = "dot" }) => {
   if (t <= 0) return null;
   const pts = partial(via.map(proj), t);
   const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
@@ -170,7 +171,17 @@ export const MapRoute: React.FC<{
   return (
     <g>
       <path d={d} fill="none" stroke={color} strokeWidth={width} strokeLinecap="round" strokeDasharray={dashed ? `${width * 2.4} ${width * 1.8}` : undefined} />
-      {head && t < 1 ? <circle cx={hx} cy={hy} r={width * 1.6} fill={color} /> : null}
+      {head && t < 1 && icon === "dot" ? <circle cx={hx} cy={hy} r={width * 1.6} fill={color} /> : null}
+      {head && t > 0 && icon === "camel" ? (
+        // a tiny cut-paper camel walking the route
+        <g transform={`translate(${hx} ${hy}) scale(${width / 7})`}>
+          <ellipse cx={0} cy={2} rx={20} ry={4} fill="#000000" opacity={0.25} />
+          <path d="M-16 -8 C-18 -16 -10 -22 -4 -20 C0 -28 8 -28 10 -20 L16 -18 L18 -26 L24 -27 L24 -23 L20 -22 L18 -12 L14 -8 Z" fill={color} />
+          {[-12, -6, 6, 12].map((lx) => (
+            <rect key={lx} x={lx - 1.2} y={-9} width={2.4} height={10} fill={color} />
+          ))}
+        </g>
+      ) : null}
     </g>
   );
 };

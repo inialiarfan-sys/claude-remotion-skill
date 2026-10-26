@@ -152,7 +152,8 @@ export const Stall: React.FC<{
   stripes: [string, string];
   arrange: number;
   seed: number;
-}> = ({ p, x, base, w, stripes, arrange, seed }) => {
+  flutter?: number; // phase of a breeze lifting the scalloped awning edge
+}> = ({ p, x, base, w, stripes, arrange, seed, flutter }) => {
   const rand = mulberry32(seed);
   const top = base - 250;
   const n = 7;
@@ -168,7 +169,7 @@ export const Stall: React.FC<{
       {Array.from({ length: n }).map((_, i) => (
         <path
           key={i}
-          d={`M${x - 20 + (i * (w + 40)) / n} ${top - 30} L${x - 20 + ((i + 1) * (w + 40)) / n} ${top - 30} L${x - 20 + ((i + 1) * (w + 40)) / n} ${top + 10} Q${x - 20 + ((i + 0.5) * (w + 40)) / n} ${top + 30} ${x - 20 + (i * (w + 40)) / n} ${top + 10} Z`}
+          d={`M${x - 20 + (i * (w + 40)) / n} ${top - 30} L${x - 20 + ((i + 1) * (w + 40)) / n} ${top - 30} L${x - 20 + ((i + 1) * (w + 40)) / n} ${top + 10} Q${x - 20 + ((i + 0.5) * (w + 40)) / n} ${top + 30 + (flutter === undefined ? 0 : Math.sin(flutter + i * 0.9) * 7)} ${x - 20 + (i * (w + 40)) / n} ${top + 10} Z`}
           fill={p(stripes[i % 2])}
         />
       ))}
@@ -207,14 +208,15 @@ export const Stall: React.FC<{
 // ---------------------------------------------------------------------------
 // Balance scale (mizan) — a symbol of honest trade. `tilt` in degrees.
 // ---------------------------------------------------------------------------
-export const BalanceScale: React.FC<{ p: Paint; x: number; y: number; s?: number; tilt: number; color?: string }> = ({
-  p,
-  x,
-  y,
-  s = 1,
-  tilt,
-  color = C.gold,
-}) => {
+export const BalanceScale: React.FC<{
+  p: Paint;
+  x: number;
+  y: number;
+  s?: number;
+  tilt: number;
+  color?: string;
+  loads?: { l?: number; r?: number }; // 0..1: goods dropping onto each pan
+}> = ({ p, x, y, s = 1, tilt, color = C.gold, loads }) => {
   const arm = 230;
   const rad = (tilt * Math.PI) / 180;
   const lx = -Math.cos(rad) * arm;
@@ -226,6 +228,22 @@ export const BalanceScale: React.FC<{ p: Paint; x: number; y: number; s?: number
       <path d={`M${px} ${py} L${px - 80} ${py + 170} M${px} ${py} L${px + 80} ${py + 170} M${px} ${py} L${px} ${py + 170}`} stroke={p(C.goldDeep)} strokeWidth={3} />
       <path d={`M${px - 100} ${py + 170} Q${px} ${py + 230} ${px + 100} ${py + 170} Z`} fill={p(color)} />
       <circle cx={px} cy={py} r={9} fill={p(color)} />
+      {key === "l" && loads?.l ? (
+        // a folded bolt of cloth
+        <g transform={`translate(${px} ${py + 172 - (1 - loads.l) * 320})`} opacity={Math.min(1, loads.l * 3)}>
+          <rect x={-62} y={-30} width={124} height={30} rx={8} fill={p("#8a3b2a")} />
+          <rect x={-54} y={-56} width={108} height={28} rx={8} fill={p("#2e4a7a")} />
+          <path d="M-54 -42 L54 -42" stroke={p(C.goldLight)} strokeWidth={3} opacity={0.7} />
+        </g>
+      ) : null}
+      {key === "r" && loads?.r ? (
+        // two brass weights
+        <g transform={`translate(${px} ${py + 172 - (1 - loads.r) * 320})`} opacity={Math.min(1, loads.r * 3)}>
+          <path d="M-58 0 L-50 -40 L-14 -40 L-6 0 Z" fill={p(C.goldDeep)} />
+          <path d="M8 0 L14 -28 L44 -28 L50 0 Z" fill={p(C.goldDeep)} />
+          <rect x={-38} y={-50} width={12} height={10} rx={3} fill={p(C.goldDeep)} />
+        </g>
+      ) : null}
     </g>
   );
   return (

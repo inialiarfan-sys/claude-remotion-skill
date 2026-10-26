@@ -1,50 +1,95 @@
 import React from "react";
-import { AbsoluteFill, interpolate, interpolateColors, useCurrentFrame } from "remotion";
+import { AbsoluteFill, interpolate, interpolateColors, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { theme } from "../../theme";
-import { CinematicCamera } from "../../components/CinematicCamera";
+import { CinematicCamera, type CamKey } from "../../components/CinematicCamera";
 import { DepthFill, PaperLayer } from "../../components/PaperLayer";
-import { Dust, Grade, Grain, PaperOverlay, Stars, Vignette } from "../../components/Atmosphere";
+import { Dust, Glow, Grade, Grain, PaperOverlay, Stars, Vignette } from "../../components/Atmosphere";
 import { Palm } from "../../components/Architecture";
 import { Camel, Caravan, Sheep, Tent } from "../../components/Props";
 import { PageSurface } from "../../components/Book";
 import { MapMarker, MapRoute, MapShapes, PLACES, projection } from "../../components/ArabiaMap";
-import { MalaySubtitle, STORY } from "../../components/MalaySubtitle";
+import { ScrollCaption } from "../../components/WorldCaption";
 import { IllustrationNote } from "../../components/IllustrationNote";
 import { dunePath, ridgePath } from "../../components/shapes";
 import { clamp } from "../../components/textMotion";
+import { noise1 } from "../../random";
 import { sec } from "../../timeline";
+import { CH1_SLOTS } from "../timeline";
 
 const C = theme.colors;
 const MAP_K = 420;
 const proj = projection(540, 960, MAP_K, 40.3, 21.1);
-const T = { route: sec(1.0), dive: sec(5.2), land: sec(6.6) };
-
+const DUR = CH1_SLOTS[2].dur;
+const ROUTE = [PLACES.makkah, [40.1, 21.32] as [number, number], [40.5, 21.05] as [number, number], PLACES.baniSaad];
+const T = { route: sec(1.2), routeEnd: sec(4.4), dive: sec(4.8), land: sec(6.0) };
 // sky keyframes across one symbolic day: morning → noon → sunset → night → dawn
 const DAY = [0, 0.3, 0.55, 0.75, 1];
+const DAY_END = DUR - 20;
+export const CH1_S3_BEATS = {
+  ...T,
+  taif: sec(2.6),
+  baniSaad: sec(4.2),
+  // frames (scene-relative) where the night of the day cycle begins and ends
+  nightFrom: T.land + Math.round(0.6 * (DAY_END - T.land)),
+  nightTo: T.land + Math.round(0.94 * (DAY_END - T.land)),
+};
+const B = CH1_S3_BEATS;
+
+const at = (ll: [number, number], s: number, f: number): CamKey => {
+  const [x, y] = proj(ll);
+  return { f, x: s * (x - 540), y: s * (y - 960), zoom: s };
+};
+// the camera rides the head of the route as it is drawn
+const MAP_CAM: CamKey[] = [at(PLACES.makkah, 1.15, 0), at(PLACES.makkah, 1.15, T.route), at(PLACES.baniSaad, 1.3, T.routeEnd), at(PLACES.baniSaad, 1.34, T.dive + 30)];
+
 const skyTop = ["#5a7aa8", "#4a78b8", "#4a3a6a", "#060a1f", "#3a4a7a"];
 const skyLow = ["#f2d2a0", "#f6e2b8", "#f08a4a", "#1a2244", "#f0b27a"];
 const land = ["#c99a62", "#d8aa6e", "#a8603a", "#2a2230", "#b0784a"];
 const far = ["#8a7a90", "#9a8aa0", "#7a4a5a", "#1a1a33", "#7a6070"];
 
+const hearthSmoke = (x: number, y: number, frame: number) => {
+  const L: string[] = [];
+  const R: string[] = [];
+  for (let s = 0; s <= 300; s += 25) {
+    const sway = Math.sin(s / 70 + frame / 28) * (3 + s * 0.14) + noise1(frame / 70, 9) * 12;
+    const hw = 3 + s * 0.07;
+    L.push(`${x + sway - hw} ${y - s}`);
+    R.unshift(`${x + sway + hw} ${y - s}`);
+  }
+  return `M${L.join(" L")} L${R.join(" L")} Z`;
+};
+
 export const Ch1Scene03BaniSaad: React.FC<{ dur: number }> = ({ dur }) => {
   const frame = useCurrentFrame();
-  const dive = interpolate(frame, [T.dive, T.land + 10], [0, 1], { ...clamp, easing: theme.ease.inOut });
-  const day = interpolate(frame, [T.land, dur - 20], [0, 1], clamp);
+  const { fps } = useVideoConfig();
+  const dive = interpolate(frame, [T.dive, T.land], [0, 1], { ...clamp, easing: theme.ease.inOut });
+  const day = interpolate(frame, [T.land, DAY_END], [0, 1], clamp);
   const col = (stops: string[]) => interpolateColors(day, DAY, stops);
   const night = interpolate(day, [0.6, 0.72, 0.84, 0.94], [0, 1, 1, 0], clamp);
   const sunA = interpolate(day, [0, 0.62], [-0.15, 1.15], clamp);
   const sunX = 100 + sunA * 880;
   const sunY = 1080 - Math.sin(Math.max(0, Math.min(1, sunA)) * Math.PI) * 620;
   const walk = (frame - T.land) * 1.1;
-  const [bx, by] = proj(PLACES.baniSaad);
+  const fire = 0.85 + noise1(frame / 4, 2) * 0.15;
 
   return (
     <AbsoluteFill style={{ background: C.void }}>
       {dive > 0 ? (
-        <AbsoluteFill style={{ opacity: Math.min(1, dive * 1.6) }}>
-          <CinematicCamera keys={[{ f: T.land - 20, x: -60, y: 20, zoom: 1.04 }, { f: dur, x: 60, y: 0, zoom: 1.12 }]}>
+        // the encampment is revealed through the Bani Sa'd marker
+        <AbsoluteFill style={{ clipPath: `circle(${dive * 125}% at 540px 960px)` }}>
+          <CinematicCamera
+            keys={[
+              { f: T.dive, x: -80, y: 20, zoom: 1.18 },
+              { f: T.land + 30, x: -60, y: 10, zoom: 1.12 },
+              { f: dur, x: 260, y: 0, zoom: 1.06 },
+            ]}
+          >
             <AbsoluteFill style={{ background: `linear-gradient(180deg, ${col(skyTop)} 0%, ${col(skyLow)} 62%)` }} />
             <Stars seed={303} count={160} top={-300} bottom={1000} opacity={night} />
+            <Glow x={240} y={420} r={160} color="#fff4d6" opacity={night * 0.5} depth={0.04} />
+            <DepthFill depth={0.04}>
+              <div style={{ position: "absolute", left: 240 - 46, top: 420 - 46, width: 92, height: 92, borderRadius: "50%", background: "radial-gradient(circle at 40% 40%, #fffaf0, #e8e0cc 70%)", opacity: night }} />
+            </DepthFill>
             <DepthFill depth={0.05}>
               <div
                 style={{
@@ -66,7 +111,8 @@ export const Ch1Scene03BaniSaad: React.FC<{ dur: number }> = ({ dur }) => {
               shadow={14}
               render={(p) => <path d={ridgePath(303, { x0: -420, x1: 1500, base: 1260, amp: 150, peaks: 4, bottom: 1700 })} fill={p(interpolateColors(day, DAY, ["#a07050", "#b08058", "#7a4030", "#1e1826", "#8a5a40"]))} />}
             />
-            {/* the encampment: goat-hair tents, palms, grazing flock */}
+            {/* the encampment: goat-hair tents, palms, a hearth, a grazing flock */}
+            <PaperLayer depth={0.5} shadow={0} texture={0.5} render={(p) => <path d={hearthSmoke(470, 1372, frame)} fill={p("#e8dcc8")} opacity={0.45 * (1 - night)} />} />
             <PaperLayer
               depth={0.5}
               shadow={16}
@@ -78,12 +124,18 @@ export const Ch1Scene03BaniSaad: React.FC<{ dur: number }> = ({ dur }) => {
                   <Tent p={p} x={860} base={1365} w={240} h={112} color="#2a201c" />
                   <Palm p={p} x={440} base={1355} h={260} lean={-0.08} color="#3a3020" seed={51} sway={Math.sin(frame / 44) * 4} />
                   <Palm p={p} x={780} base={1350} h={220} lean={0.1} color="#3a3020" seed={53} sway={Math.sin(frame / 50 + 1) * 4} />
+                  {/* hearth stones */}
+                  {[-16, 0, 16].map((dx) => (
+                    <ellipse key={dx} cx={470 + dx} cy={1380} rx={9} ry={6} fill={p("#4a3a30")} />
+                  ))}
                   {[0, 1, 2, 3, 4].map((i) => (
                     <Sheep key={i} p={p} x={300 + i * 70 + Math.sin(frame / 90 + i) * 20} y={1420 + (i % 2) * 18} s={0.7} flip={i % 2 === 1} graze={(Math.sin(frame / 25 + i * 2) + 1) / 2} />
                   ))}
                 </g>
               )}
             />
+            <Glow x={470} y={1366} r={120} color="#ff9a3d" opacity={night * 0.9 * fire} depth={0.5} />
+            <Glow x={470} y={1360} r={420} color="#ff8a3a" opacity={night * 0.28 * fire} depth={0.5} />
             <PaperLayer
               depth={0.72}
               shadow={18}
@@ -109,42 +161,38 @@ export const Ch1Scene03BaniSaad: React.FC<{ dur: number }> = ({ dur }) => {
               )}
             />
             <Dust seed={311} count={30} area={{ x: -100, y: 1200, w: 1300, h: 600 }} color="#ffe2a6" size={2.4} rise={0.15} depth={0.8} opacity={(1 - night) * 0.6} />
+            <Dust seed={313} count={14} area={{ x: 380, y: 1150, w: 180, h: 240 }} color="#ffb453" size={2} rise={1.4} depth={0.5} opacity={night} />
           </CinematicCamera>
         </AbsoluteFill>
       ) : null}
-      {/* the paper map of the region, which the camera dives into */}
+      {/* the paper map of the region: the camera follows the route, then enters the marker */}
       {dive < 1 ? (
-        <AbsoluteFill
-          style={{
-            opacity: 1 - dive,
-            transform: `scale(${1 + dive * 2.2})`,
-            transformOrigin: `${bx}px ${by}px`,
-          }}
-        >
+        <AbsoluteFill style={{ opacity: 1 - dive, transform: `scale(${1 + dive * 0.8})`, transformOrigin: "540px 960px" }}>
           <PageSurface w={1080} h={1920} frame={false} />
-          <CinematicCamera keys={[{ f: 0, x: -40, y: -30, zoom: 1.0 }, { f: T.dive, x: 40, y: 30, zoom: 1.08 }]} drift={0.5}>
-            <PaperLayer depth={1} shadow={8} shadowOpacity={0.35} render={(p) => <MapShapes p={p} proj={proj} k={MAP_K} />} />
+          <CinematicCamera keys={MAP_CAM} drift={0.5}>
+            <PaperLayer
+              depth={1}
+              shadow={8}
+              shadowOpacity={0.35}
+              render={(p) => (
+                <MapShapes p={p} proj={proj} k={MAP_K} rise={(i) => spring({ frame: frame - (8 + i * 2), fps, config: { damping: 9, stiffness: 140, mass: 0.5 } })} />
+              )}
+            />
             <DepthFill depth={1}>
               <svg width={1080} height={1920} style={{ position: "absolute", overflow: "visible" }}>
-                <MapRoute
-                  proj={proj}
-                  via={[PLACES.makkah, [40.1, 21.32], [40.5, 21.05], PLACES.baniSaad]}
-                  t={interpolate(frame, [T.route + 20, T.route + 100], [0, 1], { ...clamp, easing: theme.ease.inOut })}
-                  width={9}
-                />
-                <MapMarker proj={proj} ll={PLACES.makkah} at={T.route} ar="مكة" ms="MAKKAH" k={110} side="left" scale={1.6} />
-                <MapMarker proj={proj} ll={PLACES.taif} at={T.route + 40} ar="الطائف" ms="TA'IF" k={90} scale={1.3} />
-                <MapMarker proj={proj} ll={PLACES.baniSaad} at={T.route + 100} ar="بنو سعد" ms="BANI SA'D (ANGGARAN)" k={200} region scale={1.5} />
+                <MapRoute proj={proj} via={ROUTE} t={interpolate(frame, [T.route, T.routeEnd], [0, 1], { ...clamp, easing: theme.ease.inOut })} width={9} icon="camel" />
+                <MapMarker proj={proj} ll={PLACES.makkah} at={6} ar="مكة" ms="MAKKAH" k={110} side="left" scale={1.6} />
+                <MapMarker proj={proj} ll={PLACES.taif} at={B.taif} ar="الطائف" ms="TA'IF" k={90} scale={1.3} />
+                <MapMarker proj={proj} ll={PLACES.baniSaad} at={B.baniSaad} ar="بنو سعد" ms="BANI SA'D (ANGGARAN)" k={200} region scale={1.5} side="left" />
               </svg>
             </DepthFill>
           </CinematicCamera>
         </AbsoluteFill>
       ) : null}
-      <MalaySubtitle text="Dari Makkah ke perkampungan Bani Sa'd" {...STORY} size={50} start={sec(0.6)} end={sec(5.4)} top={300} color={C.ink} shadow={false} />
-      <MalaySubtitle text="ZAMAN KANAK-KANAK BERSAMA HALIMAH AL-SA'DIYAH" start={sec(7.4)} end={sec(13.4)} top={300} size={44} tracking={0.08} maxWidth={940} />
-      <MalaySubtitle text="Halimah, ibu susuan Baginda" {...STORY} start={sec(8.4)} end={sec(13.4)} top={480} />
-      <MalaySubtitle text="MEMBESAR DALAM SUASANA PERKAMPUNGAN BANI SA'D." start={sec(13.8)} end={dur - 46} top={300} size={44} tracking={0.08} maxWidth={940} />
-      <IllustrationNote start={sec(7.4)} end={dur - 46} />
+      <ScrollCaption lines={["Dari Makkah ke perkampungan Bani Sa'd"]} start={sec(0.6)} end={T.dive} top={230} size={40} />
+      <ScrollCaption lines={["ZAMAN KANAK-KANAK BERSAMA", "HALIMAH AL-SA'DIYAH"]} sub="Halimah, ibu susuan Baginda" start={sec(7.0)} end={sec(13.2)} top={230} />
+      <ScrollCaption lines={["MEMBESAR DALAM SUASANA", "PERKAMPUNGAN BANI SA'D."]} start={sec(13.6)} end={dur - 46} top={230} />
+      <IllustrationNote start={sec(7.0)} end={dur - 46} />
       <Grade warmth={0.1} />
       <PaperOverlay />
       <Grain />
