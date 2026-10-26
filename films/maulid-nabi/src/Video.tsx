@@ -1,5 +1,6 @@
 import React from "react";
-import { AbsoluteFill, Audio, interpolate, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Sequence } from "remotion";
+import { Bed, Sfx } from "./components/Sound";
 import { theme } from "./theme";
 import { SLOTS, TOTAL_FRAMES, sec } from "./timeline";
 import { PageTransition } from "./components/PageTransition";
@@ -12,32 +13,6 @@ import { Scene06MercyToWorlds } from "./scenes/Scene06MercyToWorlds";
 import { Scene07Sources, S7_PAGE } from "./scenes/Scene07Sources";
 
 const [S1, S2, S3, S4, S5, S6, S7] = SLOTS;
-const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
-
-// one-shot sound effect placed at an absolute frame
-const Sfx: React.FC<{ at: number; file: string; volume?: number }> = ({ at, file, volume = 1 }) => (
-  <Sequence from={Math.max(0, at)} layout="none">
-    <Audio src={staticFile(`audio/${file}`)} volume={volume} />
-  </Sequence>
-);
-
-// Ambient bed with a frame-accurate volume envelope [frame, volume][]
-const Bed: React.FC<{ file: string; from: number; dur: number; env: [number, number][] }> = ({ file, from, dur, env }) => (
-  <Sequence from={from} durationInFrames={dur} layout="none">
-    <Audio
-      src={staticFile(`audio/${file}`)}
-      loop
-      volume={(f) =>
-        interpolate(
-          from + f,
-          env.map((e) => e[0]),
-          env.map((e) => e[1]),
-          { ...clamp, easing: theme.ease.inOut },
-        )
-      }
-    />
-  </Sequence>
-);
 
 const Soundtrack: React.FC = () => {
   const s4Fall = S4.from + sec(5.8) + 34;

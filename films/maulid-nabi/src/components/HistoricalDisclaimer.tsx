@@ -10,10 +10,11 @@ export const DISCLAIMER = "SEKADAR GAMBARAN BERDASARKAN RIWAYAT SEJARAH";
  * report. Dark ink on light paper for maximum legibility; it stays on screen
  * for most of the scene and never implies the report is authentic.
  */
-export const HistoricalDisclaimer: React.FC<{ start: number; end: number; top?: number }> = ({
+export const HistoricalDisclaimer: React.FC<{ start: number; end: number; top?: number; lines?: [string, string] }> = ({
   start,
   end,
   top = 1430,
+  lines = ["SEKADAR GAMBARAN", "BERDASARKAN RIWAYAT SEJARAH"],
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -65,9 +66,9 @@ export const HistoricalDisclaimer: React.FC<{ start: number; end: number; top?: 
             textAlign: "center",
           }}
         >
-          SEKADAR GAMBARAN
+          {lines[0]}
           <br />
-          BERDASARKAN RIWAYAT SEJARAH
+          {lines[1]}
         </div>
       </div>
     </div>

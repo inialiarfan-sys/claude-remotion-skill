@@ -337,3 +337,47 @@ wav("paper_unfold.wav", crinkle(secs(0.9), 2200, 140, (t) => Math.sin(Math.PI * 
   }
   wav("book_close.wav", out, 0.55);
 }
+
+// ---------- Chapter 1 additions ----------
+
+// struck bell: inharmonic partials with exponential decay
+function bell(out, start, f, amp, decay = 2.2) {
+  const partials = [
+    [1, 1],
+    [2.76, 0.45],
+    [5.4, 0.22],
+    [8.93, 0.1],
+  ];
+  const len = Math.min(out.length - start, secs(1.6));
+  for (const [ratio, a] of partials) {
+    let ph = rand() * Math.PI * 2;
+    for (let i = 0; i < len; i++) {
+      ph += (2 * Math.PI * f * ratio) / SR;
+      out[start + i] += Math.sin(ph) * a * amp * Math.exp((-i / SR) * decay * ratio);
+    }
+  }
+}
+
+// camel bells: two loose bells swinging with the walk, loopable
+{
+  const N = secs(9.2);
+  const out = new Float32Array(N);
+  let t = 0.1;
+  let k = 0;
+  while (t < 8.8) {
+    bell(out, secs(t), k % 2 ? 690 + rand() * 12 : 520 + rand() * 10, 0.5 + rand() * 0.4);
+    if (rand() < 0.35) bell(out, secs(t + 0.11), 690, 0.25);
+    t += 0.78 + rand() * 0.22;
+    k++;
+  }
+  wav("bells_loop.wav", loopify(out, 0.6), 0.45);
+}
+
+// brass scale-pan clink: two light touches
+{
+  const N = secs(1.4);
+  const out = new Float32Array(N);
+  bell(out, 0, 1850, 0.7, 6);
+  bell(out, secs(0.32), 2240, 0.4, 7);
+  wav("clink.wav", out, 0.4);
+}

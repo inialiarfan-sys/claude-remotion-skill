@@ -10,6 +10,17 @@ import { Scene06MercyToWorlds } from "./scenes/Scene06MercyToWorlds";
 import { Scene07Sources } from "./scenes/Scene07Sources";
 import { FPS, HEIGHT, SLOTS, TOTAL_FRAMES, WIDTH } from "./timeline";
 import { loadAssets } from "./assets";
+import { Chapter1 } from "./chapter1/Chapter1";
+import { CH1_SLOTS, CH1_TOTAL } from "./chapter1/timeline";
+import { Ch1Scene01Book } from "./chapter1/scenes/Ch1Scene01Book";
+import { Ch1Scene02FirstYear } from "./chapter1/scenes/Ch1Scene02FirstYear";
+import { Ch1Scene03BaniSaad } from "./chapter1/scenes/Ch1Scene03BaniSaad";
+import { Ch1Scene04Abwa } from "./chapter1/scenes/Ch1Scene04Abwa";
+import { Ch1Scene05AbdulMuttalib } from "./chapter1/scenes/Ch1Scene05AbdulMuttalib";
+import { Ch1Scene06Market } from "./chapter1/scenes/Ch1Scene06Market";
+import { Ch1Scene07Years } from "./chapter1/scenes/Ch1Scene07Years";
+import { Ch1Scene08Youth } from "./chapter1/scenes/Ch1Scene08Youth";
+import { Ch1Scene09NextChapter } from "./chapter1/scenes/Ch1Scene09NextChapter";
 
 loadAssets();
 
@@ -22,6 +33,19 @@ const SCENES = [
   Scene05PersianFire,
   Scene06MercyToWorlds,
   Scene07Sources,
+];
+
+// Bab 1 — Zaman Kanak-kanak (series: Perjalanan Hidup Rasulullah SAW)
+const CH1_SCENES = [
+  Ch1Scene01Book,
+  Ch1Scene02FirstYear,
+  Ch1Scene03BaniSaad,
+  Ch1Scene04Abwa,
+  Ch1Scene05AbdulMuttalib,
+  Ch1Scene06Market,
+  Ch1Scene07Years,
+  Ch1Scene08Youth,
+  Ch1Scene09NextChapter,
 ];
 
 export const Root: React.FC = () => (
@@ -37,6 +61,19 @@ export const Root: React.FC = () => (
         width={WIDTH}
         height={HEIGHT}
         defaultProps={{ dur: SLOTS[i].dur }}
+      />
+    ))}
+    <Composition id="Bab1ZamanKanakKanak" component={Chapter1} durationInFrames={CH1_TOTAL} fps={FPS} width={WIDTH} height={HEIGHT} />
+    {CH1_SCENES.map((C, i) => (
+      <Composition
+        key={"ch1-" + i}
+        id={`Bab1Scene0${i + 1}`}
+        component={C}
+        durationInFrames={CH1_SLOTS[i].dur}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+        defaultProps={{ dur: CH1_SLOTS[i].dur }}
       />
     ))}
   </>
