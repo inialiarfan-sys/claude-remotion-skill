@@ -138,10 +138,10 @@ export const Ch2Scene02AbuTalib: React.FC<{ dur: number }> = ({ dur }) => {
           shadowOpacity={0.75}
           render={(p) => (
             <g>
-              <path d="M-600 -400 L40 -400 L40 2400 L-600 2400 Z" fill={p("#1a120e")} />
-              <path d="M40 -400 L60 -400 L60 2400 L40 2400 Z" fill={p("#2e2018")} />
+              <path d="M-600 -400 L-130 -400 L-130 2400 L-600 2400 Z" fill={p("#1a120e")} />
+              <path d="M-130 -400 L-112 -400 L-112 2400 L-130 2400 Z" fill={p("#3a2a1e")} />
               {Array.from({ length: 12 }).map((_, i) => (
-                <path key={i} d={`M-600 ${i * 220} L40 ${i * 220}`} stroke={p("#0e0a08")} strokeWidth={3} opacity={0.6} />
+                <path key={i} d={`M-600 ${i * 220} L-130 ${i * 220}`} stroke={p("#0e0a08")} strokeWidth={3} opacity={0.6} />
               ))}
               <path d="M900 1800 L1600 1760 L1600 2400 L860 2400 Z" fill={p("#1a120e")} />
             </g>
