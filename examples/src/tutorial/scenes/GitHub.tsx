@@ -13,8 +13,10 @@ import {
   BranchIcon,
   Browser,
   Bubble,
+  CardIn,
   Confetti,
   Cursor,
+  Kinetic,
   NumBadge,
   RepoIcon,
   Sfx,
@@ -23,8 +25,10 @@ import {
   TipHeader,
   TypeSfx,
   TypeText,
+  useJiggle,
   usePop,
   useSec,
+  type Punch,
 } from "../ui";
 
 const c = ttheme.colors;
@@ -49,6 +53,24 @@ const STEPS = [
 
 type StepProps = { at: number; end: number };
 
+// Camera punches toward each step's key action, in seconds from scene start.
+// They mirror the click/enter times inside the step components below.
+const st = (i: number) => i * T.step;
+export const GH_PUNCHES: Punch[] = [
+  { at: st(0) + 1.45, x: 540, y: 1000, k: 0.05 },
+  { at: st(1) + 1.3, x: 610, y: 1080, k: 0.1 },
+  { at: st(2) + 2.0, x: 600, y: 1150, k: 0.1 },
+  { at: st(3) + 1.45, x: 520, y: 981, k: 0.09 },
+  { at: st(4) + 1.0, x: 170, y: 818, k: 0.05 },
+  { at: st(4) + 2.0, x: 810, y: 1131, k: 0.08 },
+  { at: st(5) + 1.88, x: 860, y: 1008, k: 0.1 },
+  { at: st(6) + 1.15, x: 410, y: 854, k: 0.04 },
+  { at: st(6) + 1.5, x: 600, y: 854, k: 0.04 },
+  { at: st(6) + 1.85, x: 790, y: 854, k: 0.05 },
+  { at: st(7) + 1.3, x: 620, y: 1150, k: 0.14 },
+];
+export const GH_SHIP = st(7) + 1.47; // PR opened: confetti + shake
+
 const Heading: React.FC<{ children: React.ReactNode; dark?: boolean }> = ({
   children,
   dark,
@@ -56,8 +78,8 @@ const Heading: React.FC<{ children: React.ReactNode; dark?: boolean }> = ({
   <div
     style={{
       fontFamily: ttheme.fonts.display,
-      fontWeight: 600,
-      fontSize: 52,
+      fontWeight: 700,
+      fontSize: 54,
       color: dark ? c.ghText : c.ink,
     }}
   >
@@ -76,6 +98,8 @@ const Button: React.FC<{
     easing: ttheme.ease.out,
     ...clamp,
   });
+  const jig = useJiggle(press + 3);
+  const down = frame >= press && frame < press + 4 ? 1 : 0;
   return (
     <div
       style={{
@@ -83,6 +107,7 @@ const Button: React.FC<{
         height: 96,
         borderRadius: 28,
         background: color,
+        boxShadow: `0 0 0 4px ${c.ink}, ${6 - down * 5}px ${7 - down * 6}px 0 4px ${c.ink}`,
         color: "#fff",
         display: "flex",
         alignItems: "center",
@@ -91,7 +116,7 @@ const Button: React.FC<{
         fontFamily: ttheme.fonts.display,
         fontWeight: 600,
         fontSize: 40,
-        transform: `scale(${sc})`,
+        transform: `translate(${down * 5}px, ${down * 6}px) scale(${sc * (1 + jig * 0.1)}, ${sc * (1 - jig * 0.1)})`,
       }}
     >
       {label}
@@ -849,7 +874,10 @@ const Step8: React.FC<StepProps> = ({ at, end }) => {
       <Confetti at={click + 5} x={540} y={1150} />
       <Sparkles at={click + 5} x={540} y={1110} spread={300} />
       <Sfx at={click} name="boop" />
+      <Confetti at={click + 8} x={300} y={1200} />
+      <Confetti at={click + 11} x={800} y={1200} />
       <Sfx at={click + 5} name="sparkle" volume={0.6} />
+      <Sfx at={click + 5} name="thump" volume={0.6} />
     </>
   );
 };
@@ -864,13 +892,14 @@ const Mock: React.FC<StepProps & { children: React.ReactNode }> = ({
   end,
   children,
 }) => (
-  <Appear
-    at={at + 5}
+  <CardIn
+    at={at + 3}
     until={end}
+    from="right"
     style={{ position: "absolute", left: MOCK.x, top: MOCK.y }}
   >
     {children}
-  </Appear>
+  </CardIn>
 );
 
 const MiniClawdy: React.FC<{ size: number }> = ({ size }) => (
@@ -885,7 +914,7 @@ const PromptBox: React.FC<{ text: string }> = ({ text }) => (
       width: 620,
       height: 96,
       borderRadius: 28,
-      border: `3px solid ${c.ink}`,
+      boxShadow: `0 0 0 4px ${c.ink}`,
       display: "flex",
       alignItems: "center",
       padding: "0 30px",
@@ -974,13 +1003,12 @@ const Progress: React.FC<{ stepF: number; at: number; until: number }> = ({
           <div
             key={i}
             style={{
-              width: current ? 56 : 22,
-              height: 22,
-              borderRadius: 22,
-              background: p > 0.5 ? c.ink : c.accent,
-              boxShadow: `0 0 0 3px ${c.ink}`,
-              transform: `scale(${0.8 + 0.2 * Math.min(1, p)})`,
-              transition: "none",
+              width: current ? 64 : 24,
+              height: 24,
+              borderRadius: 24,
+              background: current ? c.mint : p > 0.5 ? c.ink : c.card,
+              boxShadow: `0 0 0 4px ${c.ink}`,
+              transform: `scale(${0.7 + 0.3 * p}) translateY(${current ? Math.sin((frame / fps) * 8) * 3 : 0}px)`,
             }}
           />
         );
@@ -996,8 +1024,15 @@ export const GitHub: React.FC<{ duration: number }> = ({ duration }) => {
   const exit = duration - 11;
   return (
     <AbsoluteFill>
-      <TipHeader tip="TIP 2" title="Connect GitHub" at={s(0.15)} until={exit} />
-      <Progress stepF={stepF} at={s(0.25)} until={exit} />
+      <TipHeader
+        tip="TIP 2"
+        title="Connect GitHub"
+        highlight="GitHub"
+        markColor={c.mint}
+        at={s(0.2)}
+        until={exit}
+      />
+      <Progress stepF={stepF} at={s(0.35)} until={exit} />
       {STEPS.map((title, i) => {
         const at = i * stepF;
         const end = (i + 1) * stepF - 11;
@@ -1007,7 +1042,7 @@ export const GitHub: React.FC<{ duration: number }> = ({ duration }) => {
             <Appear
               at={at + 2}
               until={end}
-              rise={30}
+              rise={20}
               style={{
                 position: "absolute",
                 left: MOCK.x,
@@ -1019,21 +1054,19 @@ export const GitHub: React.FC<{ duration: number }> = ({ duration }) => {
               }}
             >
               <NumBadge n={i + 1} at={at + 2} size={104} />
-              <div
-                style={{
-                  fontFamily: ttheme.fonts.display,
-                  fontWeight: 600,
-                  fontSize: 58,
-                  lineHeight: 1.08,
-                  color: c.ink,
-                }}
-              >
-                {title}
-              </div>
+              <Kinetic
+                text={title}
+                at={at + 5}
+                until={end}
+                size={60}
+                per={0.8}
+                align="left"
+                style={{ flex: 1 }}
+              />
             </Appear>
             <View at={at} end={end} />
             <Sfx at={at + 2} name="pop" />
-            {i > 0 && <Sfx at={at - 3} name="whoosh" volume={0.3} />}
+            <Sfx at={at + 3} name="swish" volume={0.4} />
           </React.Fragment>
         );
       })}

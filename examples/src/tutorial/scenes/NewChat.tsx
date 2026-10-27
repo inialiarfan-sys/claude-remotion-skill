@@ -1,12 +1,19 @@
 import React from "react";
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import {
+  AbsoluteFill,
+  interpolate,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { ttheme } from "../theme3";
 import {
   Appear,
   Browser,
   Bubble,
+  CardIn,
   CrossCircle,
   Cursor,
+  Kinetic,
   LayoutIcon,
   PageIcon,
   Sfx,
@@ -16,11 +23,31 @@ import {
   TipHeader,
   TypeSfx,
   TypeText,
+  useJiggle,
   useSec,
 } from "../ui";
 
 const c = ttheme.colors;
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
+
+// Scene-local timing in seconds, shared with the camera/acting tracks.
+const CLEAR =
+  "Make a 30s vertical video about my study app for students. Upbeat, with captions.";
+const CLEAR_CPS = 60; // characters per second
+export const NEWCHAT = {
+  click: 1.45,
+  bubbleA: 2.0,
+  partB: 4.5,
+  bubbleB: 4.7,
+  rows: [5.0, 5.9, 6.8],
+  partC: 8.0,
+  bubbleC: 8.3,
+  cross: 8.75,
+  clear: 9.2,
+  clearType: 9.47,
+  // tick lands just after the clear prompt has typed out
+  tick: 9.47 + CLEAR.length / CLEAR_CPS + 0.2,
+};
 
 // Clawdy sits bottom-left in this scene; bubbles grow from its top-right.
 const BUBBLE = { x: 330, y: 1230, w: 680 };
@@ -38,25 +65,18 @@ const TAGS = ["essay", "bug fix", "trip", "recipe", "taxes"];
 const PartA: React.FC<{ until: number }> = ({ until }) => {
   const frame = useCurrentFrame();
   const s = useSec();
-  const click = s(1.45);
+  const click = s(NEWCHAT.click);
   const clearOut = (i: number) =>
     interpolate(frame, [click + 2 + i * 2, click + 10 + i * 2], [0, 1], {
       easing: ttheme.ease.in,
       ...clamp,
     });
-  const btnPress = interpolate(
-    frame,
-    [click, click + 3, click + 9],
-    [1, 0.9, 1],
-    {
-      easing: ttheme.ease.out,
-      ...clamp,
-    },
-  );
+  const jig = useJiggle(click);
+  const panic = frame < click ? Math.sin(frame / 1.5) * 3 : 0;
   return (
     <>
-      <Appear
-        at={s(0.35)}
+      <CardIn
+        at={s(0.3)}
         until={until}
         style={{ position: "absolute", left: 80, top: 360 }}
       >
@@ -67,6 +87,7 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
               style={{
                 width: 300,
                 background: c.bgAlt,
+                borderRight: `4px solid ${c.ink}`,
                 padding: 26,
                 display: "flex",
                 flexDirection: "column",
@@ -75,21 +96,22 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
             >
               <div
                 style={{
-                  height: 76,
-                  borderRadius: 22,
-                  background: c.ink,
-                  color: c.bg,
+                  height: 78,
+                  borderRadius: 24,
+                  background: c.sun,
+                  color: c.ink,
+                  boxShadow: `0 0 0 4px ${c.ink}, 5px 6px 0 4px ${c.ink}`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   gap: 12,
                   fontFamily: ttheme.fonts.display,
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: 36,
-                  transform: `scale(${btnPress})`,
+                  transform: `scale(${1 - jig * 0.12}, ${1 + jig * 0.12})`,
                 }}
               >
-                <span style={{ fontSize: 48, lineHeight: 1, marginTop: -6 }}>
+                <span style={{ fontSize: 50, lineHeight: 1, marginTop: -6 }}>
                   +
                 </span>{" "}
                 New chat
@@ -131,9 +153,11 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
                   top: 22,
                   right: 28,
                   fontFamily: ttheme.fonts.mono,
+                  fontWeight: 700,
                   fontSize: 22,
                   color: c.bad,
                   opacity: 1 - clearOut(0),
+                  transform: `rotate(${panic}deg)`,
                 }}
               >
                 message 147 of 147
@@ -151,14 +175,15 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
                     key={t}
                     style={{
                       fontFamily: ttheme.fonts.body,
-                      fontWeight: 700,
+                      fontWeight: 800,
                       fontSize: 24,
                       padding: "6px 16px",
                       borderRadius: 20,
-                      background: c.accent,
+                      background: [c.sun, c.mint, c.sky, c.lilac, c.blush][i],
+                      boxShadow: `0 0 0 3px ${c.ink}`,
                       color: c.ink,
                       opacity: 1 - clearOut(i),
-                      transform: `translateY(${clearOut(i) * -60}px) rotate(${(i % 2 ? 1 : -1) * clearOut(i) * 20}deg)`,
+                      transform: `translateY(${clearOut(i) * -90 + Math.sin(frame / 3 + i) * 3}px) rotate(${(i % 2 ? 1 : -1) * (clearOut(i) * 40 + 4)}deg)`,
                     }}
                   >
                     {t}
@@ -176,14 +201,12 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
                     borderRadius: 22,
                     background: i % 2 ? c.accent : c.bgAlt,
                     opacity: 1 - clearOut(i + 1),
-                    transform: `translateX(${clearOut(i + 1) * (i % 2 ? 300 : -300)}px)`,
+                    transform: `translateX(${clearOut(i + 1) * (i % 2 ? 400 : -400)}px) rotate(${clearOut(i + 1) * (i % 2 ? 20 : -20)}deg)`,
                   }}
                 />
               ))}
               {/* empty chat */}
-              <Appear
-                at={click + 10}
-                pop
+              <div
                 style={{
                   position: "absolute",
                   inset: 0,
@@ -194,38 +217,32 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
                   gap: 40,
                 }}
               >
-                <div
-                  style={{
-                    fontFamily: ttheme.fonts.display,
-                    fontWeight: 600,
-                    fontSize: 46,
-                    color: c.ink,
-                  }}
-                >
-                  Fresh start!
-                </div>
-                <div
-                  style={{
-                    width: 500,
-                    height: 90,
-                    borderRadius: 26,
-                    border: `3px solid ${c.ink}`,
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "0 26px",
-                    fontFamily: ttheme.fonts.body,
-                    fontWeight: 600,
-                    fontSize: 30,
-                    color: c.inkDim,
-                  }}
-                >
-                  Type one topic here…
-                </div>
-              </Appear>
+                <Kinetic text="Fresh start!" at={click + 10} size={58} />
+                <Appear at={click + 16} pop>
+                  <div
+                    style={{
+                      width: 500,
+                      height: 90,
+                      borderRadius: 26,
+                      boxShadow: `0 0 0 4px ${c.ink}`,
+                      background: c.card,
+                      display: "flex",
+                      alignItems: "center",
+                      padding: "0 26px",
+                      fontFamily: ttheme.fonts.body,
+                      fontWeight: 700,
+                      fontSize: 30,
+                      color: c.inkDim,
+                    }}
+                  >
+                    Type one topic here…
+                  </div>
+                </Appear>
+              </div>
             </div>
           </div>
         </Browser>
-      </Appear>
+      </CardIn>
       <Cursor
         show={s(0.6)}
         hide={until - 4}
@@ -236,137 +253,134 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
         clicks={[click]}
       />
       <Bubble
-        at={s(2.0)}
+        at={s(NEWCHAT.bubbleA)}
         until={until}
         {...BUBBLE}
         text="One topic = one new chat!"
         tail="left"
       />
+      <Sfx at={s(0.3)} name="swish" volume={0.5} />
       <Sfx at={click} name="boop" />
-      <Sfx at={click + 4} name="whoosh" volume={0.35} />
-      <Sfx at={click + 10} name="pop" volume={0.5} />
-      <Sfx at={s(2.0)} name="pop" />
+      <Sfx at={click + 3} name="whoosh" volume={0.45} />
+      <Sfx at={click + 10} name="sparkle" volume={0.35} />
+      <Sfx at={s(NEWCHAT.bubbleA)} name="pop" />
     </>
   );
 };
 
 /* ---------------------------- part B: prompt recipe ----------------------- */
 const ROWS = [
-  { icon: TargetIcon, label: "Goal", text: "Make a 30s video about my app" },
-  { icon: PageIcon, label: "Context", text: "It's for students on TikTok" },
-  {
-    icon: LayoutIcon,
-    label: "Format",
-    text: "Vertical, upbeat, with captions",
-  },
+  { icon: TargetIcon, label: "Goal", text: "Make a 30s video about my app", tone: c.sun },
+  { icon: PageIcon, label: "Context", text: "It's for students on TikTok", tone: c.mint },
+  { icon: LayoutIcon, label: "Format", text: "Vertical, upbeat, with captions", tone: c.sky },
 ];
 
-const PartB: React.FC<{ start: number; until: number }> = ({
-  start,
-  until,
-}) => {
+const Row: React.FC<{ i: number; at: number }> = ({ i, at }) => {
+  const r = ROWS[i];
+  const Icon = r.icon;
+  const jig = useJiggle(at + 4);
+  return (
+    <Appear at={at} rise={40} pop>
+      <div
+        style={{
+          display: "flex",
+          gap: 26,
+          alignItems: "flex-start",
+          padding: "24px 0",
+          borderTop: i ? `4px dashed ${c.line}` : undefined,
+        }}
+      >
+        <div
+          style={{
+            width: 92,
+            height: 92,
+            borderRadius: 28,
+            background: r.tone,
+            boxShadow: `0 0 0 4px ${c.ink}, 4px 5px 0 4px ${c.ink}`,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            transform: `rotate(${jig * 14}deg) scale(${1 + jig * 0.1})`,
+          }}
+        >
+          <Icon size={54} />
+        </div>
+        <div style={{ flex: 1 }}>
+          <div
+            style={{
+              fontFamily: ttheme.fonts.display,
+              fontWeight: 700,
+              fontSize: 46,
+              color: c.ink,
+            }}
+          >
+            {r.label}
+          </div>
+          <div
+            style={{
+              fontFamily: ttheme.fonts.mono,
+              fontSize: 31,
+              lineHeight: 1.35,
+              color: c.inkDim,
+              marginTop: 6,
+            }}
+          >
+            <TypeText text={r.text} at={at + 6} per={0.9} caret />
+          </div>
+        </div>
+      </div>
+    </Appear>
+  );
+};
+
+const PartB: React.FC<{ until: number }> = ({ until }) => {
   const s = useSec();
-  const rowAt = (i: number) => start + s(0.5 + i * 0.9);
+  const start = s(NEWCHAT.partB);
   return (
     <>
-      <Appear
+      <CardIn
         at={start}
         until={until}
+        from="right"
         style={{ position: "absolute", left: 80, top: 380 }}
       >
         <div
           style={{
             width: 920,
-            borderRadius: 36,
+            borderRadius: 38,
             background: c.card,
-            boxShadow: `0 30px 60px ${c.shadow}, 0 0 0 3px ${c.ink}`,
+            boxShadow: ttheme.sticker(1),
             padding: "46px 50px",
           }}
         >
-          <div
-            style={{
-              fontFamily: ttheme.fonts.display,
-              fontWeight: 600,
-              fontSize: 56,
-              color: c.ink,
-              marginBottom: 26,
-            }}
-          >
-            A good first message
-          </div>
-          {ROWS.map((r, i) => {
-            const Icon = r.icon;
-            return (
-              <Appear key={r.label} at={rowAt(i)} rise={30}>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: 26,
-                    alignItems: "flex-start",
-                    padding: "24px 0",
-                    borderTop: i ? `3px dashed ${c.line}` : undefined,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 88,
-                      height: 88,
-                      borderRadius: 26,
-                      background: c.accent,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon size={52} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div
-                      style={{
-                        fontFamily: ttheme.fonts.display,
-                        fontWeight: 700,
-                        fontSize: 44,
-                        color: c.ink,
-                      }}
-                    >
-                      {r.label}
-                    </div>
-                    <div
-                      style={{
-                        fontFamily: ttheme.fonts.mono,
-                        fontSize: 31,
-                        lineHeight: 1.35,
-                        color: c.inkDim,
-                        marginTop: 6,
-                      }}
-                    >
-                      <TypeText
-                        text={r.text}
-                        at={rowAt(i) + 6}
-                        per={0.9}
-                        caret
-                      />
-                    </div>
-                  </div>
-                </div>
-              </Appear>
-            );
-          })}
+          <Kinetic
+            text="A good first message"
+            at={start + 6}
+            size={58}
+            align="left"
+            highlight="good"
+            markColor={c.sun}
+            style={{ marginBottom: 26 }}
+          />
+          {ROWS.map((r, i) => (
+            <Row key={r.label} i={i} at={s(NEWCHAT.rows[i])} />
+          ))}
         </div>
-      </Appear>
+      </CardIn>
       <Bubble
-        at={start + s(0.2)}
+        at={s(NEWCHAT.bubbleB)}
         until={until}
         {...BUBBLE}
         text="Tell Claude 3 things:"
         tail="left"
       />
-      <Sfx at={start + s(0.2)} name="pop" />
+      <Sfx at={start} name="swish" volume={0.5} />
+      <Sfx at={s(NEWCHAT.bubbleB)} name="pop" />
       {ROWS.map((r, i) => (
         <React.Fragment key={r.label}>
-          <Sfx at={rowAt(i)} name="pop" volume={0.45} />
-          <TypeSfx at={rowAt(i) + 6} chars={r.text.length} per={0.9} />
+          <Sfx at={s(NEWCHAT.rows[i])} name="pop" volume={0.5} />
+          <TypeSfx at={s(NEWCHAT.rows[i]) + 6} chars={r.text.length} per={0.9} />
         </React.Fragment>
       ))}
     </>
@@ -374,9 +388,6 @@ const PartB: React.FC<{ start: number; until: number }> = ({
 };
 
 /* --------------------------- part C: vague vs clear ----------------------- */
-const CLEAR =
-  "Make a 30s vertical video about my study app for students. Upbeat, with captions.";
-
 const PromptCard: React.FC<{
   label: string;
   good: boolean;
@@ -387,12 +398,13 @@ const PromptCard: React.FC<{
   <div
     style={{
       width: 920,
-      borderRadius: 36,
-      background: c.card,
-      boxShadow: `0 24px 50px ${c.shadow}, 0 0 0 ${good ? 5 : 3}px ${good ? c.good : c.ink}`,
+      borderRadius: 38,
+      background: good ? "#F3FBF5" : c.card,
+      boxShadow: ttheme.sticker(1, good ? c.good : c.ink),
       padding: "34px 44px",
       opacity: 1 - dim * 0.45,
-      transform: `scale(${1 - dim * 0.04})`,
+      transform: `scale(${1 - dim * 0.06}) rotate(${dim * -2}deg)`,
+      filter: dim > 0 ? `grayscale(${dim})` : undefined,
     }}
   >
     <div
@@ -404,11 +416,15 @@ const PromptCard: React.FC<{
     >
       <div
         style={{
-          fontFamily: ttheme.fonts.body,
-          fontWeight: 800,
-          fontSize: 30,
+          fontFamily: ttheme.fonts.display,
+          fontWeight: 700,
+          fontSize: 34,
           letterSpacing: 3,
-          color: good ? c.good : c.bad,
+          color: "#fff",
+          background: good ? c.good : c.bad,
+          padding: "6px 20px",
+          borderRadius: 30,
+          boxShadow: `0 0 0 3px ${c.ink}`,
         }}
       >
         {label}
@@ -421,7 +437,7 @@ const PromptCard: React.FC<{
         fontSize: 38,
         lineHeight: 1.4,
         color: c.ink,
-        marginTop: 14,
+        marginTop: 18,
       }}
     >
       {children}
@@ -429,65 +445,70 @@ const PromptCard: React.FC<{
   </div>
 );
 
-const PartC: React.FC<{ start: number; until: number }> = ({
-  start,
-  until,
-}) => {
+const PartC: React.FC<{ until: number }> = ({ until }) => {
   const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
   const s = useSec();
+  const start = s(NEWCHAT.partC);
   const vagueAt = start + s(0.2);
-  const crossAt = start + s(0.75);
-  const clearAt = start + s(1.2);
-  const typeAt = clearAt + 8;
-  const per = 0.5;
-  const tickAt = typeAt + Math.ceil(CLEAR.length * per) + 6;
+  const crossAt = s(NEWCHAT.cross);
+  const clearAt = s(NEWCHAT.clear);
+  const typeAt = s(NEWCHAT.clearType);
+  const per = fps / CLEAR_CPS;
+  const tickAt = s(NEWCHAT.tick);
   const dim = interpolate(frame, [tickAt, tickAt + 10], [0, 1], {
     easing: ttheme.ease.out,
     ...clamp,
   });
+  const vagueShake =
+    frame >= crossAt ? Math.sin((frame - crossAt) * 2.2) * 16 * Math.exp(-(frame - crossAt) / 5) : 0;
   return (
     <>
-      <Appear
+      <CardIn
         at={vagueAt}
         until={until}
-        style={{ position: "absolute", left: 80, top: 380 }}
+        from="right"
+        style={{ position: "absolute", left: 80 + vagueShake, top: 380 }}
       >
         <PromptCard
           label="VAGUE"
           good={false}
           dim={dim}
-          mark={<CrossCircle size={72} at={crossAt} />}
+          mark={<CrossCircle size={78} at={crossAt} />}
         >
           make video
         </PromptCard>
-      </Appear>
-      <Appear
+      </CardIn>
+      <CardIn
         at={clearAt}
         until={until}
-        style={{ position: "absolute", left: 80, top: 690 }}
+        from="right"
+        style={{ position: "absolute", left: 80, top: 700 }}
       >
         <PromptCard
           label="CLEAR"
           good
-          mark={<TickCircle size={72} at={tickAt} />}
+          mark={<TickCircle size={78} at={tickAt} />}
         >
           <TypeText text={CLEAR} at={typeAt} per={per} caret />
         </PromptCard>
-      </Appear>
-      <Sparkles at={tickAt} x={860} y={730} spread={110} />
+      </CardIn>
+      <Sparkles at={tickAt} x={860} y={760} spread={140} />
       <Bubble
-        at={start + s(0.3)}
+        at={s(NEWCHAT.bubbleC)}
         until={until}
         {...BUBBLE}
         text="Be clear, not vague!"
         tail="left"
       />
-      <Sfx at={vagueAt} name="pop" volume={0.45} />
-      <Sfx at={start + s(0.3)} name="pop" />
-      <Sfx at={crossAt} name="boop" volume={0.5} />
-      <Sfx at={clearAt} name="pop" volume={0.45} />
+      <Sfx at={vagueAt} name="swish" volume={0.45} />
+      <Sfx at={s(NEWCHAT.bubbleC)} name="pop" />
+      <Sfx at={crossAt} name="thump" volume={0.5} />
+      <Sfx at={crossAt} name="boing" volume={0.35} />
+      <Sfx at={clearAt} name="swish" volume={0.45} />
       <TypeSfx at={typeAt} chars={CLEAR.length} per={per} every={6} />
-      <Sfx at={tickAt} name="sparkle" volume={0.55} />
+      <Sfx at={tickAt} name="sparkle" volume={0.6} />
+      <Sfx at={tickAt} name="pop" volume={0.5} />
     </>
   );
 };
@@ -495,20 +516,20 @@ const PartC: React.FC<{ start: number; until: number }> = ({
 // Scene 2 — start a new chat properly (12s)
 export const NewChat: React.FC<{ duration: number }> = ({ duration }) => {
   const s = useSec();
-  const bStart = s(4.5);
-  const cStart = s(8.0);
   const exit = duration - 11;
   return (
     <AbsoluteFill>
       <TipHeader
         tip="TIP 1"
         title="Start a new chat"
+        highlight="new chat"
+        markColor={c.sun}
         at={s(0.2)}
         until={exit}
       />
-      <PartA until={bStart - 11} />
-      <PartB start={bStart} until={cStart - 11} />
-      <PartC start={cStart} until={exit} />
+      <PartA until={s(NEWCHAT.partB) - 11} />
+      <PartB until={s(NEWCHAT.partC) - 11} />
+      <PartC until={exit} />
     </AbsoluteFill>
   );
 };
