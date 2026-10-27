@@ -89,6 +89,12 @@ npx remotion render src/index.ts Bab1ZamanKanakKanak out/bab1-zaman-kanak-kanak.
 
 Each scene is also registered as its own composition (`Bab1Scene01` … `Bab1Scene09`).
 
+For long renders on machines that may restart, `scripts/render-chunked.sh` renders the video in 900-frame chunks, keeping each chunk once it is complete, and the audio in a single pass. It then joins the chunks without re-encoding. Re-running it only renders what is missing:
+
+```bash
+scripts/render-chunked.sh Bab1ZamanKanakKanak out/bab1-zaman-kanak-kanak.mp4
+```
+
 | # | Time | Scene | What happens | Transition out |
 |---|---|---|---|---|
 | 1 | 0:00–0:15 | The book of sirah | **Hook:** an extreme close-up of the gilded medallion as lamplight rakes across it. A pull-back reveals the book on a writing table (oil lamp, inkwell and qalam, a cloth in the foreground). The leather envelope flap lifts, then the cover drops open with spring weight. The folded map unfolds and the Hijaz mountains pop up like a pop-up book. The camera pushes in as سِيرَةُ النَّبِيِّ مُحَمَّدٍ ﷺ is inked onto the cartouche, with PERJALANAN HIDUP RASULULLAH SAW and a BAB 1 tab. It then pulls back as place pins land, and flies to Makkah. Every sound is tied to a visible action. | Push into the map; Makkah opens as an aperture |
