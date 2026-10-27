@@ -111,19 +111,19 @@ Claude reads the skill, applies the motion rules, renders with Remotion, extract
 
 ## Examples
 
-[`examples/`](examples/) is a Remotion project with four finished compositions built with this skill: a profile promo, the Focus Cat app promo, a "watch this video fix itself" demo where the motion rules apply themselves one by one, and a beat-synced code edit with a synthesized 120 BPM track. Each shipped only after the render, inspect frames, fix, re-render loop.
+[`examples/`](examples/) is a Remotion project with five finished compositions built with this skill: a profile promo, the Focus Cat app promo, a "watch this video fix itself" demo where the motion rules apply themselves one by one, a beat-synced code edit with a synthesized 120 BPM track, and a cute vertical Claude tutorial starring a mascot named Clawdy. Each shipped only after the render, inspect frames, fix, re-render loop.
 
 Here is the Focus Cat promo, 15.5 seconds, with a pixel-art mascot drawn in code. Click it for the MP4 with sound:
 
 [![Focus Cat promo, made with this skill](examples/videos/focus-cat.gif)](https://github.com/haidrrrry/claude-remotion-skill/raw/main/examples/videos/focus-cat-promo.mp4)
 
-The other three render from source in a few minutes:
+The others render from source in a few minutes:
 
 ```bash
 cd examples
 npm install
 npm run audio            # synthesize the SFX and music, no asset files needed
-npm run render:selffix   # or render:codeedit / render:profile / render:focuscat
+npm run render:selffix   # or render:codeedit / render:profile / render:focuscat / render:tutorial
 ```
 
 ## 🤝 Contributing
