@@ -51,7 +51,13 @@ export const Hello: React.FC<{ duration: number }> = ({ duration }) => {
           markColor={c.mint}
           shadow={c.sun}
         />
-        <Appear at={s(2.5)} until={exit} rise={30} pop style={{ marginTop: 40 }}>
+        <Appear
+          at={s(2.5)}
+          until={exit}
+          rise={30}
+          pop
+          style={{ marginTop: 40 }}
+        >
           <div
             style={{
               fontFamily: ttheme.fonts.display,

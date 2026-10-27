@@ -254,7 +254,11 @@ export const Kinetic: React.FC<{
         return (
           <span
             key={wi}
-            style={{ position: "relative", display: "inline-block", whiteSpace: "nowrap" }}
+            style={{
+              position: "relative",
+              display: "inline-block",
+              whiteSpace: "nowrap",
+            }}
           >
             {marked && (
               <span
@@ -299,7 +303,9 @@ export const Kinetic: React.FC<{
                     display: "inline-block",
                     opacity: Math.min(1, p * 2) * (1 - out),
                     transform: `translateY(${(1 - p) * size * 0.7 + float - out * size * 0.5}px) scale(${Math.max(0, p) * (1 - out * 0.5)}) rotate(${(1 - p) * -24}deg)`,
-                    textShadow: shadow ? `0 ${size * 0.06}px 0 ${shadow}` : undefined,
+                    textShadow: shadow
+                      ? `0 ${size * 0.06}px 0 ${shadow}`
+                      : undefined,
                   }}
                 >
                   {ch}
@@ -400,7 +406,7 @@ export const Bubble: React.FC<{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            columnGap: size * 0.26,
+            columnGap: size * 0.34,
           }}
         >
           {words.map((wd, i) => {
@@ -441,7 +447,9 @@ export const Bubble: React.FC<{
         <Sfx
           key={i}
           at={at + 6 + i * WORD_GAP}
-          name={(["blip1", "blip2", "blip3"] as const)[(i * 7 + text.length) % 3]}
+          name={
+            (["blip1", "blip2", "blip3"] as const)[(i * 7 + text.length) % 3]
+          }
           volume={0.32}
         />
       ))}
@@ -658,9 +666,20 @@ export const ClickBurst: React.FC<{
       width={r * 4}
       height={r * 4}
       viewBox={`${-r * 2} ${-r * 2} ${r * 4} ${r * 4}`}
-      style={{ position: "absolute", left: x - r * 2, top: y - r * 2, overflow: "visible" }}
+      style={{
+        position: "absolute",
+        left: x - r * 2,
+        top: y - r * 2,
+        overflow: "visible",
+      }}
     >
-      <circle r={r * (0.3 + t)} fill="none" stroke={color} strokeWidth={6 * (1 - t)} opacity={0.6} />
+      <circle
+        r={r * (0.3 + t)}
+        fill="none"
+        stroke={color}
+        strokeWidth={6 * (1 - t)}
+        opacity={0.6}
+      />
       {Array.from({ length: 8 }).map((_, i) => {
         const a = (i / 8) * Math.PI * 2;
         const r1 = r * (0.5 + t * 0.9);
@@ -779,8 +798,16 @@ export const TickCircle: React.FC<{
     ...clamp,
   });
   return (
-    <div style={{ position: "relative", width: size, height: size, flexShrink: 0 }}>
-      <ClickBurst at={at + 2} x={size / 2} y={size / 2} color={color} r={size * 0.6} />
+    <div
+      style={{ position: "relative", width: size, height: size, flexShrink: 0 }}
+    >
+      <ClickBurst
+        at={at + 2}
+        x={size / 2}
+        y={size / 2}
+        color={color}
+        r={size * 0.6}
+      />
       <svg
         width={size}
         height={size}
@@ -792,7 +819,14 @@ export const TickCircle: React.FC<{
           overflow: "visible",
         }}
       >
-        <circle cx={20} cy={20} r={18} fill={color} stroke={c.ink} strokeWidth={3} />
+        <circle
+          cx={20}
+          cy={20}
+          r={18}
+          fill={color}
+          stroke={c.ink}
+          strokeWidth={3}
+        />
         <path
           d="M11 20.5 L17.5 27 L29.5 14"
           stroke="#fff"
@@ -815,7 +849,10 @@ export const CrossCircle: React.FC<{ size: number; at: number }> = ({
 }) => {
   const frame = useCurrentFrame();
   const p = usePop(at, true);
-  const shake = frame >= at ? Math.sin((frame - at) * 1.9) * 10 * Math.exp(-(frame - at) / 6) : 0;
+  const shake =
+    frame >= at
+      ? Math.sin((frame - at) * 1.9) * 10 * Math.exp(-(frame - at) / 6)
+      : 0;
   return (
     <svg
       width={size}
@@ -827,7 +864,14 @@ export const CrossCircle: React.FC<{ size: number; at: number }> = ({
         overflow: "visible",
       }}
     >
-      <circle cx={20} cy={20} r={18} fill={c.bad} stroke={c.ink} strokeWidth={3} />
+      <circle
+        cx={20}
+        cy={20}
+        r={18}
+        fill={c.bad}
+        stroke={c.ink}
+        strokeWidth={3}
+      />
       <path
         d="M13 13 L27 27 M27 13 L13 27"
         stroke="#fff"
@@ -1058,7 +1102,12 @@ export const Emote: React.FC<{ kind: EmoteKind; at: number; size: number }> = ({
         return (
           <>
             <circle r={30} fill={c.sun} stroke={c.ink} strokeWidth={5} />
-            <path d="M0 -16 V5" stroke={c.ink} strokeWidth={8} strokeLinecap="round" />
+            <path
+              d="M0 -16 V5"
+              stroke={c.ink}
+              strokeWidth={8}
+              strokeLinecap="round"
+            />
             <circle cy={16} r={4.5} fill={c.ink} />
           </>
         );
@@ -1098,7 +1147,13 @@ export const Emote: React.FC<{ kind: EmoteKind; at: number; size: number }> = ({
       case "idea":
         return (
           <>
-            <circle cy={-4} r={22} fill={c.sun} stroke={c.ink} strokeWidth={5} />
+            <circle
+              cy={-4}
+              r={22}
+              fill={c.sun}
+              stroke={c.ink}
+              strokeWidth={5}
+            />
             <rect x={-10} y={16} width={20} height={12} rx={3} fill={c.ink} />
             {[0, 1, 2, 3, 4].map((i) => {
               const a = -Math.PI + (i / 4) * Math.PI;
@@ -1119,7 +1174,13 @@ export const Emote: React.FC<{ kind: EmoteKind; at: number; size: number }> = ({
         );
       default:
         return (
-          <path d={STAR4} transform="scale(3)" fill={c.sun} stroke={c.ink} strokeWidth={1.4} />
+          <path
+            d={STAR4}
+            transform="scale(3)"
+            fill={c.sun}
+            stroke={c.ink}
+            strokeWidth={1.4}
+          />
         );
     }
   })();
@@ -1300,13 +1361,36 @@ const DecorShape: React.FC<{ kind: number; size: number; color: string }> = ({
   size,
   color,
 }) => {
-  const common = { stroke: c.ink, strokeWidth: 3.5, strokeLinejoin: "round" as const };
+  const common = {
+    stroke: c.ink,
+    strokeWidth: 3.5,
+    strokeLinejoin: "round" as const,
+  };
   return (
-    <svg width={size} height={size} viewBox="-20 -20 40 40" style={{ overflow: "visible" }}>
-      {kind === 0 && <path d={STAR4} transform="scale(1.7)" fill={color} {...common} strokeWidth={2} />}
-      {kind === 1 && <circle r={14} fill="none" stroke={color} strokeWidth={7} />}
+    <svg
+      width={size}
+      height={size}
+      viewBox="-20 -20 40 40"
+      style={{ overflow: "visible" }}
+    >
+      {kind === 0 && (
+        <path
+          d={STAR4}
+          transform="scale(1.7)"
+          fill={color}
+          {...common}
+          strokeWidth={2}
+        />
+      )}
+      {kind === 1 && (
+        <circle r={14} fill="none" stroke={color} strokeWidth={7} />
+      )}
       {kind === 2 && (
-        <path d="M-5 -16 H5 V-5 H16 V5 H5 V16 H-5 V5 H-16 V-5 H-5 Z" fill={color} {...common} />
+        <path
+          d="M-5 -16 H5 V-5 H16 V5 H5 V16 H-5 V5 H-16 V-5 H-5 Z"
+          fill={color}
+          {...common}
+        />
       )}
       {kind === 3 && (
         <path
@@ -1366,7 +1450,10 @@ export const CreamBg: React.FC<{ tint: string }> = ({ tint }) => {
           style={{
             position: "absolute",
             left: d.x + Math.sin(t * d.speed + d.phase) * 30,
-            top: d.y + Math.cos(t * d.speed * 0.8 + d.phase) * 40 - ((t * 14 * d.speed) % 60),
+            top:
+              d.y +
+              Math.cos(t * d.speed * 0.8 + d.phase) * 40 -
+              ((t * 14 * d.speed) % 60),
             opacity: 0.75,
             transform: `rotate(${t * 25 * d.speed + d.phase * 30}deg) scale(${1 + 0.12 * Math.sin(t * 2 + d.phase)})`,
           }}

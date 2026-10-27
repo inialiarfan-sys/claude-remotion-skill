@@ -48,7 +48,7 @@ const STEPS = [
   "Choose an environment",
   "Type your task, hit Enter",
   "Claude makes a new branch",
-  "Review it, open a Pull Request",
+  "Open a Pull Request",
 ];
 
 type StepProps = { at: number; end: number };

@@ -143,7 +143,9 @@ for (const [name, f0] of [
     phase += (2 * Math.PI * f) / SR;
     const env = Math.min(1, i / secs(0.004)) * Math.exp(-t * 4);
     out[i] =
-      (Math.sin(phase) + 0.35 * Math.sin(phase * 2) + 0.12 * Math.sin(phase * 3)) *
+      (Math.sin(phase) +
+        0.35 * Math.sin(phase * 2) +
+        0.12 * Math.sin(phase * 3)) *
       env *
       0.5;
   }
@@ -157,7 +159,10 @@ for (const [name, f0] of [
   let phase = 0;
   for (let i = 0; i < N; i++) {
     const ts = i / SR;
-    const f = 260 + 140 * Math.sin(2 * Math.PI * 11 * ts) * Math.exp(-ts * 5) + 160 * ts;
+    const f =
+      260 +
+      140 * Math.sin(2 * Math.PI * 11 * ts) * Math.exp(-ts * 5) +
+      160 * ts;
     phase += (2 * Math.PI * f) / SR;
     const env = Math.min(1, ts / 0.005) * Math.exp(-ts * 7);
     out[i] = Math.sin(phase) * env * 0.6;
@@ -175,7 +180,8 @@ for (const [name, f0] of [
     const f = 48 + 110 * Math.exp(-ts * 30);
     phase += (2 * Math.PI * f) / SR;
     const click = ts < 0.004 ? rnd() * 0.5 : 0;
-    out[i] = (Math.tanh(Math.sin(phase) * 1.6) * Math.exp(-ts * 7) + click) * 0.85;
+    out[i] =
+      (Math.tanh(Math.sin(phase) * 1.6) * Math.exp(-ts * 7) + click) * 0.85;
   }
   write("thump.wav", out);
 }
@@ -256,7 +262,9 @@ for (const [name, f0] of [
   const clap = (t) =>
     add(t, 0.14, (ts) => {
       lpC += 0.45 * (rnd() - lpC);
-      const env = Math.exp(-ts * 28) + 0.6 * Math.exp(-Math.max(0, ts - 0.012) * 40) * (ts > 0.012 ? 1 : 0);
+      const env =
+        Math.exp(-ts * 28) +
+        0.6 * Math.exp(-Math.max(0, ts - 0.012) * 40) * (ts > 0.012 ? 1 : 0);
       return lpC * env * 0.22;
     });
   const shaker = (t, v = 0.05) =>
@@ -292,7 +300,8 @@ for (const [name, f0] of [
       clap(t0 + beat);
       clap(t0 + beat * 3);
     }
-    for (let k = 0; k < 8; k++) shaker(t0 + k * (beat / 2) + beat / 4, k % 2 ? 0.06 : 0.035);
+    for (let k = 0; k < 8; k++)
+      shaker(t0 + k * (beat / 2) + beat / 4, k % 2 ? 0.06 : 0.035);
   }
   // fade in/out + normalize
   let peak = 0;

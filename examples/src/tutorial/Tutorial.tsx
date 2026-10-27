@@ -191,7 +191,11 @@ const TILT: Record<Expression, number> = {
 const lastAt = <V,>(track: [number, V][], t: number) => {
   let i = 0;
   for (let k = 0; k < track.length; k++) if (t >= track[k][0]) i = k;
-  return { v: track[i][1], at: track[i][0], prev: track[Math.max(0, i - 1)][1] };
+  return {
+    v: track[i][1],
+    at: track[i][0],
+    prev: track[Math.max(0, i - 1)][1],
+  };
 };
 
 const ClawdyLayer: React.FC = () => {
@@ -243,7 +247,8 @@ const ClawdyLayer: React.FC = () => {
   let hopY = 0;
   for (const h of HOPS) {
     const d = t - h;
-    if (d >= 0 && d < HOP_S) hopY = Math.sin((d / HOP_S) * Math.PI) * size * 0.32;
+    if (d >= 0 && d < HOP_S)
+      hopY = Math.sin((d / HOP_S) * Math.PI) * size * 0.32;
   }
   // stretch while in the air
   if (hopY > 0) sq = -0.18 * (hopY / (size * 0.32));
@@ -327,16 +332,22 @@ const ClawdyLayer: React.FC = () => {
           talk={talk}
         />
       </div>
-      {/* emotes pop above the head, on the side away from the frame edge */}
+      {/* emotes pop right above the head; off to the side when centered,
+          where a bubble sits overhead */}
       <div
         style={{
           position: "absolute",
-          left: x + (x > 700 ? -size * 0.42 : size * 0.42),
-          top: y - size * 0.55 + lift,
+          left: x + (Math.abs(x - 540) < 60 ? size * 0.5 : 0),
+          top: y - size * (Math.abs(x - 540) < 60 ? 0.5 : 0.72) + lift,
         }}
       >
         {EMOTES.map(([at, kind]) => (
-          <Emote key={at} kind={kind} at={Math.round(at * fps)} size={size * 0.4} />
+          <Emote
+            key={at}
+            kind={kind}
+            at={Math.round(at * fps)}
+            size={size * 0.4}
+          />
         ))}
       </div>
     </AbsoluteFill>
@@ -346,9 +357,21 @@ const ClawdyLayer: React.FC = () => {
 /* --------------------------------- camera --------------------------------- */
 
 const CUTS = [
-  { at: NC, label: "TIP 1", colors: [c.sun, c.mint, c.ink] as [string, string, string] },
-  { at: G, label: "TIP 2", colors: [c.mint, c.sky, c.ink] as [string, string, string] },
-  { at: R, label: "RECAP", colors: [c.lilac, c.sun, c.ink] as [string, string, string] },
+  {
+    at: NC,
+    label: "TIP 1",
+    colors: [c.sun, c.mint, c.ink] as [string, string, string],
+  },
+  {
+    at: G,
+    label: "TIP 2",
+    colors: [c.mint, c.sky, c.ink] as [string, string, string],
+  },
+  {
+    at: R,
+    label: "RECAP",
+    colors: [c.lilac, c.sun, c.ink] as [string, string, string],
+  },
 ];
 
 const PUNCHES: Punch[] = [
@@ -360,7 +383,12 @@ const PUNCHES: Punch[] = [
   { at: NC + NEWCHAT.cross, x: 900, y: 470, k: 0.06 },
   { at: NC + NEWCHAT.tick, x: 900, y: 760, k: 0.08 },
   ...GH_PUNCHES.map((p) => ({ ...p, at: G + p.at })),
-  ...RECAP.items.map((s, i) => ({ at: R + s + 0.1, x: 200, y: 580 + i * 120, k: 0.03 })),
+  ...RECAP.items.map((s, i) => ({
+    at: R + s + 0.1,
+    x: 200,
+    y: 580 + i * 120,
+    k: 0.03,
+  })),
   { at: R + RECAP.bubble, x: 540, y: 1150, k: 0.06 },
 ];
 
@@ -397,7 +425,11 @@ export const ClaudeTutorial: React.FC = () => {
         <CreamBg tint={lastAt(TINTS, frame / fps).v} />
         {/* layers 2-3: UI mockups, type, Clawdy */}
         {scenes.map(({ from, to, C }) => (
-          <Sequence key={from} from={f(from)} durationInFrames={f(to) - f(from)}>
+          <Sequence
+            key={from}
+            from={f(from)}
+            durationInFrames={f(to) - f(from)}
+          >
             <C duration={f(to) - f(from)} />
           </Sequence>
         ))}

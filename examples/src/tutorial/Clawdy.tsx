@@ -105,8 +105,16 @@ const Eye: React.FC<{
   }
   if (expression === "star") {
     return (
-      <g transform={`translate(${x}, -8) rotate(${pulse * 20}) scale(${1.05 + pulse * 0.15})`}>
-        <path d={STAR} fill={c.sun} stroke={c.ink} strokeWidth={3} strokeLinejoin="round" />
+      <g
+        transform={`translate(${x}, -8) rotate(${pulse * 20}) scale(${1.05 + pulse * 0.15})`}
+      >
+        <path
+          d={STAR}
+          fill={c.sun}
+          stroke={c.ink}
+          strokeWidth={3}
+          strokeLinejoin="round"
+        />
       </g>
     );
   }
@@ -115,7 +123,12 @@ const Eye: React.FC<{
       <g transform={`translate(${x}, -8) scale(1, ${open})`}>
         <circle r={14} fill="#fff" stroke={c.ink} strokeWidth={4} />
         <circle cx={look[0] * 4} cy={look[1] * 4} r={6.5} fill={c.ink} />
-        <circle cx={look[0] * 4 + 2.5} cy={look[1] * 4 - 2.5} r={2} fill="#fff" />
+        <circle
+          cx={look[0] * 4 + 2.5}
+          cy={look[1] * 4 - 2.5}
+          r={2}
+          fill="#fff"
+        />
       </g>
     );
   }
@@ -138,15 +151,31 @@ const Mouth: React.FC<{ expression: Expression; talk: number }> = ({
   const open = (w: number, h: number, y = 16) => (
     <g>
       <ellipse cx={0} cy={y} rx={w} ry={h} fill={c.ink} />
-      <ellipse cx={0} cy={y + h * 0.5} rx={w * 0.55} ry={h * 0.35} fill={c.blush} />
+      <ellipse
+        cx={0}
+        cy={y + h * 0.5}
+        rx={w * 0.55}
+        ry={h * 0.35}
+        fill={c.blush}
+      />
     </g>
   );
-  if (expression === "excited" || expression === "star" || expression === "laugh") {
+  if (
+    expression === "excited" ||
+    expression === "star" ||
+    expression === "laugh"
+  ) {
     const w = expression === "laugh" ? 18 : 14;
     return (
       <g>
         <path d={`M${-w},11 Q0,${38 + talk * 4} ${w},11 Z`} fill={c.ink} />
-        <ellipse cx={0} cy={25 + talk * 2} rx={w * 0.45} ry={4} fill={c.blush} />
+        <ellipse
+          cx={0}
+          cy={25 + talk * 2}
+          rx={w * 0.45}
+          ry={4}
+          fill={c.blush}
+        />
       </g>
     );
   }
@@ -280,7 +309,13 @@ export const Clawdy: React.FC<{
           pulse={pulse}
           closed={expression === "wink"}
         />
-        <Eye x={24} open={open} look={eyeLook} expression={expression} pulse={pulse} />
+        <Eye
+          x={24}
+          open={open}
+          look={eyeLook}
+          expression={expression}
+          pulse={pulse}
+        />
         <Mouth expression={expression} talk={talk} />
         {(pose === "wave" || pose === "cheer") &&
           [0, 1, 2].map((i) => (

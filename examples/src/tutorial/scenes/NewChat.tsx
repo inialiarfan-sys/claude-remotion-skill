@@ -270,9 +270,24 @@ const PartA: React.FC<{ until: number }> = ({ until }) => {
 
 /* ---------------------------- part B: prompt recipe ----------------------- */
 const ROWS = [
-  { icon: TargetIcon, label: "Goal", text: "Make a 30s video about my app", tone: c.sun },
-  { icon: PageIcon, label: "Context", text: "It's for students on TikTok", tone: c.mint },
-  { icon: LayoutIcon, label: "Format", text: "Vertical, upbeat, with captions", tone: c.sky },
+  {
+    icon: TargetIcon,
+    label: "Goal",
+    text: "Make a 30s video about my app",
+    tone: c.sun,
+  },
+  {
+    icon: PageIcon,
+    label: "Context",
+    text: "It's for students on TikTok",
+    tone: c.mint,
+  },
+  {
+    icon: LayoutIcon,
+    label: "Format",
+    text: "Vertical, upbeat, with captions",
+    tone: c.sky,
+  },
 ];
 
 const Row: React.FC<{ i: number; at: number }> = ({ i, at }) => {
@@ -380,7 +395,11 @@ const PartB: React.FC<{ until: number }> = ({ until }) => {
       {ROWS.map((r, i) => (
         <React.Fragment key={r.label}>
           <Sfx at={s(NEWCHAT.rows[i])} name="pop" volume={0.5} />
-          <TypeSfx at={s(NEWCHAT.rows[i]) + 6} chars={r.text.length} per={0.9} />
+          <TypeSfx
+            at={s(NEWCHAT.rows[i]) + 6}
+            chars={r.text.length}
+            per={0.9}
+          />
         </React.Fragment>
       ))}
     </>
@@ -461,7 +480,11 @@ const PartC: React.FC<{ until: number }> = ({ until }) => {
     ...clamp,
   });
   const vagueShake =
-    frame >= crossAt ? Math.sin((frame - crossAt) * 2.2) * 16 * Math.exp(-(frame - crossAt) / 5) : 0;
+    frame >= crossAt
+      ? Math.sin((frame - crossAt) * 2.2) *
+        16 *
+        Math.exp(-(frame - crossAt) / 5)
+      : 0;
   return (
     <>
       <CardIn

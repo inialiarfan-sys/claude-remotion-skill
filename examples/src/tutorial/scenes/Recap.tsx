@@ -85,7 +85,7 @@ export const Recap: React.FC<{ duration: number }> = ({ duration }) => {
         at={s(RECAP.bubble)}
         until={exit}
         x={170}
-        y={990}
+        y={870}
         w={740}
         text="You're ready! Go build something cool."
         tail="center"

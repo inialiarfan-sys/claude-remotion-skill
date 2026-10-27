@@ -36,7 +36,14 @@ export const ttheme = {
     ghText: "#E6EDF3",
     ghDim: "#8B949E",
     ghGreen: "#2DA44E",
-    confetti: ["#4E9A6A", "#FFD166", "#6C8EBF", "#F4A28C", "#C9B6F0", "#1F1E1D"],
+    confetti: [
+      "#4E9A6A",
+      "#FFD166",
+      "#6C8EBF",
+      "#F4A28C",
+      "#C9B6F0",
+      "#1F1E1D",
+    ],
   },
   fonts: {
     display: "Fredoka",
