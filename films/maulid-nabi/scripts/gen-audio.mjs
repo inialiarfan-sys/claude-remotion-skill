@@ -432,3 +432,27 @@ function snap(out, start, amp) {
   }
   wav("qalam_scratch.wav", out, 0.3);
 }
+
+// ---------- Chapter 2 ----------
+
+// a distant sheep's bleat: a buzzy glottal source with the fast tremolo of a
+// bleat, shaped by two vowel-like formants; no recording, fully synthetic
+{
+  const N = secs(0.95);
+  const out = new Float32Array(N);
+  const f1 = biquad().set("bp", 820, 3.5);
+  const f2 = biquad().set("bp", 2300, 5);
+  let ph = 0;
+  for (let i = 0; i < N; i++) {
+    const t = i / SR;
+    const f0 = 360 + 50 * Math.min(1, t * 6) - 70 * Math.max(0, t - 0.45) + 14 * Math.sin(2 * Math.PI * 17 * t);
+    ph += f0 / SR;
+    const saw = 2 * (ph - Math.floor(ph)) - 1;
+    const src = saw + white() * 0.12;
+    const env = Math.min(1, t * 18) * Math.max(0, 1 - t / 0.9) * (0.75 + 0.25 * Math.sin(2 * Math.PI * 17 * t));
+    out[i] = (f1(src) * 1.0 + f2(src) * 0.55) * env;
+  }
+  const lp = biquad().set("lp", 3200, 0.7);
+  for (let i = 0; i < N; i++) out[i] = lp(out[i]);
+  wav("bleat.wav", out, 0.35);
+}

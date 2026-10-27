@@ -21,6 +21,14 @@ import { Ch1Scene06Market } from "./chapter1/scenes/Ch1Scene06Market";
 import { Ch1Scene07Years } from "./chapter1/scenes/Ch1Scene07Years";
 import { Ch1Scene08Youth } from "./chapter1/scenes/Ch1Scene08Youth";
 import { Ch1Scene09NextChapter } from "./chapter1/scenes/Ch1Scene09NextChapter";
+import { Chapter2 } from "./chapter2/Chapter2";
+import { CH2_SLOTS, CH2_TOTAL } from "./chapter2/timeline";
+import { Ch2Scene01Continuation } from "./chapter2/scenes/Ch2Scene01Continuation";
+import { Ch2Scene02AbuTalib } from "./chapter2/scenes/Ch2Scene02AbuTalib";
+import { Ch2Scene03Shepherd } from "./chapter2/scenes/Ch2Scene03Shepherd";
+import { Ch2Scene04Syam } from "./chapter2/scenes/Ch2Scene04Syam";
+import { Ch2Scene05AlAmin } from "./chapter2/scenes/Ch2Scene05AlAmin";
+import { Ch2Scene06Reflection } from "./chapter2/scenes/Ch2Scene06Reflection";
 
 loadAssets();
 
@@ -46,6 +54,16 @@ const CH1_SCENES = [
   Ch1Scene07Years,
   Ch1Scene08Youth,
   Ch1Scene09NextChapter,
+];
+
+// Bab 2 — Zaman Remaja dan Kehidupan Sebelum Kenabian
+const CH2_SCENES = [
+  Ch2Scene01Continuation,
+  Ch2Scene02AbuTalib,
+  Ch2Scene03Shepherd,
+  Ch2Scene04Syam,
+  Ch2Scene05AlAmin,
+  Ch2Scene06Reflection,
 ];
 
 export const Root: React.FC = () => (
@@ -74,6 +92,19 @@ export const Root: React.FC = () => (
         width={WIDTH}
         height={HEIGHT}
         defaultProps={{ dur: CH1_SLOTS[i].dur }}
+      />
+    ))}
+    <Composition id="Bab2ZamanRemaja" component={Chapter2} durationInFrames={CH2_TOTAL} fps={FPS} width={WIDTH} height={HEIGHT} />
+    {CH2_SCENES.map((C, i) => (
+      <Composition
+        key={"ch2-" + i}
+        id={`Bab2Scene0${i + 1}`}
+        component={C}
+        durationInFrames={CH2_SLOTS[i].dur}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+        defaultProps={{ dur: CH2_SLOTS[i].dur }}
       />
     ))}
   </>

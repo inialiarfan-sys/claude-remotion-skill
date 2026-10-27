@@ -153,6 +153,12 @@ const partial = (pts: [number, number][], t: number) => {
   return out;
 };
 
+// where the head of a route is after fraction t of its length (for cameras following it)
+export const routeHead = (proj: Projection, via: LonLat[], t: number): [number, number] => {
+  const pts = partial(via.map(proj), t);
+  return pts[pts.length - 1];
+};
+
 /** A route drawn in ink across the map; `t` is how much of it is drawn. */
 export const MapRoute: React.FC<{
   proj: Projection;

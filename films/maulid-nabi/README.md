@@ -123,3 +123,32 @@ scripts/render-chunked.sh Bab1ZamanKanakKanak out/bab1-zaman-kanak-kanak.mp4
 - `buildSlots()` in `timeline.ts`.
 - `lines` prop on `HistoricalDisclaimer`.
 - The synthesized sounds `bells_loop.wav` and `clink.wav`.
+
+# Series: *Perjalanan Hidup Rasulullah SAW*, Bab 2
+
+**Zaman Remaja dan Kehidupan Sebelum Kenabian** is a 2.5-minute (150 s, 4500 frames) vertical chapter. It continues from the last image of Bab 1, uses the same paper-cut system, and follows the same rules: no narration, voice or music, and **no human figures at all**. The Prophet ﷺ is never depicted. He is shown only through places and objects.
+
+**Rendered chapter:** [`video/bab2-zaman-remaja.mp4`](video/bab2-zaman-remaja.mp4)
+**Fact-check record:** [`RESEARCH-BAB2.md`](RESEARCH-BAB2.md), which marks each claim as established, sirah, disputed report or illustration.
+
+```bash
+scripts/render-chunked.sh Bab2ZamanRemaja out/bab2-zaman-remaja.mp4
+```
+
+Each scene is also registered as its own composition (`Bab2Scene01` … `Bab2Scene06`). The code is in `src/chapter2/`.
+
+| # | Time | Scene | What happens | Transition out |
+|---|---|---|---|---|
+| 1 | 0:00–0:20 | Continuation | Fades in on the exact final frame of Bab 1: the book by its lamp, the gold-ink Ka'bah drawing, BERSAMBUNG…. The old line is wiped and the page is re-inked with سِيرَةُ النَّبِيِّ مُحَمَّدٍ ﷺ, BAB 2 and the chapter title. The drawing then becomes paper-cut layers that pop up inside the page's gilt frame, and the camera pushes through the page into Makkah's valley. Two and a half illustrative days pass (sun arc, lit windows, stars) under *Tahun demi tahun, Baginda membesar menjadi seorang remaja di Makkah*. The camera pushes into a lit doorway. | The doorway opens as an aperture |
+| 2 | 0:20–0:44 | With Abu Talib | A dusk-to-night household courtyard: lamp niche, shelf of pots, water skin, palm-frond shade, rolled mats, hand-mill, a tethered goat and a hearth with steam and embers. A lateral dolly slides past a pillar, then the camera pushes to the hearth. The captions are the guardianship (sirah) and *jagaan dan kasih sayang* (Ibn Ishaq gloss), plus a label *Rumah Abu Talib (ilustrasi)*. | A parchment unfolds |
+| 3 | 0:44–1:06 | Shepherding | A dawn pasture with a grazing flock and acacias, the staff, water skin and cloth on a rock, and no figure. General context (*Konteks umum · ilustrasi suasana*) is kept separate from the sourced statement (Bukhari). A hadith card then unrolls: «مَا بَعَثَ اللَّهُ نَبِيًّا إِلَّا رَعَى الْغَنَمَ», its Malay meaning, and SAHIH AL-BUKHARI, NO. 2262. | Page turn |
+| 4 | 1:06–1:32 | Toward Syam | The Hijaz pops up on the map, and the camera rides a camel icon from Makkah through Yathrib to Busra. *RIWAYAT AL-TIRMIDHI · SEBAHAGIAN BUTIRAN DIPERTIKAIKAN* stays on screen throughout. The camera dives through the Busra marker into a dusk scene of the basalt gate and colonnade as a caravan halts. The monk is mentioned only as a statement about the report, never shown, and the scene notes that the ages given differ. | Folds into the book |
+| 5 | 1:32–1:56 | Al-Amin | Back at the book: الأَمِينُ, AL-AMIN, YANG DIPERCAYAI. A pop-up scale tips and settles level. The caption reads *Gelaran yang diberikan kaumnya kepada Baginda sebelum kenabian* (Ibn Hisham). The camera pulls back as sealed bundles and a chest are set down on the table, and the scene defines *amanah*, glossed *Simbol amanah — bukan peristiwa khusus*. | Page turn |
+| 6 | 1:56–2:30 | Reflection | Night over Makkah turns slowly toward dawn as the camera cranes up. Al-Qalam 68:4 is inked in gold with its meaning, followed by AMANAH · KEJUJURAN · AKHLAK MULIA and *Perjalanan Baginda menuju satu amanah yang lebih besar…*. The sources page unfolds, then BERSAMBUNG… BAB 3, and the scene fades out. | Fade out |
+
+**New in Bab 2:**
+
+- `src/chapter2/BookOnTable.tsx`: the Bab 1 ending diorama, duplicated so that Bab 1 stays untouched.
+- `src/chapter2/props.tsx`: acacia, shepherd's staff, water skin, hearth and steam, rolled mats, hand-mill, goat, sealed bundle, chest, and Bosra's basalt gate.
+- `routeHead()` in `ArabiaMap`, which lets cameras follow a route.
+- The synthesized `bleat.wav`, appended to `scripts/gen-audio.mjs` so that the existing sounds are unchanged byte for byte.
