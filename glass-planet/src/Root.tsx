@@ -7,7 +7,7 @@ import { buildTimeline, TAIL } from './lib/timeline';
 const FPS = 30;
 
 /** Length = narration length + 1.5 s. The narration may be .mp3 or .wav in public/. */
-const calculateMetadata: CalculateMetadataFunction<GlassPlanetProps> = async () => {
+const calculateMetadata: CalculateMetadataFunction<GlassPlanetProps> = async ({ props }) => {
   let audioFile: string | null = null;
   let audioSeconds: number | null = null;
   for (const f of ['narration.mp3', 'narration.wav', 'narration.m4a']) {
@@ -28,7 +28,7 @@ const calculateMetadata: CalculateMetadataFunction<GlassPlanetProps> = async () 
   }
   const tl = buildTimeline(audioSeconds ?? undefined);
   if (tl.missing.length) console.warn(`[glass-planet] missing anchors: ${tl.missing.join(' | ')}`);
-  return { durationInFrames: Math.ceil((tl.duration + TAIL) * FPS), props: { audioFile, audioSeconds, music } };
+  return { durationInFrames: Math.ceil((tl.duration + TAIL) * FPS), props: { ...props, audioFile, audioSeconds, music } };
 };
 
 const defaults: GlassPlanetProps = { audioFile: null, audioSeconds: null, music: false };

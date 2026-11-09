@@ -11,7 +11,13 @@ import { Cue, SoundDesign } from './components/Sound';
 import { usePreloadSprites } from './three/Host3D';
 import { SCENE_COMPONENTS } from './scenes';
 
-export type GlassPlanetProps = { audioFile: string | null; audioSeconds: number | null; music: boolean };
+export type GlassPlanetProps = {
+  audioFile: string | null;
+  audioSeconds: number | null;
+  music: boolean;
+  /** render only the soundtrack (used by scripts/render-chunked.sh) */
+  audioOnly?: boolean;
+};
 
 /** Big numbers, shown when they're spoken (first occurrence after the cold open). */
 const NUMBERS: { phrase: string; value: string; label: string; color?: string }[] = [
@@ -21,7 +27,7 @@ const NUMBERS: { phrase: string; value: string; label: string; color?: string }[
   { phrase: 'in 2024', value: '2024', label: 'James Webb Space Telescope' },
 ];
 
-export const GlassPlanet: React.FC<GlassPlanetProps> = ({ audioFile, audioSeconds, music }) => {
+export const GlassPlanet: React.FC<GlassPlanetProps> = ({ audioFile, audioSeconds, music, audioOnly }) => {
   const spritesReady = usePreloadSprites();
   const { fps } = useVideoConfig();
   const tl = useMemo(() => buildTimeline(audioSeconds ?? undefined), [audioSeconds]);
@@ -44,6 +50,15 @@ export const GlassPlanet: React.FC<GlassPlanetProps> = ({ audioFile, audioSecond
   const marble = tl.scenes.find((s) => s.id === 'marble')!;
   const special = cue(tl, 'special our own blue planet', marble.start);
   if (special !== null) cues.push({ at: Math.round(special * fps), src: 'sparkle', volume: 0.4 });
+
+  if (audioOnly) {
+    return (
+      <AbsoluteFill>
+        {audioFile ? <Audio src={staticFile(audioFile)} /> : null}
+        {music ? <SoundDesign tl={tl} fps={fps} cues={cues} /> : null}
+      </AbsoluteFill>
+    );
+  }
 
   return (
     <AbsoluteFill style={{ backgroundColor: theme.color.void }}>

@@ -20,6 +20,6 @@ for ((s=0; s<total; s+=chunk)); do
   npx remotion render out/bundle "$comp" "$f.tmp.mp4" --frames=$s-$e --muted --codec h264 --crf 18 $REMOTION_FLAGS
   mv "$f.tmp.mp4" "$f"
 done
-[ -f out/chunks/$lower-audio.wav ] || npx remotion render out/bundle "$comp" out/chunks/$lower-audio.wav --codec wav $REMOTION_FLAGS
+[ -f out/chunks/$lower-audio.wav ] || npx remotion render out/bundle "$comp" out/chunks/$lower-audio.wav --codec wav --props '{"audioOnly":true}' $REMOTION_FLAGS
 ffmpeg -v error -y -f concat -safe 0 -i "$list" -i out/chunks/$lower-audio.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k -movflags +faststart "out/glass-planet-$lower.mp4"
 echo "done: out/glass-planet-$lower.mp4"
