@@ -149,7 +149,7 @@ export const GiantsScene: React.FC = () => {
   const earthIn = spring({ frame: frame - beat(5) - 4, fps, config: theme.spring.soft });
   const L = (p: Vec3) => project(pose, width, height, p);
   const uL = L([U[0], U[1] + R * 1.2, U[2]]);
-  const nL = L([N[0], N[1] + R * 1.2, N[2]]);
+  const nL = L([N[0], N[1] + (isV ? -R * 1.2 : R * 1.2), N[2]]);
   const eL = L([E[0], E[1] + 1.3, E[2]]);
   const nameTo = beat(1) - 4;
 
@@ -169,10 +169,10 @@ export const GiantsScene: React.FC = () => {
       </SceneCanvas>
 
       <Label x={uL.x} y={uL.y} from={10} to={nameTo} title="Uranus" sub="7th planet from the Sun" dot anchor="above" />
-      <Label x={nL.x} y={nL.y} from={22} to={nameTo} title="Neptune" sub="8th planet from the Sun" dot anchor="above" />
+      <Label x={nL.x} y={nL.y} from={22} to={nameTo} title="Neptune" sub="8th planet from the Sun" dot anchor={isV ? 'below' : 'above'} />
       <DistanceBar from={beat(1)} to={beat(2) + 12} />
       <Label x={uL.x} y={uL.y} from={beat(4)} to={beat(5) - 2} title="Uranus" dot anchor="above" />
-      <Label x={nL.x} y={nL.y} from={beat(4) + 6} to={beat(5) - 2} title="Neptune" dot anchor="above" />
+      <Label x={nL.x} y={nL.y} from={beat(4) + 6} to={beat(5) - 2} title="Neptune" dot anchor={isV ? 'below' : 'above'} />
       <Label anchor="above" x={eL.x} y={eL.y} from={beat(5) + 10} to={length + 30} title="Earth" sub="Each giant is ~4× wider" size={isV ? 40 : 36} />
     </AbsoluteFill>
   );

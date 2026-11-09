@@ -30,17 +30,25 @@ export const SceneCanvas: React.FC<{
   );
 };
 
-/** Deep-space backdrop: gradient + nebula haze (never a flat colour). */
+/** Deep-space backdrop: gradient + slowly drifting nebula clouds (never a flat colour). */
 export const SpaceBackdrop: React.FC<{ tint?: string; glow?: string; drift?: number }> = ({
   tint = '#03122b',
-  glow = 'rgba(31,181,184,0.16)',
+  glow = 'rgba(31,181,184,0.22)',
   drift = 0,
-}) => (
-  <AbsoluteFill
-    style={{
-      background: `radial-gradient(120% 80% at ${30 + drift * 10}% ${25 + drift * 6}%, ${glow} 0%, rgba(0,0,0,0) 55%),
-        radial-gradient(90% 70% at ${78 - drift * 8}% ${80 - drift * 5}%, rgba(31,79,209,0.18) 0%, rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, ${tint} 0%, #01030a 100%)`,
-    }}
-  />
-);
+}) => {
+  const a = drift * 6;
+  return (
+    <AbsoluteFill style={{ background: `linear-gradient(180deg, ${tint} 0%, #01030a 100%)`, overflow: 'hidden' }}>
+      <AbsoluteFill
+        style={{
+          background: `radial-gradient(60% 45% at ${30 + Math.sin(a) * 8}% ${28 + Math.cos(a * 0.8) * 6}%, ${glow} 0%, rgba(0,0,0,0) 70%),
+            radial-gradient(55% 40% at ${75 + Math.cos(a * 0.7) * 8}% ${72 + Math.sin(a * 0.9) * 6}%, rgba(46,92,230,0.24) 0%, rgba(0,0,0,0) 70%),
+            radial-gradient(40% 30% at ${62 + Math.sin(a * 1.1) * 10}% ${35 + Math.cos(a) * 8}%, rgba(124,77,200,0.16) 0%, rgba(0,0,0,0) 70%),
+            radial-gradient(35% 28% at ${20 + Math.cos(a * 1.2) * 8}% ${80 + Math.sin(a * 0.6) * 6}%, rgba(31,181,184,0.14) 0%, rgba(0,0,0,0) 70%)`,
+          transform: `scale(1.2) rotate(${Math.sin(a * 0.3) * 4}deg)`,
+          filter: 'blur(20px)',
+        }}
+      />
+    </AbsoluteFill>
+  );
+};

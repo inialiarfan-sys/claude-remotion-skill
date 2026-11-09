@@ -2,10 +2,14 @@
   "name": "diamond-rain",
   "version": "1.0.0",
   "private": true,
-  "description": "The Planet That Rains Diamonds — a 3D short documentary built with Remotion + React Three Fiber",
+  "description": "The Planet That Rains Diamonds \u2014 a 3D short documentary built with Remotion + React Three Fiber",
   "scripts": {
+    "audio": "node scripts/gen-audio.mjs",
+    "predev": "node scripts/gen-audio.mjs",
     "dev": "remotion studio src/index.ts",
+    "prerender:vertical": "node scripts/gen-audio.mjs",
     "render:vertical": "remotion render src/index.ts DiamondRainVertical out/diamond-rain-vertical.mp4 --codec h264 --crf 18 --gl=angle",
+    "prerender:wide": "node scripts/gen-audio.mjs",
     "render:wide": "remotion render src/index.ts DiamondRainWide out/diamond-rain-wide.mp4 --codec h264 --crf 18 --gl=angle",
     "render:all": "npm run render:vertical && npm run render:wide"
   },

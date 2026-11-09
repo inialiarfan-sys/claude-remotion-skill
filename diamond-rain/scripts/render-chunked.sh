@@ -7,6 +7,7 @@ set -e
 fmt=$1; comp="DiamondRain$fmt"; lower=$(echo "$fmt" | tr A-Z a-z)
 chunk=${CHUNK:-1000}
 mkdir -p out/chunks
+node scripts/gen-audio.mjs
 [ -d out/bundle ] || npx remotion bundle src/index.ts --out-dir out/bundle >/dev/null
 total=$(npx remotion compositions out/bundle $REMOTION_FLAGS 2>/dev/null | awk -v c="$comp" '$1==c {print $4}')
 echo "$comp: $total frames"
