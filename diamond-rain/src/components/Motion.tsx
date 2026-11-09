@@ -80,7 +80,6 @@ export const LightLeaks: React.FC<{ cuts: number[] }> = ({ cuts }) => {
           height: height * 1.4,
           transform: 'rotate(18deg)',
           background: `linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(95,244,255,0.55) 40%, rgba(255,255,255,0.9) 50%, rgba(95,244,255,0.55) 60%, rgba(0,0,0,0) 100%)`,
-          filter: 'blur(30px)',
         }}
       />
     </AbsoluteFill>
@@ -122,7 +121,6 @@ export const Bokeh: React.FC<{ count?: number }> = ({ count = 24 }) => {
                 ? 'radial-gradient(circle, rgba(170,250,255,1) 0%, rgba(95,244,255,0.5) 45%, rgba(95,244,255,0) 70%)'
                 : 'radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(220,235,255,0.45) 45%, rgba(220,235,255,0) 70%)',
               opacity: d.a * tw,
-              filter: `blur(${1 + d.s / 14}px)`,
             }}
           />
         );

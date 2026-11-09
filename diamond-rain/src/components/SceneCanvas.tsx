@@ -46,7 +46,6 @@ export const SpaceBackdrop: React.FC<{ tint?: string; glow?: string; drift?: num
             radial-gradient(40% 30% at ${62 + Math.sin(a * 1.1) * 10}% ${35 + Math.cos(a) * 8}%, rgba(124,77,200,0.16) 0%, rgba(0,0,0,0) 70%),
             radial-gradient(35% 28% at ${20 + Math.cos(a * 1.2) * 8}% ${80 + Math.sin(a * 0.6) * 6}%, rgba(31,181,184,0.14) 0%, rgba(0,0,0,0) 70%)`,
           transform: `scale(1.2) rotate(${Math.sin(a * 0.3) * 4}deg)`,
-          filter: 'blur(20px)',
         }}
       />
     </AbsoluteFill>
