@@ -1,0 +1,37 @@
+{
+  "name": "glass-planet",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Worst Planet Ever Discovered \u2014 a 3D short documentary about HD 189733 b (Remotion + React Three Fiber)",
+  "scripts": {
+    "transcribe": "node scripts/transcribe.mjs",
+    "timing": "tsx scripts/timing-report.ts",
+    "sprites": "python scripts/make_sprites.py",
+    "audio": "node scripts/gen-audio.mjs",
+    "predev": "node scripts/gen-audio.mjs",
+    "dev": "remotion studio src/index.ts",
+    "prerender:vertical": "node scripts/gen-audio.mjs",
+    "render:vertical": "remotion render src/index.ts GlassPlanetVertical out/glass-planet-vertical.mp4 --codec h264 --crf 18",
+    "prerender:wide": "node scripts/gen-audio.mjs",
+    "render:wide": "remotion render src/index.ts GlassPlanetWide out/glass-planet-wide.mp4 --codec h264 --crf 18",
+    "render:all": "npm run render:vertical && npm run render:wide"
+  },
+  "dependencies": {
+    "@react-three/fiber": "^8.18.0",
+    "@remotion/cli": "^4.0.542",
+    "@remotion/fonts": "^4.0.542",
+    "@remotion/install-whisper-cpp": "^4.0.542",
+    "@remotion/media-utils": "^4.0.542",
+    "@remotion/three": "^4.0.542",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.542",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.31",
+    "@types/three": "^0.187.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}

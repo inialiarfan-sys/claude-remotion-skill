@@ -1,0 +1,3016 @@
+{
+ "engine": "whisper.cpp 1.5.5",
+ "model": "small.en",
+ "source": "narration.mp3",
+ "words": [
+  {
+   "text": "the",
+   "start": 0.12,
+   "end": 0.314,
+   "rawStart": 0.12,
+   "rawEnd": 0.37
+  },
+  {
+   "text": "worst",
+   "start": 0.314,
+   "end": 0.797,
+   "rawStart": 0.37,
+   "rawEnd": 0.99
+  },
+  {
+   "text": "planet",
+   "start": 0.797,
+   "end": 1.38,
+   "rawStart": 0.99,
+   "rawEnd": 1.74
+  },
+  {
+   "text": "ever",
+   "start": 1.66,
+   "end": 1.964,
+   "rawStart": 1.74,
+   "rawEnd": 2.27
+  },
+  {
+   "text": "discovered.",
+   "start": 1.964,
+   "end": 2.78,
+   "rawStart": 2.27,
+   "rawEnd": 3.69
+  },
+  {
+   "text": "Glass",
+   "start": 3.63,
+   "end": 4.017,
+   "rawStart": 3.69,
+   "rawEnd": 3.98
+  },
+  {
+   "text": "rain.",
+   "start": 4.017,
+   "end": 4.47,
+   "rawStart": 3.98,
+   "rawEnd": 4.32
+  },
+  {
+   "text": "Winds",
+   "start": 4.9,
+   "end": 5.482,
+   "rawStart": 4.32,
+   "rawEnd": 5.12
+  },
+  {
+   "text": "faster",
+   "start": 5.482,
+   "end": 6.173,
+   "rawStart": 5.12,
+   "rawEnd": 6.07
+  },
+  {
+   "text": "than",
+   "start": 6.173,
+   "end": 6.638,
+   "rawStart": 6.07,
+   "rawEnd": 6.71
+  },
+  {
+   "text": "sound.",
+   "start": 6.638,
+   "end": 7.62,
+   "rawStart": 6.71,
+   "rawEnd": 8.06
+  },
+  {
+   "text": "1000",
+   "start": 8.05,
+   "end": 9.282,
+   "rawStart": 8.06,
+   "rawEnd": 9.12
+  },
+  {
+   "text": "degrees.",
+   "start": 9.282,
+   "end": 9.84,
+   "rawStart": 9.12,
+   "rawEnd": 9.6
+  },
+  {
+   "text": "And",
+   "start": 10.35,
+   "end": 10.803,
+   "rawStart": 9.6,
+   "rawEnd": 10.15
+  },
+  {
+   "text": "it",
+   "start": 10.803,
+   "end": 10.976,
+   "rawStart": 10.15,
+   "rawEnd": 10.36
+  },
+  {
+   "text": "smells",
+   "start": 10.976,
+   "end": 11.347,
+   "rawStart": 10.36,
+   "rawEnd": 10.81
+  },
+  {
+   "text": "like",
+   "start": 11.347,
+   "end": 11.709,
+   "rawStart": 10.81,
+   "rawEnd": 11.25
+  },
+  {
+   "text": "rotten",
+   "start": 11.709,
+   "end": 12.253,
+   "rawStart": 11.25,
+   "rawEnd": 11.91
+  },
+  {
+   "text": "eggs.",
+   "start": 12.253,
+   "end": 12.92,
+   "rawStart": 11.91,
+   "rawEnd": 12.72
+  },
+  {
+   "text": "Welcome",
+   "start": 13.8,
+   "end": 14.423,
+   "rawStart": 12.72,
+   "rawEnd": 13.8
+  },
+  {
+   "text": "to",
+   "start": 14.423,
+   "end": 14.473,
+   "rawStart": 13.8,
+   "rawEnd": 13.87
+  },
+  {
+   "text": "the",
+   "start": 14.464,
+   "end": 14.683,
+   "rawStart": 13.87,
+   "rawEnd": 14.25
+  },
+  {
+   "text": "worst",
+   "start": 14.683,
+   "end": 15.052,
+   "rawStart": 14.25,
+   "rawEnd": 14.89
+  },
+  {
+   "text": "planet",
+   "start": 15.052,
+   "end": 15.56,
+   "rawStart": 14.89,
+   "rawEnd": 15.77
+  },
+  {
+   "text": "ever",
+   "start": 15.77,
+   "end": 15.94,
+   "rawStart": 15.77,
+   "rawEnd": 16
+  },
+  {
+   "text": "discovered.",
+   "start": 15.94,
+   "end": 16.65,
+   "rawStart": 16,
+   "rawEnd": 16.96
+  },
+  {
+   "text": "Its",
+   "start": 17.15,
+   "end": 17.47,
+   "rawStart": 16.96,
+   "rawEnd": 17.34
+  },
+  {
+   "text": "name",
+   "start": 17.47,
+   "end": 17.858,
+   "rawStart": 17.34,
+   "rawEnd": 17.8
+  },
+  {
+   "text": "is",
+   "start": 17.858,
+   "end": 18.085,
+   "rawStart": 17.8,
+   "rawEnd": 18.07
+  },
+  {
+   "text": "HD",
+   "start": 18.085,
+   "end": 18.246,
+   "rawStart": 18.07,
+   "rawEnd": 18.26
+  },
+  {
+   "text": "189733",
+   "start": 18.246,
+   "end": 20.024,
+   "rawStart": 18.26,
+   "rawEnd": 20.37
+  },
+  {
+   "text": "b.",
+   "start": 20.024,
+   "end": 20.58,
+   "rawStart": 20.37,
+   "rawEnd": 21.03
+  },
+  {
+   "text": "And",
+   "start": 21.02,
+   "end": 21.127,
+   "rawStart": 21.03,
+   "rawEnd": 21.13
+  },
+  {
+   "text": "it",
+   "start": 21.127,
+   "end": 21.31,
+   "rawStart": 21.13,
+   "rawEnd": 21.3
+  },
+  {
+   "text": "is",
+   "start": 21.31,
+   "end": 21.524,
+   "rawStart": 21.3,
+   "rawEnd": 21.5
+  },
+  {
+   "text": "not",
+   "start": 21.524,
+   "end": 21.76,
+   "rawStart": 21.5,
+   "rawEnd": 21.72
+  },
+  {
+   "text": "in",
+   "start": 21.76,
+   "end": 21.943,
+   "rawStart": 21.72,
+   "rawEnd": 21.89
+  },
+  {
+   "text": "our",
+   "start": 21.943,
+   "end": 22.211,
+   "rawStart": 21.89,
+   "rawEnd": 22.14
+  },
+  {
+   "text": "solar",
+   "start": 22.211,
+   "end": 22.662,
+   "rawStart": 22.14,
+   "rawEnd": 22.56
+  },
+  {
+   "text": "system.",
+   "start": 22.662,
+   "end": 23.52,
+   "rawStart": 22.56,
+   "rawEnd": 23.36
+  },
+  {
+   "text": "Our",
+   "start": 24.09,
+   "end": 24.518,
+   "rawStart": 23.36,
+   "rawEnd": 23.94
+  },
+  {
+   "text": "sun",
+   "start": 24.518,
+   "end": 24.621,
+   "rawStart": 23.94,
+   "rawEnd": 24.08
+  },
+  {
+   "text": "is",
+   "start": 24.621,
+   "end": 24.671,
+   "rawStart": 24.08,
+   "rawEnd": 24.13
+  },
+  {
+   "text": "just",
+   "start": 24.658,
+   "end": 24.939,
+   "rawStart": 24.13,
+   "rawEnd": 24.51
+  },
+  {
+   "text": "one",
+   "start": 24.939,
+   "end": 25.153,
+   "rawStart": 24.51,
+   "rawEnd": 24.8
+  },
+  {
+   "text": "of",
+   "start": 25.153,
+   "end": 25.352,
+   "rawStart": 24.8,
+   "rawEnd": 25.07
+  },
+  {
+   "text": "billions",
+   "start": 25.352,
+   "end": 25.861,
+   "rawStart": 25.07,
+   "rawEnd": 25.76
+  },
+  {
+   "text": "of",
+   "start": 25.861,
+   "end": 26.001,
+   "rawStart": 25.76,
+   "rawEnd": 25.95
+  },
+  {
+   "text": "stars",
+   "start": 26.001,
+   "end": 26.355,
+   "rawStart": 25.95,
+   "rawEnd": 26.43
+  },
+  {
+   "text": "in",
+   "start": 26.355,
+   "end": 26.503,
+   "rawStart": 26.43,
+   "rawEnd": 26.63
+  },
+  {
+   "text": "our",
+   "start": 26.503,
+   "end": 26.709,
+   "rawStart": 26.63,
+   "rawEnd": 26.91
+  },
+  {
+   "text": "galaxy.",
+   "start": 26.709,
+   "end": 27.396,
+   "rawStart": 26.91,
+   "rawEnd": 27.84
+  },
+  {
+   "text": "Many",
+   "start": 28.01,
+   "end": 28.127,
+   "rawStart": 27.96,
+   "rawEnd": 28.1
+  },
+  {
+   "text": "of",
+   "start": 28.127,
+   "end": 28.226,
+   "rawStart": 28.1,
+   "rawEnd": 28.22
+  },
+  {
+   "text": "those",
+   "start": 28.226,
+   "end": 28.51,
+   "rawStart": 28.22,
+   "rawEnd": 28.56
+  },
+  {
+   "text": "stars",
+   "start": 28.51,
+   "end": 28.768,
+   "rawStart": 28.56,
+   "rawEnd": 28.87
+  },
+  {
+   "text": "have",
+   "start": 28.768,
+   "end": 29.126,
+   "rawStart": 28.87,
+   "rawEnd": 29.3
+  },
+  {
+   "text": "planets",
+   "start": 29.126,
+   "end": 29.384,
+   "rawStart": 29.3,
+   "rawEnd": 29.61
+  },
+  {
+   "text": "of",
+   "start": 29.384,
+   "end": 29.476,
+   "rawStart": 29.61,
+   "rawEnd": 29.72
+  },
+  {
+   "text": "their",
+   "start": 29.476,
+   "end": 29.742,
+   "rawStart": 29.72,
+   "rawEnd": 30.04
+  },
+  {
+   "text": "own.",
+   "start": 29.742,
+   "end": 30.2,
+   "rawStart": 30.04,
+   "rawEnd": 30.59
+  },
+  {
+   "text": "Scientists",
+   "start": 30.59,
+   "end": 31.047,
+   "rawStart": 30.59,
+   "rawEnd": 31.14
+  },
+  {
+   "text": "call",
+   "start": 31.047,
+   "end": 31.213,
+   "rawStart": 31.14,
+   "rawEnd": 31.34
+  },
+  {
+   "text": "them",
+   "start": 31.213,
+   "end": 31.504,
+   "rawStart": 31.34,
+   "rawEnd": 31.69
+  },
+  {
+   "text": "exoplanets.",
+   "start": 31.504,
+   "end": 32.56,
+   "rawStart": 31.69,
+   "rawEnd": 32.96
+  },
+  {
+   "text": "So",
+   "start": 32.95,
+   "end": 33.086,
+   "rawStart": 32.96,
+   "rawEnd": 33.12
+  },
+  {
+   "text": "far,",
+   "start": 33.086,
+   "end": 33.359,
+   "rawStart": 33.12,
+   "rawEnd": 33.44
+  },
+  {
+   "text": "they",
+   "start": 33.359,
+   "end": 33.606,
+   "rawStart": 33.44,
+   "rawEnd": 33.73
+  },
+  {
+   "text": "have",
+   "start": 33.606,
+   "end": 33.852,
+   "rawStart": 33.73,
+   "rawEnd": 34.02
+  },
+  {
+   "text": "found",
+   "start": 33.852,
+   "end": 34.15,
+   "rawStart": 34.02,
+   "rawEnd": 34.37
+  },
+  {
+   "text": "more",
+   "start": 34.15,
+   "end": 34.397,
+   "rawStart": 34.37,
+   "rawEnd": 34.66
+  },
+  {
+   "text": "than",
+   "start": 34.397,
+   "end": 34.789,
+   "rawStart": 34.66,
+   "rawEnd": 35.12
+  },
+  {
+   "text": "6,000.",
+   "start": 34.789,
+   "end": 35.7,
+   "rawStart": 35.12,
+   "rawEnd": 36.19
+  },
+  {
+   "text": "But",
+   "start": 36.19,
+   "end": 36.522,
+   "rawStart": 36.19,
+   "rawEnd": 36.5
+  },
+  {
+   "text": "few",
+   "start": 36.522,
+   "end": 36.65,
+   "rawStart": 36.5,
+   "rawEnd": 36.62
+  },
+  {
+   "text": "are",
+   "start": 36.65,
+   "end": 36.885,
+   "rawStart": 36.62,
+   "rawEnd": 36.84
+  },
+  {
+   "text": "as",
+   "start": 36.885,
+   "end": 37.046,
+   "rawStart": 36.84,
+   "rawEnd": 36.99
+  },
+  {
+   "text": "terrifying",
+   "start": 37.046,
+   "end": 37.815,
+   "rawStart": 36.99,
+   "rawEnd": 37.71
+  },
+  {
+   "text": "as",
+   "start": 37.815,
+   "end": 37.987,
+   "rawStart": 37.71,
+   "rawEnd": 37.87
+  },
+  {
+   "text": "this",
+   "start": 37.987,
+   "end": 38.275,
+   "rawStart": 37.87,
+   "rawEnd": 38.14
+  },
+  {
+   "text": "one.",
+   "start": 38.275,
+   "end": 38.81,
+   "rawStart": 38.14,
+   "rawEnd": 38.64
+  },
+  {
+   "text": "This",
+   "start": 39.33,
+   "end": 39.826,
+   "rawStart": 38.64,
+   "rawEnd": 39.33
+  },
+  {
+   "text": "planet",
+   "start": 39.826,
+   "end": 39.969,
+   "rawStart": 39.33,
+   "rawEnd": 39.53
+  },
+  {
+   "text": "is",
+   "start": 39.969,
+   "end": 40.099,
+   "rawStart": 39.53,
+   "rawEnd": 39.71
+  },
+  {
+   "text": "about",
+   "start": 40.099,
+   "end": 40.422,
+   "rawStart": 39.71,
+   "rawEnd": 40.16
+  },
+  {
+   "text": "64",
+   "start": 40.422,
+   "end": 40.846,
+   "rawStart": 40.16,
+   "rawEnd": 40.75
+  },
+  {
+   "text": "light",
+   "start": 40.846,
+   "end": 41.126,
+   "rawStart": 40.75,
+   "rawEnd": 41.14
+  },
+  {
+   "text": "years",
+   "start": 41.126,
+   "end": 41.45,
+   "rawStart": 41.14,
+   "rawEnd": 41.59
+  },
+  {
+   "text": "away.",
+   "start": 41.45,
+   "end": 42.01,
+   "rawStart": 41.59,
+   "rawEnd": 42.37
+  },
+  {
+   "text": "So",
+   "start": 42.38,
+   "end": 42.43,
+   "rawStart": 42.37,
+   "rawEnd": 42.39
+  },
+  {
+   "text": "how",
+   "start": 42.397,
+   "end": 42.595,
+   "rawStart": 42.39,
+   "rawEnd": 42.62
+  },
+  {
+   "text": "do",
+   "start": 42.595,
+   "end": 42.724,
+   "rawStart": 42.62,
+   "rawEnd": 42.77
+  },
+  {
+   "text": "we",
+   "start": 42.724,
+   "end": 42.861,
+   "rawStart": 42.77,
+   "rawEnd": 42.93
+  },
+  {
+   "text": "know",
+   "start": 42.861,
+   "end": 43.11,
+   "rawStart": 42.93,
+   "rawEnd": 43.22
+  },
+  {
+   "text": "anything",
+   "start": 43.11,
+   "end": 43.634,
+   "rawStart": 43.22,
+   "rawEnd": 43.83
+  },
+  {
+   "text": "about",
+   "start": 43.634,
+   "end": 43.961,
+   "rawStart": 43.83,
+   "rawEnd": 44.21
+  },
+  {
+   "text": "it?",
+   "start": 43.961,
+   "end": 44.33,
+   "rawStart": 44.21,
+   "rawEnd": 44.64
+  },
+  {
+   "text": "When",
+   "start": 44.85,
+   "end": 45.067,
+   "rawStart": 44.64,
+   "rawEnd": 44.9
+  },
+  {
+   "text": "the",
+   "start": 45.067,
+   "end": 45.3,
+   "rawStart": 44.9,
+   "rawEnd": 45.18
+  },
+  {
+   "text": "planet",
+   "start": 45.3,
+   "end": 45.567,
+   "rawStart": 45.18,
+   "rawEnd": 45.5
+  },
+  {
+   "text": "passes",
+   "start": 45.567,
+   "end": 45.901,
+   "rawStart": 45.5,
+   "rawEnd": 45.9
+  },
+  {
+   "text": "in",
+   "start": 45.901,
+   "end": 46.051,
+   "rawStart": 45.9,
+   "rawEnd": 46.08
+  },
+  {
+   "text": "front",
+   "start": 46.051,
+   "end": 46.284,
+   "rawStart": 46.08,
+   "rawEnd": 46.36
+  },
+  {
+   "text": "of",
+   "start": 46.284,
+   "end": 46.393,
+   "rawStart": 46.36,
+   "rawEnd": 46.49
+  },
+  {
+   "text": "its",
+   "start": 46.393,
+   "end": 46.56,
+   "rawStart": 46.49,
+   "rawEnd": 46.69
+  },
+  {
+   "text": "star,",
+   "start": 46.56,
+   "end": 46.96,
+   "rawStart": 46.69,
+   "rawEnd": 47.17
+  },
+  {
+   "text": "star",
+   "start": 47.16,
+   "end": 47.305,
+   "rawStart": 47.17,
+   "rawEnd": 47.35
+  },
+  {
+   "text": "light",
+   "start": 47.305,
+   "end": 47.532,
+   "rawStart": 47.35,
+   "rawEnd": 47.63
+  },
+  {
+   "text": "shines",
+   "start": 47.532,
+   "end": 47.807,
+   "rawStart": 47.63,
+   "rawEnd": 47.97
+  },
+  {
+   "text": "through",
+   "start": 47.807,
+   "end": 48.13,
+   "rawStart": 47.97,
+   "rawEnd": 48.37
+  },
+  {
+   "text": "its",
+   "start": 48.13,
+   "end": 48.283,
+   "rawStart": 48.37,
+   "rawEnd": 48.56
+  },
+  {
+   "text": "air.",
+   "start": 48.283,
+   "end": 48.93,
+   "rawStart": 48.56,
+   "rawEnd": 49.36
+  },
+  {
+   "text": "By",
+   "start": 49.36,
+   "end": 49.421,
+   "rawStart": 49.36,
+   "rawEnd": 49.44
+  },
+  {
+   "text": "studying",
+   "start": 49.421,
+   "end": 49.728,
+   "rawStart": 49.44,
+   "rawEnd": 49.84
+  },
+  {
+   "text": "that",
+   "start": 49.728,
+   "end": 49.928,
+   "rawStart": 49.84,
+   "rawEnd": 50.1
+  },
+  {
+   "text": "light,",
+   "start": 49.928,
+   "end": 50.48,
+   "rawStart": 50.1,
+   "rawEnd": 50.82
+  },
+  {
+   "text": "scientists",
+   "start": 50.75,
+   "end": 51.087,
+   "rawStart": 50.82,
+   "rawEnd": 51.23
+  },
+  {
+   "text": "can",
+   "start": 51.087,
+   "end": 51.252,
+   "rawStart": 51.23,
+   "rawEnd": 51.43
+  },
+  {
+   "text": "tell",
+   "start": 51.252,
+   "end": 51.466,
+   "rawStart": 51.43,
+   "rawEnd": 51.69
+  },
+  {
+   "text": "what",
+   "start": 51.466,
+   "end": 51.762,
+   "rawStart": 51.69,
+   "rawEnd": 52.05
+  },
+  {
+   "text": "the",
+   "start": 51.762,
+   "end": 51.844,
+   "rawStart": 52.05,
+   "rawEnd": 52.15
+  },
+  {
+   "text": "planet",
+   "start": 51.844,
+   "end": 52.174,
+   "rawStart": 52.15,
+   "rawEnd": 52.55
+  },
+  {
+   "text": "is",
+   "start": 52.174,
+   "end": 52.28,
+   "rawStart": 52.55,
+   "rawEnd": 52.68
+  },
+  {
+   "text": "made",
+   "start": 52.28,
+   "end": 52.404,
+   "rawStart": 52.68,
+   "rawEnd": 52.83
+  },
+  {
+   "text": "of.",
+   "start": 52.404,
+   "end": 52.84,
+   "rawStart": 52.83,
+   "rawEnd": 53.36
+  },
+  {
+   "text": "And",
+   "start": 53.36,
+   "end": 53.461,
+   "rawStart": 53.36,
+   "rawEnd": 53.47
+  },
+  {
+   "text": "what",
+   "start": 53.461,
+   "end": 53.72,
+   "rawStart": 53.47,
+   "rawEnd": 53.75
+  },
+  {
+   "text": "they",
+   "start": 53.72,
+   "end": 54.024,
+   "rawStart": 53.75,
+   "rawEnd": 54.08
+  },
+  {
+   "text": "found",
+   "start": 54.024,
+   "end": 54.245,
+   "rawStart": 54.08,
+   "rawEnd": 54.32
+  },
+  {
+   "text": "was",
+   "start": 54.245,
+   "end": 54.54,
+   "rawStart": 54.32,
+   "rawEnd": 54.64
+  },
+  {
+   "text": "shocking.",
+   "start": 54.54,
+   "end": 55.204,
+   "rawStart": 54.64,
+   "rawEnd": 55.36
+  },
+  {
+   "text": "From",
+   "start": 56.393,
+   "end": 56.486,
+   "rawStart": 56.11,
+   "rawEnd": 56.23
+  },
+  {
+   "text": "far",
+   "start": 56.486,
+   "end": 56.666,
+   "rawStart": 56.23,
+   "rawEnd": 56.46
+  },
+  {
+   "text": "away,",
+   "start": 56.666,
+   "end": 57.025,
+   "rawStart": 56.46,
+   "rawEnd": 56.92
+  },
+  {
+   "text": "the",
+   "start": 57.025,
+   "end": 57.22,
+   "rawStart": 56.92,
+   "rawEnd": 57.17
+  },
+  {
+   "text": "planet",
+   "start": 57.22,
+   "end": 57.587,
+   "rawStart": 57.17,
+   "rawEnd": 57.64
+  },
+  {
+   "text": "looks",
+   "start": 57.587,
+   "end": 57.899,
+   "rawStart": 57.64,
+   "rawEnd": 58.04
+  },
+  {
+   "text": "deep",
+   "start": 57.899,
+   "end": 58.125,
+   "rawStart": 58.04,
+   "rawEnd": 58.33
+  },
+  {
+   "text": "blue,",
+   "start": 58.125,
+   "end": 58.64,
+   "rawStart": 58.33,
+   "rawEnd": 58.99
+  },
+  {
+   "text": "just",
+   "start": 58.99,
+   "end": 59.097,
+   "rawStart": 58.99,
+   "rawEnd": 59.18
+  },
+  {
+   "text": "like",
+   "start": 59.097,
+   "end": 59.221,
+   "rawStart": 59.18,
+   "rawEnd": 59.4
+  },
+  {
+   "text": "Earth.",
+   "start": 59.221,
+   "end": 59.65,
+   "rawStart": 59.4,
+   "rawEnd": 60.16
+  },
+  {
+   "text": "But",
+   "start": 60.16,
+   "end": 60.304,
+   "rawStart": 60.16,
+   "rawEnd": 60.29
+  },
+  {
+   "text": "it",
+   "start": 60.304,
+   "end": 60.581,
+   "rawStart": 60.29,
+   "rawEnd": 60.54
+  },
+  {
+   "text": "has",
+   "start": 60.581,
+   "end": 60.835,
+   "rawStart": 60.54,
+   "rawEnd": 60.77
+  },
+  {
+   "text": "no",
+   "start": 60.835,
+   "end": 61.046,
+   "rawStart": 60.77,
+   "rawEnd": 60.96
+  },
+  {
+   "text": "oceans.",
+   "start": 61.046,
+   "end": 62.02,
+   "rawStart": 60.96,
+   "rawEnd": 61.84
+  },
+  {
+   "text": "Scientists",
+   "start": 62.53,
+   "end": 63.177,
+   "rawStart": 61.84,
+   "rawEnd": 62.62
+  },
+  {
+   "text": "think",
+   "start": 63.177,
+   "end": 63.583,
+   "rawStart": 62.62,
+   "rawEnd": 63.11
+  },
+  {
+   "text": "the",
+   "start": 63.583,
+   "end": 63.641,
+   "rawStart": 63.11,
+   "rawEnd": 63.18
+  },
+  {
+   "text": "blue",
+   "start": 63.641,
+   "end": 63.898,
+   "rawStart": 63.18,
+   "rawEnd": 63.49
+  },
+  {
+   "text": "color",
+   "start": 63.898,
+   "end": 64.197,
+   "rawStart": 63.49,
+   "rawEnd": 63.85
+  },
+  {
+   "text": "may",
+   "start": 64.197,
+   "end": 64.379,
+   "rawStart": 63.85,
+   "rawEnd": 64.07
+  },
+  {
+   "text": "come",
+   "start": 64.379,
+   "end": 64.653,
+   "rawStart": 64.07,
+   "rawEnd": 64.4
+  },
+  {
+   "text": "from",
+   "start": 64.653,
+   "end": 64.877,
+   "rawStart": 64.4,
+   "rawEnd": 64.67
+  },
+  {
+   "text": "tiny",
+   "start": 64.877,
+   "end": 65.134,
+   "rawStart": 64.67,
+   "rawEnd": 64.98
+  },
+  {
+   "text": "bits",
+   "start": 65.134,
+   "end": 65.391,
+   "rawStart": 64.98,
+   "rawEnd": 65.29
+  },
+  {
+   "text": "of",
+   "start": 65.391,
+   "end": 65.524,
+   "rawStart": 65.29,
+   "rawEnd": 65.45
+  },
+  {
+   "text": "glass",
+   "start": 65.524,
+   "end": 65.805,
+   "rawStart": 65.45,
+   "rawEnd": 65.79
+  },
+  {
+   "text": "floating",
+   "start": 65.805,
+   "end": 66.303,
+   "rawStart": 65.79,
+   "rawEnd": 66.39
+  },
+  {
+   "text": "in",
+   "start": 66.303,
+   "end": 66.427,
+   "rawStart": 66.39,
+   "rawEnd": 66.54
+  },
+  {
+   "text": "its",
+   "start": 66.427,
+   "end": 66.601,
+   "rawStart": 66.54,
+   "rawEnd": 66.75
+  },
+  {
+   "text": "clouds.",
+   "start": 66.601,
+   "end": 67.24,
+   "rawStart": 66.75,
+   "rawEnd": 67.52
+  },
+  {
+   "text": "Glass",
+   "start": 67.72,
+   "end": 68.012,
+   "rawStart": 67.52,
+   "rawEnd": 67.9
+  },
+  {
+   "text": "is",
+   "start": 68.012,
+   "end": 68.18,
+   "rawStart": 67.9,
+   "rawEnd": 68.12
+  },
+  {
+   "text": "made",
+   "start": 68.18,
+   "end": 68.357,
+   "rawStart": 68.12,
+   "rawEnd": 68.35
+  },
+  {
+   "text": "from",
+   "start": 68.357,
+   "end": 68.587,
+   "rawStart": 68.35,
+   "rawEnd": 68.65
+  },
+  {
+   "text": "silica,",
+   "start": 68.587,
+   "end": 69.17,
+   "rawStart": 68.65,
+   "rawEnd": 69.41
+  },
+  {
+   "text": "the",
+   "start": 69.41,
+   "end": 69.558,
+   "rawStart": 69.41,
+   "rawEnd": 69.59
+  },
+  {
+   "text": "same",
+   "start": 69.558,
+   "end": 69.722,
+   "rawStart": 69.59,
+   "rawEnd": 69.79
+  },
+  {
+   "text": "material",
+   "start": 69.722,
+   "end": 70.222,
+   "rawStart": 69.79,
+   "rawEnd": 70.4
+  },
+  {
+   "text": "found",
+   "start": 70.222,
+   "end": 70.533,
+   "rawStart": 70.4,
+   "rawEnd": 70.78
+  },
+  {
+   "text": "in",
+   "start": 70.533,
+   "end": 70.656,
+   "rawStart": 70.78,
+   "rawEnd": 70.93
+  },
+  {
+   "text": "sand.",
+   "start": 70.656,
+   "end": 71.14,
+   "rawStart": 70.93,
+   "rawEnd": 71.52
+  },
+  {
+   "text": "This",
+   "start": 71.64,
+   "end": 71.992,
+   "rawStart": 71.52,
+   "rawEnd": 71.86
+  },
+  {
+   "text": "planet",
+   "start": 71.992,
+   "end": 72.613,
+   "rawStart": 71.86,
+   "rawEnd": 72.46
+  },
+  {
+   "text": "is",
+   "start": 72.613,
+   "end": 72.696,
+   "rawStart": 72.46,
+   "rawEnd": 72.54
+  },
+  {
+   "text": "a",
+   "start": 72.696,
+   "end": 72.779,
+   "rawStart": 72.54,
+   "rawEnd": 72.62
+  },
+  {
+   "text": "giant,",
+   "start": 72.779,
+   "end": 73.39,
+   "rawStart": 72.62,
+   "rawEnd": 73.21
+  },
+  {
+   "text": "bigger",
+   "start": 73.7,
+   "end": 73.976,
+   "rawStart": 73.21,
+   "rawEnd": 73.73
+  },
+  {
+   "text": "than",
+   "start": 73.976,
+   "end": 74.157,
+   "rawStart": 73.73,
+   "rawEnd": 74.07
+  },
+  {
+   "text": "Jupiter.",
+   "start": 74.157,
+   "end": 74.72,
+   "rawStart": 74.07,
+   "rawEnd": 75.13
+  },
+  {
+   "text": "And",
+   "start": 75.13,
+   "end": 75.18,
+   "rawStart": 75.13,
+   "rawEnd": 75.15
+  },
+  {
+   "text": "it",
+   "start": 75.152,
+   "end": 75.293,
+   "rawStart": 75.15,
+   "rawEnd": 75.28
+  },
+  {
+   "text": "sits",
+   "start": 75.293,
+   "end": 75.574,
+   "rawStart": 75.28,
+   "rawEnd": 75.54
+  },
+  {
+   "text": "extremely",
+   "start": 75.574,
+   "end": 76.214,
+   "rawStart": 75.54,
+   "rawEnd": 76.13
+  },
+  {
+   "text": "close",
+   "start": 76.214,
+   "end": 76.571,
+   "rawStart": 76.13,
+   "rawEnd": 76.46
+  },
+  {
+   "text": "to",
+   "start": 76.571,
+   "end": 76.723,
+   "rawStart": 76.46,
+   "rawEnd": 76.6
+  },
+  {
+   "text": "its",
+   "start": 76.723,
+   "end": 76.918,
+   "rawStart": 76.6,
+   "rawEnd": 76.78
+  },
+  {
+   "text": "star.",
+   "start": 76.918,
+   "end": 77.46,
+   "rawStart": 76.78,
+   "rawEnd": 77.28
+  },
+  {
+   "text": "One",
+   "start": 77.95,
+   "end": 78.442,
+   "rawStart": 77.28,
+   "rawEnd": 77.95
+  },
+  {
+   "text": "year",
+   "start": 78.442,
+   "end": 78.492,
+   "rawStart": 77.95,
+   "rawEnd": 77.96
+  },
+  {
+   "text": "there",
+   "start": 78.45,
+   "end": 78.803,
+   "rawStart": 77.96,
+   "rawEnd": 78.44
+  },
+  {
+   "text": "lasts",
+   "start": 78.803,
+   "end": 79.155,
+   "rawStart": 78.44,
+   "rawEnd": 78.92
+  },
+  {
+   "text": "only",
+   "start": 79.155,
+   "end": 79.457,
+   "rawStart": 78.92,
+   "rawEnd": 79.33
+  },
+  {
+   "text": "about",
+   "start": 79.457,
+   "end": 79.795,
+   "rawStart": 79.33,
+   "rawEnd": 79.79
+  },
+  {
+   "text": "two",
+   "start": 79.795,
+   "end": 80.023,
+   "rawStart": 79.79,
+   "rawEnd": 80.1
+  },
+  {
+   "text": "Earth",
+   "start": 80.023,
+   "end": 80.361,
+   "rawStart": 80.1,
+   "rawEnd": 80.56
+  },
+  {
+   "text": "days.",
+   "start": 80.361,
+   "end": 81,
+   "rawStart": 80.56,
+   "rawEnd": 81.43
+  },
+  {
+   "text": "The",
+   "start": 81.45,
+   "end": 81.5,
+   "rawStart": 81.43,
+   "rawEnd": 81.47
+  },
+  {
+   "text": "temperature",
+   "start": 81.487,
+   "end": 81.976,
+   "rawStart": 81.47,
+   "rawEnd": 82
+  },
+  {
+   "text": "can",
+   "start": 81.976,
+   "end": 82.124,
+   "rawStart": 82,
+   "rawEnd": 82.16
+  },
+  {
+   "text": "reach",
+   "start": 82.124,
+   "end": 82.345,
+   "rawStart": 82.16,
+   "rawEnd": 82.4
+  },
+  {
+   "text": "around",
+   "start": 82.345,
+   "end": 82.788,
+   "rawStart": 82.4,
+   "rawEnd": 82.88
+  },
+  {
+   "text": "1000",
+   "start": 82.788,
+   "end": 83.6,
+   "rawStart": 82.88,
+   "rawEnd": 83.76
+  },
+  {
+   "text": "degrees",
+   "start": 83.6,
+   "end": 83.969,
+   "rawStart": 83.76,
+   "rawEnd": 84.16
+  },
+  {
+   "text": "Celsius,",
+   "start": 83.969,
+   "end": 84.91,
+   "rawStart": 84.16,
+   "rawEnd": 85.18
+  },
+  {
+   "text": "hot",
+   "start": 85.23,
+   "end": 85.3,
+   "rawStart": 85.18,
+   "rawEnd": 85.27
+  },
+  {
+   "text": "enough",
+   "start": 85.3,
+   "end": 85.684,
+   "rawStart": 85.27,
+   "rawEnd": 85.76
+  },
+  {
+   "text": "to",
+   "start": 85.684,
+   "end": 85.762,
+   "rawStart": 85.76,
+   "rawEnd": 85.86
+  },
+  {
+   "text": "melt",
+   "start": 85.762,
+   "end": 86.028,
+   "rawStart": 85.86,
+   "rawEnd": 86.2
+  },
+  {
+   "text": "many",
+   "start": 86.028,
+   "end": 86.294,
+   "rawStart": 86.2,
+   "rawEnd": 86.54
+  },
+  {
+   "text": "metals.",
+   "start": 86.294,
+   "end": 87.03,
+   "rawStart": 86.54,
+   "rawEnd": 87.48
+  },
+  {
+   "text": "One",
+   "start": 87.48,
+   "end": 87.588,
+   "rawStart": 87.48,
+   "rawEnd": 87.6
+  },
+  {
+   "text": "side",
+   "start": 87.588,
+   "end": 87.886,
+   "rawStart": 87.6,
+   "rawEnd": 87.93
+  },
+  {
+   "text": "always",
+   "start": 87.886,
+   "end": 88.328,
+   "rawStart": 87.93,
+   "rawEnd": 88.42
+  },
+  {
+   "text": "faces",
+   "start": 88.328,
+   "end": 88.717,
+   "rawStart": 88.42,
+   "rawEnd": 88.85
+  },
+  {
+   "text": "its",
+   "start": 88.717,
+   "end": 88.906,
+   "rawStart": 88.85,
+   "rawEnd": 89.06
+  },
+  {
+   "text": "star,",
+   "start": 88.906,
+   "end": 89.52,
+   "rawStart": 89.06,
+   "rawEnd": 89.74
+  },
+  {
+   "text": "so",
+   "start": 89.74,
+   "end": 89.826,
+   "rawStart": 89.74,
+   "rawEnd": 89.84
+  },
+  {
+   "text": "it",
+   "start": 89.826,
+   "end": 90.032,
+   "rawStart": 89.84,
+   "rawEnd": 90.08
+  },
+  {
+   "text": "is",
+   "start": 90.032,
+   "end": 90.332,
+   "rawStart": 90.08,
+   "rawEnd": 90.43
+  },
+  {
+   "text": "always",
+   "start": 90.332,
+   "end": 90.65,
+   "rawStart": 90.43,
+   "rawEnd": 90.8
+  },
+  {
+   "text": "day.",
+   "start": 90.65,
+   "end": 91.13,
+   "rawStart": 90.8,
+   "rawEnd": 91.36
+  },
+  {
+   "text": "The",
+   "start": 91.58,
+   "end": 91.764,
+   "rawStart": 91.36,
+   "rawEnd": 91.61
+  },
+  {
+   "text": "other",
+   "start": 91.764,
+   "end": 92.073,
+   "rawStart": 91.61,
+   "rawEnd": 92.03
+  },
+  {
+   "text": "side",
+   "start": 92.073,
+   "end": 92.382,
+   "rawStart": 92.03,
+   "rawEnd": 92.45
+  },
+  {
+   "text": "is",
+   "start": 92.382,
+   "end": 92.552,
+   "rawStart": 92.45,
+   "rawEnd": 92.68
+  },
+  {
+   "text": "always",
+   "start": 92.552,
+   "end": 92.816,
+   "rawStart": 92.68,
+   "rawEnd": 93.04
+  },
+  {
+   "text": "night.",
+   "start": 92.816,
+   "end": 93.42,
+   "rawStart": 93.04,
+   "rawEnd": 93.86
+  },
+  {
+   "text": "That",
+   "start": 93.86,
+   "end": 94.015,
+   "rawStart": 93.86,
+   "rawEnd": 94.03
+  },
+  {
+   "text": "huge",
+   "start": 94.015,
+   "end": 94.28,
+   "rawStart": 94.03,
+   "rawEnd": 94.32
+  },
+  {
+   "text": "difference",
+   "start": 94.28,
+   "end": 94.928,
+   "rawStart": 94.32,
+   "rawEnd": 95.03
+  },
+  {
+   "text": "in",
+   "start": 94.928,
+   "end": 95.01,
+   "rawStart": 95.03,
+   "rawEnd": 95.12
+  },
+  {
+   "text": "heat",
+   "start": 95.01,
+   "end": 95.439,
+   "rawStart": 95.12,
+   "rawEnd": 95.59
+  },
+  {
+   "text": "creates",
+   "start": 95.439,
+   "end": 95.886,
+   "rawStart": 95.59,
+   "rawEnd": 96.08
+  },
+  {
+   "text": "monstrous",
+   "start": 95.886,
+   "end": 96.452,
+   "rawStart": 96.08,
+   "rawEnd": 96.7
+  },
+  {
+   "text": "winds,",
+   "start": 96.452,
+   "end": 97.2,
+   "rawStart": 96.7,
+   "rawEnd": 97.52
+  },
+  {
+   "text": "thousands",
+   "start": 97.63,
+   "end": 98.107,
+   "rawStart": 97.52,
+   "rawEnd": 98.15
+  },
+  {
+   "text": "of",
+   "start": 98.107,
+   "end": 98.213,
+   "rawStart": 98.15,
+   "rawEnd": 98.29
+  },
+  {
+   "text": "kilometers",
+   "start": 98.213,
+   "end": 98.743,
+   "rawStart": 98.29,
+   "rawEnd": 98.99
+  },
+  {
+   "text": "per",
+   "start": 98.743,
+   "end": 98.902,
+   "rawStart": 98.99,
+   "rawEnd": 99.2
+  },
+  {
+   "text": "hour,",
+   "start": 98.902,
+   "end": 99.28,
+   "rawStart": 99.2,
+   "rawEnd": 99.7
+  },
+  {
+   "text": "faster",
+   "start": 99.7,
+   "end": 99.976,
+   "rawStart": 99.7,
+   "rawEnd": 100.04
+  },
+  {
+   "text": "than",
+   "start": 99.976,
+   "end": 100.235,
+   "rawStart": 100.04,
+   "rawEnd": 100.36
+  },
+  {
+   "text": "the",
+   "start": 100.235,
+   "end": 100.373,
+   "rawStart": 100.36,
+   "rawEnd": 100.53
+  },
+  {
+   "text": "speed",
+   "start": 100.373,
+   "end": 100.656,
+   "rawStart": 100.53,
+   "rawEnd": 100.88
+  },
+  {
+   "text": "of",
+   "start": 100.656,
+   "end": 100.77,
+   "rawStart": 100.88,
+   "rawEnd": 101.02
+  },
+  {
+   "text": "sound.",
+   "start": 100.77,
+   "end": 101.24,
+   "rawStart": 101.02,
+   "rawEnd": 101.6
+  },
+  {
+   "text": "Now",
+   "start": 101.7,
+   "end": 101.852,
+   "rawStart": 101.6,
+   "rawEnd": 101.82
+  },
+  {
+   "text": "put",
+   "start": 101.852,
+   "end": 102.087,
+   "rawStart": 101.82,
+   "rawEnd": 102.16
+  },
+  {
+   "text": "it",
+   "start": 102.087,
+   "end": 102.137,
+   "rawStart": 102.16,
+   "rawEnd": 102.19
+  },
+  {
+   "text": "all",
+   "start": 102.107,
+   "end": 102.259,
+   "rawStart": 102.19,
+   "rawEnd": 102.41
+  },
+  {
+   "text": "together.",
+   "start": 102.259,
+   "end": 102.97,
+   "rawStart": 102.41,
+   "rawEnd": 103.44
+  },
+  {
+   "text": "Glass",
+   "start": 103.44,
+   "end": 103.627,
+   "rawStart": 103.44,
+   "rawEnd": 103.67
+  },
+  {
+   "text": "in",
+   "start": 103.627,
+   "end": 103.757,
+   "rawStart": 103.67,
+   "rawEnd": 103.83
+  },
+  {
+   "text": "the",
+   "start": 103.757,
+   "end": 103.944,
+   "rawStart": 103.83,
+   "rawEnd": 104.06
+  },
+  {
+   "text": "clouds,",
+   "start": 103.944,
+   "end": 104.57,
+   "rawStart": 104.06,
+   "rawEnd": 104.83
+  },
+  {
+   "text": "winds",
+   "start": 104.83,
+   "end": 105.093,
+   "rawStart": 104.83,
+   "rawEnd": 105.17
+  },
+  {
+   "text": "faster",
+   "start": 105.093,
+   "end": 105.511,
+   "rawStart": 105.17,
+   "rawEnd": 105.71
+  },
+  {
+   "text": "than",
+   "start": 105.511,
+   "end": 105.789,
+   "rawStart": 105.71,
+   "rawEnd": 106.07
+  },
+  {
+   "text": "sound.",
+   "start": 105.789,
+   "end": 106.47,
+   "rawStart": 106.07,
+   "rawEnd": 106.95
+  },
+  {
+   "text": "Scientists",
+   "start": 106.87,
+   "end": 107.421,
+   "rawStart": 106.95,
+   "rawEnd": 107.46
+  },
+  {
+   "text": "think",
+   "start": 107.421,
+   "end": 107.572,
+   "rawStart": 107.46,
+   "rawEnd": 107.6
+  },
+  {
+   "text": "this",
+   "start": 107.572,
+   "end": 107.831,
+   "rawStart": 107.6,
+   "rawEnd": 107.84
+  },
+  {
+   "text": "could",
+   "start": 107.831,
+   "end": 108.252,
+   "rawStart": 107.84,
+   "rawEnd": 108.23
+  },
+  {
+   "text": "create",
+   "start": 108.252,
+   "end": 108.684,
+   "rawStart": 108.23,
+   "rawEnd": 108.63
+  },
+  {
+   "text": "rain",
+   "start": 108.684,
+   "end": 108.997,
+   "rawStart": 108.63,
+   "rawEnd": 108.92
+  },
+  {
+   "text": "made",
+   "start": 108.997,
+   "end": 109.299,
+   "rawStart": 108.92,
+   "rawEnd": 109.2
+  },
+  {
+   "text": "of",
+   "start": 109.299,
+   "end": 109.537,
+   "rawStart": 109.2,
+   "rawEnd": 109.42
+  },
+  {
+   "text": "glass,",
+   "start": 109.537,
+   "end": 109.99,
+   "rawStart": 109.42,
+   "rawEnd": 109.84
+  },
+  {
+   "text": "flying",
+   "start": 110.24,
+   "end": 110.75,
+   "rawStart": 109.84,
+   "rawEnd": 110.35
+  },
+  {
+   "text": "sideways.",
+   "start": 110.75,
+   "end": 111.47,
+   "rawStart": 110.35,
+   "rawEnd": 111.07
+  },
+  {
+   "text": "Standing",
+   "start": 111.78,
+   "end": 112.353,
+   "rawStart": 111.07,
+   "rawEnd": 111.82
+  },
+  {
+   "text": "there",
+   "start": 112.353,
+   "end": 112.498,
+   "rawStart": 111.82,
+   "rawEnd": 112.01
+  },
+  {
+   "text": "would",
+   "start": 112.498,
+   "end": 112.773,
+   "rawStart": 112.01,
+   "rawEnd": 112.37
+  },
+  {
+   "text": "be",
+   "start": 112.773,
+   "end": 112.926,
+   "rawStart": 112.37,
+   "rawEnd": 112.57
+  },
+  {
+   "text": "like",
+   "start": 112.926,
+   "end": 113.101,
+   "rawStart": 112.57,
+   "rawEnd": 112.8
+  },
+  {
+   "text": "being",
+   "start": 113.101,
+   "end": 113.285,
+   "rawStart": 112.8,
+   "rawEnd": 113.04
+  },
+  {
+   "text": "hit",
+   "start": 113.285,
+   "end": 113.468,
+   "rawStart": 113.04,
+   "rawEnd": 113.28
+  },
+  {
+   "text": "by",
+   "start": 113.468,
+   "end": 113.712,
+   "rawStart": 113.28,
+   "rawEnd": 113.6
+  },
+  {
+   "text": "millions",
+   "start": 113.712,
+   "end": 114.079,
+   "rawStart": 113.6,
+   "rawEnd": 114.08
+  },
+  {
+   "text": "of",
+   "start": 114.079,
+   "end": 114.255,
+   "rawStart": 114.08,
+   "rawEnd": 114.31
+  },
+  {
+   "text": "tiny",
+   "start": 114.255,
+   "end": 114.469,
+   "rawStart": 114.31,
+   "rawEnd": 114.59
+  },
+  {
+   "text": "blades.",
+   "start": 114.469,
+   "end": 115.24,
+   "rawStart": 114.59,
+   "rawEnd": 115.6
+  },
+  {
+   "text": "And",
+   "start": 115.65,
+   "end": 115.7,
+   "rawStart": 115.6,
+   "rawEnd": 115.65
+  },
+  {
+   "text": "the",
+   "start": 115.686,
+   "end": 115.828,
+   "rawStart": 115.65,
+   "rawEnd": 115.85
+  },
+  {
+   "text": "rotten",
+   "start": 115.828,
+   "end": 116.19,
+   "rawStart": 115.85,
+   "rawEnd": 116.36
+  },
+  {
+   "text": "egg",
+   "start": 116.19,
+   "end": 116.368,
+   "rawStart": 116.36,
+   "rawEnd": 116.61
+  },
+  {
+   "text": "smell?",
+   "start": 116.368,
+   "end": 117,
+   "rawStart": 116.61,
+   "rawEnd": 117.5
+  },
+  {
+   "text": "In",
+   "start": 117.51,
+   "end": 117.56,
+   "rawStart": 117.5,
+   "rawEnd": 117.51
+  },
+  {
+   "text": "2024,",
+   "start": 117.52,
+   "end": 118.454,
+   "rawStart": 117.51,
+   "rawEnd": 118.48
+  },
+  {
+   "text": "the",
+   "start": 118.454,
+   "end": 118.695,
+   "rawStart": 118.48,
+   "rawEnd": 118.73
+  },
+  {
+   "text": "James",
+   "start": 118.695,
+   "end": 118.994,
+   "rawStart": 118.73,
+   "rawEnd": 119.04
+  },
+  {
+   "text": "Webb",
+   "start": 118.994,
+   "end": 119.264,
+   "rawStart": 119.04,
+   "rawEnd": 119.32
+  },
+  {
+   "text": "Space",
+   "start": 119.264,
+   "end": 119.601,
+   "rawStart": 119.32,
+   "rawEnd": 119.67
+  },
+  {
+   "text": "Telescope",
+   "start": 119.601,
+   "end": 120.362,
+   "rawStart": 119.67,
+   "rawEnd": 120.46
+  },
+  {
+   "text": "found",
+   "start": 120.362,
+   "end": 120.458,
+   "rawStart": 120.46,
+   "rawEnd": 120.56
+  },
+  {
+   "text": "a",
+   "start": 120.458,
+   "end": 120.516,
+   "rawStart": 120.56,
+   "rawEnd": 120.62
+  },
+  {
+   "text": "gas",
+   "start": 120.516,
+   "end": 120.709,
+   "rawStart": 120.62,
+   "rawEnd": 120.82
+  },
+  {
+   "text": "called",
+   "start": 120.709,
+   "end": 121.104,
+   "rawStart": 120.82,
+   "rawEnd": 121.23
+  },
+  {
+   "text": "hydrogen",
+   "start": 121.104,
+   "end": 121.634,
+   "rawStart": 121.23,
+   "rawEnd": 121.78
+  },
+  {
+   "text": "sulfide",
+   "start": 121.634,
+   "end": 122.087,
+   "rawStart": 121.78,
+   "rawEnd": 122.25
+  },
+  {
+   "text": "on",
+   "start": 122.087,
+   "end": 122.212,
+   "rawStart": 122.25,
+   "rawEnd": 122.38
+  },
+  {
+   "text": "this",
+   "start": 122.212,
+   "end": 122.462,
+   "rawStart": 122.38,
+   "rawEnd": 122.64
+  },
+  {
+   "text": "planet.",
+   "start": 122.462,
+   "end": 123.05,
+   "rawStart": 122.64,
+   "rawEnd": 123.25
+  },
+  {
+   "text": "On",
+   "start": 123.52,
+   "end": 123.741,
+   "rawStart": 123.25,
+   "rawEnd": 123.52
+  },
+  {
+   "text": "Earth,",
+   "start": 123.741,
+   "end": 124.02,
+   "rawStart": 123.52,
+   "rawEnd": 123.86
+  },
+  {
+   "text": "that's",
+   "start": 124.38,
+   "end": 124.759,
+   "rawStart": 123.86,
+   "rawEnd": 124.39
+  },
+  {
+   "text": "the",
+   "start": 124.759,
+   "end": 124.809,
+   "rawStart": 124.39,
+   "rawEnd": 124.46
+  },
+  {
+   "text": "gas",
+   "start": 124.809,
+   "end": 124.966,
+   "rawStart": 124.46,
+   "rawEnd": 124.68
+  },
+  {
+   "text": "that",
+   "start": 124.966,
+   "end": 125.145,
+   "rawStart": 124.68,
+   "rawEnd": 124.93
+  },
+  {
+   "text": "smells",
+   "start": 125.145,
+   "end": 125.46,
+   "rawStart": 124.93,
+   "rawEnd": 125.37
+  },
+  {
+   "text": "like",
+   "start": 125.46,
+   "end": 125.782,
+   "rawStart": 125.37,
+   "rawEnd": 125.82
+  },
+  {
+   "text": "rotten",
+   "start": 125.782,
+   "end": 125.968,
+   "rawStart": 125.82,
+   "rawEnd": 126.08
+  },
+  {
+   "text": "eggs.",
+   "start": 125.968,
+   "end": 126.54,
+   "rawStart": 126.08,
+   "rawEnd": 126.88
+  },
+  {
+   "text": "But",
+   "start": 127.03,
+   "end": 127.19,
+   "rawStart": 126.88,
+   "rawEnd": 127.12
+  },
+  {
+   "text": "remember,",
+   "start": 127.19,
+   "end": 127.85,
+   "rawStart": 127.12,
+   "rawEnd": 128.11
+  },
+  {
+   "text": "nobody",
+   "start": 128.11,
+   "end": 128.378,
+   "rawStart": 128.11,
+   "rawEnd": 128.42
+  },
+  {
+   "text": "has",
+   "start": 128.378,
+   "end": 128.586,
+   "rawStart": 128.42,
+   "rawEnd": 128.66
+  },
+  {
+   "text": "actually",
+   "start": 128.586,
+   "end": 129.348,
+   "rawStart": 128.66,
+   "rawEnd": 129.54
+  },
+  {
+   "text": "seen",
+   "start": 129.348,
+   "end": 129.426,
+   "rawStart": 129.54,
+   "rawEnd": 129.63
+  },
+  {
+   "text": "glass",
+   "start": 129.426,
+   "end": 129.807,
+   "rawStart": 129.63,
+   "rawEnd": 130.07
+  },
+  {
+   "text": "rain",
+   "start": 129.807,
+   "end": 130.067,
+   "rawStart": 130.07,
+   "rawEnd": 130.37
+  },
+  {
+   "text": "there.",
+   "start": 130.067,
+   "end": 130.69,
+   "rawStart": 130.37,
+   "rawEnd": 131.09
+  },
+  {
+   "text": "It",
+   "start": 131.11,
+   "end": 131.16,
+   "rawStart": 131.09,
+   "rawEnd": 131.11
+  },
+  {
+   "text": "is",
+   "start": 131.128,
+   "end": 131.228,
+   "rawStart": 131.11,
+   "rawEnd": 131.22
+  },
+  {
+   "text": "a",
+   "start": 131.228,
+   "end": 131.301,
+   "rawStart": 131.22,
+   "rawEnd": 131.3
+  },
+  {
+   "text": "scientific",
+   "start": 131.301,
+   "end": 131.946,
+   "rawStart": 131.3,
+   "rawEnd": 132.01
+  },
+  {
+   "text": "idea",
+   "start": 131.946,
+   "end": 132.301,
+   "rawStart": 132.01,
+   "rawEnd": 132.4
+  },
+  {
+   "text": "based",
+   "start": 132.301,
+   "end": 132.591,
+   "rawStart": 132.4,
+   "rawEnd": 132.72
+  },
+  {
+   "text": "on",
+   "start": 132.591,
+   "end": 132.737,
+   "rawStart": 132.72,
+   "rawEnd": 132.88
+  },
+  {
+   "text": "telescope",
+   "start": 132.737,
+   "end": 133.318,
+   "rawStart": 132.88,
+   "rawEnd": 133.52
+  },
+  {
+   "text": "data,",
+   "start": 133.318,
+   "end": 133.9,
+   "rawStart": 133.52,
+   "rawEnd": 134.16
+  },
+  {
+   "text": "and",
+   "start": 134.16,
+   "end": 134.21,
+   "rawStart": 134.16,
+   "rawEnd": 134.17
+  },
+  {
+   "text": "scientists",
+   "start": 134.168,
+   "end": 134.729,
+   "rawStart": 134.17,
+   "rawEnd": 134.89
+  },
+  {
+   "text": "are",
+   "start": 134.729,
+   "end": 134.924,
+   "rawStart": 134.89,
+   "rawEnd": 135.14
+  },
+  {
+   "text": "still",
+   "start": 134.924,
+   "end": 135.189,
+   "rawStart": 135.14,
+   "rawEnd": 135.48
+  },
+  {
+   "text": "studying",
+   "start": 135.189,
+   "end": 135.751,
+   "rawStart": 135.48,
+   "rawEnd": 136.2
+  },
+  {
+   "text": "it.",
+   "start": 135.751,
+   "end": 136,
+   "rawStart": 136.2,
+   "rawEnd": 136.52
+  },
+  {
+   "text": "From",
+   "start": 136.5,
+   "end": 136.741,
+   "rawStart": 136.52,
+   "rawEnd": 136.79
+  },
+  {
+   "text": "far",
+   "start": 136.741,
+   "end": 136.857,
+   "rawStart": 136.79,
+   "rawEnd": 136.92
+  },
+  {
+   "text": "away,",
+   "start": 136.857,
+   "end": 137.241,
+   "rawStart": 136.92,
+   "rawEnd": 137.35
+  },
+  {
+   "text": "it",
+   "start": 137.241,
+   "end": 137.49,
+   "rawStart": 137.35,
+   "rawEnd": 137.63
+  },
+  {
+   "text": "looks",
+   "start": 137.49,
+   "end": 137.687,
+   "rawStart": 137.63,
+   "rawEnd": 137.85
+  },
+  {
+   "text": "like",
+   "start": 137.687,
+   "end": 137.945,
+   "rawStart": 137.85,
+   "rawEnd": 138.14
+  },
+  {
+   "text": "a",
+   "start": 137.945,
+   "end": 138.008,
+   "rawStart": 138.14,
+   "rawEnd": 138.21
+  },
+  {
+   "text": "peaceful",
+   "start": 138.008,
+   "end": 138.606,
+   "rawStart": 138.21,
+   "rawEnd": 138.88
+  },
+  {
+   "text": "blue",
+   "start": 138.606,
+   "end": 138.891,
+   "rawStart": 138.88,
+   "rawEnd": 139.2
+  },
+  {
+   "text": "marble.",
+   "start": 138.891,
+   "end": 139.676,
+   "rawStart": 139.2,
+   "rawEnd": 140.08
+  },
+  {
+   "text": "Up",
+   "start": 140.252,
+   "end": 140.302,
+   "rawStart": 140.2,
+   "rawEnd": 140.25
+  },
+  {
+   "text": "close,",
+   "start": 140.295,
+   "end": 140.782,
+   "rawStart": 140.25,
+   "rawEnd": 140.81
+  },
+  {
+   "text": "it",
+   "start": 140.782,
+   "end": 141.12,
+   "rawStart": 140.81,
+   "rawEnd": 141.2
+  },
+  {
+   "text": "may",
+   "start": 141.12,
+   "end": 141.189,
+   "rawStart": 141.2,
+   "rawEnd": 141.28
+  },
+  {
+   "text": "be",
+   "start": 141.189,
+   "end": 141.337,
+   "rawStart": 141.28,
+   "rawEnd": 141.45
+  },
+  {
+   "text": "one",
+   "start": 141.337,
+   "end": 141.563,
+   "rawStart": 141.45,
+   "rawEnd": 141.71
+  },
+  {
+   "text": "of",
+   "start": 141.563,
+   "end": 141.71,
+   "rawStart": 141.71,
+   "rawEnd": 141.88
+  },
+  {
+   "text": "the",
+   "start": 141.71,
+   "end": 141.945,
+   "rawStart": 141.88,
+   "rawEnd": 142.15
+  },
+  {
+   "text": "deadliest",
+   "start": 141.945,
+   "end": 142.726,
+   "rawStart": 142.15,
+   "rawEnd": 143.05
+  },
+  {
+   "text": "places",
+   "start": 142.726,
+   "end": 143.064,
+   "rawStart": 143.05,
+   "rawEnd": 143.44
+  },
+  {
+   "text": "we",
+   "start": 143.064,
+   "end": 143.194,
+   "rawStart": 143.44,
+   "rawEnd": 143.59
+  },
+  {
+   "text": "know.",
+   "start": 143.194,
+   "end": 143.88,
+   "rawStart": 143.59,
+   "rawEnd": 144.38
+  },
+  {
+   "text": "It",
+   "start": 144.41,
+   "end": 144.46,
+   "rawStart": 144.38,
+   "rawEnd": 144.41
+  },
+  {
+   "text": "makes",
+   "start": 144.436,
+   "end": 144.712,
+   "rawStart": 144.41,
+   "rawEnd": 144.73
+  },
+  {
+   "text": "you",
+   "start": 144.712,
+   "end": 144.892,
+   "rawStart": 144.73,
+   "rawEnd": 144.94
+  },
+  {
+   "text": "realize",
+   "start": 144.892,
+   "end": 145.332,
+   "rawStart": 144.94,
+   "rawEnd": 145.45
+  },
+  {
+   "text": "how",
+   "start": 145.332,
+   "end": 145.53,
+   "rawStart": 145.45,
+   "rawEnd": 145.68
+  },
+  {
+   "text": "special",
+   "start": 145.53,
+   "end": 146.012,
+   "rawStart": 145.68,
+   "rawEnd": 146.24
+  },
+  {
+   "text": "our",
+   "start": 146.012,
+   "end": 146.219,
+   "rawStart": 146.24,
+   "rawEnd": 146.48
+  },
+  {
+   "text": "own",
+   "start": 146.219,
+   "end": 146.478,
+   "rawStart": 146.48,
+   "rawEnd": 146.78
+  },
+  {
+   "text": "blue",
+   "start": 146.478,
+   "end": 146.822,
+   "rawStart": 146.78,
+   "rawEnd": 147.18
+  },
+  {
+   "text": "planet",
+   "start": 146.822,
+   "end": 147.322,
+   "rawStart": 147.18,
+   "rawEnd": 147.76
+  },
+  {
+   "text": "is.",
+   "start": 147.322,
+   "end": 147.77,
+   "rawStart": 147.76,
+   "rawEnd": 148.28
+  },
+  {
+   "text": "Soft",
+   "start": 148.26,
+   "end": 148.562,
+   "rawStart": 148.28,
+   "rawEnd": 148.7
+  },
+  {
+   "text": "rain,",
+   "start": 148.562,
+   "end": 149.23,
+   "rawStart": 148.7,
+   "rawEnd": 149.63
+  },
+  {
+   "text": "fresh",
+   "start": 149.62,
+   "end": 149.78,
+   "rawStart": 149.63,
+   "rawEnd": 149.78
+  },
+  {
+   "text": "air,",
+   "start": 149.78,
+   "end": 150.27,
+   "rawStart": 149.78,
+   "rawEnd": 150.24
+  },
+  {
+   "text": "life",
+   "start": 150.73,
+   "end": 151.077,
+   "rawStart": 150.24,
+   "rawEnd": 150.73
+  },
+  {
+   "text": "everywhere.",
+   "start": 151.077,
+   "end": 151.89,
+   "rawStart": 150.73,
+   "rawEnd": 151.88
+  },
+  {
+   "text": "Out",
+   "start": 152.43,
+   "end": 152.873,
+   "rawStart": 151.88,
+   "rawEnd": 152.43
+  },
+  {
+   "text": "there,",
+   "start": 152.873,
+   "end": 153.315,
+   "rawStart": 152.43,
+   "rawEnd": 152.98
+  },
+  {
+   "text": "among",
+   "start": 153.315,
+   "end": 153.863,
+   "rawStart": 152.98,
+   "rawEnd": 153.66
+  },
+  {
+   "text": "thousands",
+   "start": 153.863,
+   "end": 154.136,
+   "rawStart": 153.66,
+   "rawEnd": 154
+  },
+  {
+   "text": "of",
+   "start": 154.136,
+   "end": 154.297,
+   "rawStart": 154,
+   "rawEnd": 154.2
+  },
+  {
+   "text": "worlds,",
+   "start": 154.297,
+   "end": 154.78,
+   "rawStart": 154.2,
+   "rawEnd": 154.8
+  },
+  {
+   "text": "we",
+   "start": 155.02,
+   "end": 155.186,
+   "rawStart": 154.8,
+   "rawEnd": 155.02
+  },
+  {
+   "text": "have",
+   "start": 155.186,
+   "end": 155.374,
+   "rawStart": 155.02,
+   "rawEnd": 155.27
+  },
+  {
+   "text": "not",
+   "start": 155.374,
+   "end": 155.54,
+   "rawStart": 155.27,
+   "rawEnd": 155.49
+  },
+  {
+   "text": "found",
+   "start": 155.54,
+   "end": 155.827,
+   "rawStart": 155.49,
+   "rawEnd": 155.87
+  },
+  {
+   "text": "another",
+   "start": 155.827,
+   "end": 156.242,
+   "rawStart": 155.87,
+   "rawEnd": 156.42
+  },
+  {
+   "text": "place",
+   "start": 156.242,
+   "end": 156.521,
+   "rawStart": 156.42,
+   "rawEnd": 156.79
+  },
+  {
+   "text": "like",
+   "start": 156.521,
+   "end": 156.755,
+   "rawStart": 156.79,
+   "rawEnd": 157.1
+  },
+  {
+   "text": "home.",
+   "start": 156.755,
+   "end": 157.26,
+   "rawStart": 157.1,
+   "rawEnd": 157.77
+  },
+  {
+   "text": "And",
+   "start": 157.84,
+   "end": 157.986,
+   "rawStart": 157.77,
+   "rawEnd": 157.86
+  },
+  {
+   "text": "here's",
+   "start": 157.986,
+   "end": 158.131,
+   "rawStart": 157.86,
+   "rawEnd": 157.95
+  },
+  {
+   "text": "the",
+   "start": 158.131,
+   "end": 158.261,
+   "rawStart": 157.95,
+   "rawEnd": 158.03
+  },
+  {
+   "text": "thing.",
+   "start": 158.261,
+   "end": 158.73,
+   "rawStart": 158.03,
+   "rawEnd": 158.32
+  },
+  {
+   "text": "Billions",
+   "start": 159.26,
+   "end": 159.919,
+   "rawStart": 158.32,
+   "rawEnd": 159.52
+  },
+  {
+   "text": "of",
+   "start": 159.919,
+   "end": 160.128,
+   "rawStart": 159.52,
+   "rawEnd": 159.9
+  },
+  {
+   "text": "planets,",
+   "start": 160.128,
+   "end": 160.49,
+   "rawStart": 159.9,
+   "rawEnd": 160.56
+  },
+  {
+   "text": "and",
+   "start": 160.72,
+   "end": 160.887,
+   "rawStart": 160.56,
+   "rawEnd": 160.81
+  },
+  {
+   "text": "not",
+   "start": 160.887,
+   "end": 161.04,
+   "rawStart": 160.81,
+   "rawEnd": 161.04
+  },
+  {
+   "text": "one",
+   "start": 161.24,
+   "end": 161.387,
+   "rawStart": 161.04,
+   "rawEnd": 161.28
+  },
+  {
+   "text": "of",
+   "start": 161.387,
+   "end": 161.479,
+   "rawStart": 161.28,
+   "rawEnd": 161.43
+  },
+  {
+   "text": "them",
+   "start": 161.479,
+   "end": 161.7,
+   "rawStart": 161.43,
+   "rawEnd": 161.79
+  },
+  {
+   "text": "can",
+   "start": 161.7,
+   "end": 161.822,
+   "rawStart": 161.79,
+   "rawEnd": 161.99
+  },
+  {
+   "text": "care.",
+   "start": 161.822,
+   "end": 162.3,
+   "rawStart": 161.99,
+   "rawEnd": 162.77
+  },
+  {
+   "text": "But",
+   "start": 162.88,
+   "end": 162.994,
+   "rawStart": 162.77,
+   "rawEnd": 162.88
+  },
+  {
+   "text": "you",
+   "start": 162.994,
+   "end": 163.15,
+   "rawStart": 162.88,
+   "rawEnd": 163.03
+  },
+  {
+   "text": "can.",
+   "start": 163.15,
+   "end": 163.66,
+   "rawStart": 163.03,
+   "rawEnd": 163.52
+  },
+  {
+   "text": "Don't",
+   "start": 164.29,
+   "end": 164.862,
+   "rawStart": 163.52,
+   "rawEnd": 164.29
+  },
+  {
+   "text": "ever",
+   "start": 164.862,
+   "end": 165.166,
+   "rawStart": 164.29,
+   "rawEnd": 164.7
+  },
+  {
+   "text": "forget",
+   "start": 165.166,
+   "end": 165.656,
+   "rawStart": 164.7,
+   "rawEnd": 165.36
+  },
+  {
+   "text": "how",
+   "start": 165.656,
+   "end": 165.945,
+   "rawStart": 165.36,
+   "rawEnd": 165.75
+  },
+  {
+   "text": "special",
+   "start": 165.945,
+   "end": 166.25,
+   "rawStart": 165.75,
+   "rawEnd": 166.16
+  },
+  {
+   "text": "that",
+   "start": 166.25,
+   "end": 166.421,
+   "rawStart": 166.16,
+   "rawEnd": 166.39
+  },
+  {
+   "text": "makes",
+   "start": 166.421,
+   "end": 166.636,
+   "rawStart": 166.39,
+   "rawEnd": 166.68
+  },
+  {
+   "text": "you.",
+   "start": 166.636,
+   "end": 166.903,
+   "rawStart": 166.68,
+   "rawEnd": 167.04
+  },
+  {
+   "text": "This",
+   "start": 168.132,
+   "end": 168.529,
+   "rawStart": 167.84,
+   "rawEnd": 168.35
+  },
+  {
+   "text": "space",
+   "start": 168.529,
+   "end": 169.028,
+   "rawStart": 168.35,
+   "rawEnd": 168.99
+  },
+  {
+   "text": "is",
+   "start": 169.028,
+   "end": 169.223,
+   "rawStart": 168.99,
+   "rawEnd": 169.24
+  },
+  {
+   "text": "truly",
+   "start": 169.223,
+   "end": 169.706,
+   "rawStart": 169.24,
+   "rawEnd": 169.86
+  },
+  {
+   "text": "amazing,",
+   "start": 169.706,
+   "end": 170.47,
+   "rawStart": 169.86,
+   "rawEnd": 170.84
+  },
+  {
+   "text": "and",
+   "start": 170.76,
+   "end": 170.966,
+   "rawStart": 170.84,
+   "rawEnd": 171.03
+  },
+  {
+   "text": "this",
+   "start": 170.966,
+   "end": 171.346,
+   "rawStart": 171.03,
+   "rawEnd": 171.38
+  },
+  {
+   "text": "is",
+   "start": 171.346,
+   "end": 171.396,
+   "rawStart": 171.38,
+   "rawEnd": 171.42
+  },
+  {
+   "text": "only",
+   "start": 171.389,
+   "end": 171.671,
+   "rawStart": 171.42,
+   "rawEnd": 171.68
+  },
+  {
+   "text": "the",
+   "start": 171.671,
+   "end": 171.899,
+   "rawStart": 171.68,
+   "rawEnd": 171.89
+  },
+  {
+   "text": "beginning.",
+   "start": 171.899,
+   "end": 172.669,
+   "rawStart": 171.89,
+   "rawEnd": 172.6
+  }
+ ],
+ "duration": 172.669,
+ "refined": {
+  "pauses": 69,
+  "anchored": 69,
+  "moved": 179
+ }
+}

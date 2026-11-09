@@ -1,0 +1,232 @@
+{
+ "walk_1": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 654
+ },
+ "walk_2": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 657
+ },
+ "walk_3": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 657
+ },
+ "walk_4": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 660
+ },
+ "walk_5": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 663
+ },
+ "walk_6": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 660
+ },
+ "walk_7": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 660
+ },
+ "walk_8": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 663
+ },
+ "astronaut_sit": {
+  "kind": "body",
+  "w": 720,
+  "h": 1000,
+  "baseline": 980,
+  "figureH": 933
+ },
+ "astronaut": {
+  "kind": "body",
+  "w": 480,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 675
+ },
+ "happy": {
+  "kind": "head",
+  "w": 460,
+  "h": 508
+ },
+ "excited": {
+  "kind": "head",
+  "w": 474,
+  "h": 511
+ },
+ "angry": {
+  "kind": "head",
+  "w": 477,
+  "h": 518
+ },
+ "sad": {
+  "kind": "head",
+  "w": 484,
+  "h": 521
+ },
+ "surprised": {
+  "kind": "head",
+  "w": 477,
+  "h": 521
+ },
+ "embarrassed": {
+  "kind": "head",
+  "w": 481,
+  "h": 531
+ },
+ "crying": {
+  "kind": "head",
+  "w": 481,
+  "h": 535
+ },
+ "sleepy": {
+  "kind": "head",
+  "w": 487,
+  "h": 531
+ },
+ "confused": {
+  "kind": "head",
+  "w": 481,
+  "h": 518
+ },
+ "dizzy": {
+  "kind": "head",
+  "w": 481,
+  "h": 528
+ },
+ "thinking_head": {
+  "kind": "head",
+  "w": 433,
+  "h": 518
+ },
+ "peace": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 487
+ },
+ "thumbs_up": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 504
+ },
+ "pointing": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 504
+ },
+ "waving": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 508
+ },
+ "thinking": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 518
+ },
+ "shy": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 501
+ },
+ "cheering": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 501
+ },
+ "crossed_arms": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 514
+ },
+ "proud": {
+  "kind": "bust",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 511
+ },
+ "casual": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 660
+ },
+ "winter": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 782
+ },
+ "front": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 623
+ },
+ "side": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 623
+ },
+ "back": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 630
+ },
+ "side_other": {
+  "kind": "body",
+  "w": 420,
+  "h": 760,
+  "baseline": 740,
+  "figureH": 623
+ }
+}
