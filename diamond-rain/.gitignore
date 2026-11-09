@@ -1,0 +1,4 @@
+node_modules/
+out/
+# your own voice-over; drop it in locally (see README)
+public/narration.mp3
