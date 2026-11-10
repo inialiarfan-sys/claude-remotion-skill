@@ -8,16 +8,16 @@ import { ease } from '../lib/anim';
 import type { Pose } from '../three/camera';
 import { theme } from '../theme';
 
-/** Night hill silhouette + sitting host (back view). Shared by scenes 15 and 16. */
-export const NightHill: React.FC<{ push: number; drop?: number; pose?: HostPose; poseAt?: number }> = ({ push, drop = 0, pose = 'back', poseAt = -999 }) => {
+/** Night hill silhouette + host standing on the crest. Shared by scenes 15 and 16. */
+export const NightHill: React.FC<{ push: number; drop?: number; pose?: HostPose; poseAt?: number }> = ({ push, drop = 0, pose = 'astronaut', poseAt = -999 }) => {
   const { width, height, isV } = useScene();
   const crestY = isV ? 1020 : 880;
   const hx = isV ? 520 : width * 0.85;
-  const hostH = isV ? 440 : 380;
+  const hostH = isV ? 340 : 320; // same size as in the other scenes
   return (
     <AbsoluteFill style={{ transform: `translateY(${drop}px) scale(${1 + push * 0.06})`, transformOrigin: `${(hx / width) * 100}% ${(crestY / height) * 100}%` }}>
       {/* she sits on the crest: the hill hides her from the waist down */}
-      <HostSprite x={hx} y={crestY + hostH * 0.42} height={hostH} pose={pose} poseAt={poseAt} />
+      <HostSprite x={hx} y={crestY + hostH * 0.05} height={hostH} pose={pose} poseAt={poseAt} />
       <svg width={width} height={height} style={{ position: 'absolute', left: 0, top: 0 }}>
         <defs>
           <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">

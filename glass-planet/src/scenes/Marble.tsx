@@ -52,7 +52,7 @@ export const MarbleScene: React.FC = () => {
             <Stars count={2400} radius={600} seed={142} />
             <Glow position={[-30, 12, -30]} scale={30} color="#ffe2b0" opacity={0.7} />
             <PlanetBody kind="earth" radius={ER} t={t} rotation={[0.3, t * 0.08, 0]} sunDir={[-0.7, 0.5, 0.5]} ambient={0.12} atmoIntensity={1.8} />
-            <Host3D position={feet} height={1.4} pose={frame >= changed ? 'casual' : 'astronaut'} poseAt={frame >= changed ? changed : aSpecial + 50} />
+            <Host3D position={feet} height={1.4} pose={frame >= changed ? 'waving' : 'astronaut'} poseAt={frame >= changed ? changed : aSpecial + 50} />
           </SceneCanvas>
           <Host3DOverlay
             pose={earthPose}
@@ -65,8 +65,8 @@ export const MarbleScene: React.FC = () => {
       ) : null}
       <Tag text="A peaceful blue marble?" from={10} to={aClose} x={isV ? 490 : width / 2} y={isV ? 330 : 140} color={theme.color.cobaltGlow} size={isV ? 36 : 38} />
       <Tag text="One of the deadliest places we know" from={aClose + 8} to={aSpecial} x={isV ? 490 : width / 2} y={isV ? 330 : 140} color={theme.color.pink} size={isV ? 30 : 38} />
-      <Tag text="Soft rain · fresh air · life" from={aRain} to={aHome} x={isV ? 490 : width / 2} y={isV ? 330 : 140} color={theme.color.mint} size={isV ? 36 : 38} />
-      <Tag text="Home" from={aHome + 10} x={isV ? 490 : width / 2} y={isV ? 330 : 140} color={theme.color.butter} size={isV ? 48 : 48} />
+      <Tag text="Soft rain · fresh air · life" from={aRain} to={aHome} x={isV ? 490 : width * 0.76} y={isV ? 330 : 140} color={theme.color.mint} size={isV ? 36 : 38} />
+      <Tag text="Home" from={aHome + 10} x={isV ? 490 : width * 0.76} y={isV ? 330 : 140} color={theme.color.butter} size={isV ? 48 : 48} />
       {/* before landing she floats nearby in her suit */}
       {frame < aSpecial + 22 ? (
         <Host

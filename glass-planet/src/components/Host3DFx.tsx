@@ -1,6 +1,6 @@
 import React from 'react';
 import { project, Pose, Vec3 } from '../three/camera';
-import { Bubble, Fx, HostFx, ReactionBubble } from './Host';
+import { Bubble, Fx, headPoint, HostFx, ReactionBubble } from './Host';
 import { useScene } from './SceneContext';
 
 /** Screen-space head position of a 3D (billboard) host, for bubbles and effects. */
@@ -8,10 +8,11 @@ export const useHostHead = (pose: Pose, feet: Vec3, height: number, sitting = fa
   const { width, height: H } = useScene();
   const a = project(pose, width, H, feet);
   const b = project(pose, width, H, [feet[0] + up[0] * height, feet[1] + up[1] * height, feet[2] + up[2] * height]);
-  const px = Math.hypot(b.x - a.x, b.y - a.y);
-  const size = px * (sitting ? 0.5 : 0.42);
-  const k = sitting ? 0.62 : 0.68;
-  return { x: a.x + (b.x - a.x) * k, y: a.y + (b.y - a.y) * k, size, px };
+  const px = Math.hypot(b.x - a.x, b.y - a.y); // on-screen figure height
+  // same sprite metrics as the 2D host (head centre / size per pose)
+  const hp = headPoint(0, 0, px, sitting ? 'astronaut_sit' : 'astronaut');
+  const k = -hp.y / px;
+  return { x: a.x + (b.x - a.x) * k + hp.x, y: a.y + (b.y - a.y) * k, size: hp.size, px };
 };
 
 export const Host3DOverlay: React.FC<{

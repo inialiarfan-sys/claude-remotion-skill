@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig } from 'remotion';
 import { useThree } from '@react-three/fiber';
 import * as THREE from 'three';
-import { FIGURE_H, Pose, spriteName, SPRITES, useLife } from '../components/Host';
+import { catLine, FIGURE_H, Pose, spriteName, SPRITES, useLife } from '../components/Host';
 import type { Vec3 } from './camera';
 
 // ------------------------------------------------------------ texture preloading
@@ -51,7 +51,7 @@ export const usePreloadSprites = () => {
   return ready;
 };
 
-const CAT_LINE = (n: string) => (n.startsWith('walk') ? 0.27 : n === 'astronaut_sit' ? 0 : 0.25);
+const CAT_LINE = (n: string) => catLine(SPRITES[n]);
 
 const split = (n: string) => {
   if (!parts.has(n)) {
@@ -97,6 +97,7 @@ export const Host3D: React.FC<{
   const H = m.h * u;
   const below = (m.h - (m.baseline ?? m.h)) * u;
   const c = CAT_LINE(name);
+  const ox = (m.w / 2 - (m.anchorX ?? m.w / 2)) * u; // helmet centred over the feet point
   useLayoutEffect(() => {
     if (ref.current) ref.current.quaternion.copy(camera.quaternion);
   });
@@ -121,11 +122,11 @@ export const Host3D: React.FC<{
       <group ref={ref}>
         <group rotation={[0, 0, roll]} position={[jitter, life.lift * height, 0]} scale={[(flip ? -1 : 1) * life.sx, life.sy, 1]}>
           {/* origin = feet */}
-          <mesh position={[0, -below + lowerH / 2, 0]} material={mats[0]}>
+          <mesh position={[ox, -below + lowerH / 2, 0]} material={mats[0]}>
             <planeGeometry args={[W, c > 0 ? lowerH : H]} />
           </mesh>
           {c > 0 ? (
-            <group position={[0, -below + lowerH, 0.001]} rotation={[0, 0, (life.catTilt * Math.PI) / 180]}>
+            <group position={[ox, -below + lowerH, 0.001]} rotation={[0, 0, (life.catTilt * Math.PI) / 180]}>
               <mesh position={[0, upperH / 2, 0]} material={mats[1]}>
                 <planeGeometry args={[W, upperH]} />
               </mesh>

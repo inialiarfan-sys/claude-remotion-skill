@@ -26,7 +26,7 @@ export const EndingScene: React.FC = () => {
         <Stars count={600} radius={300} depth={0.4} seed={152} size={isV ? 8 : 7} opacity={0.8} />
         <Stars count={4000} radius={1200} depth={0.9} seed={153} size={3} />
       </SceneCanvas>
-      <NightHill push={1 - pull} drop={pull * height * (isV ? 0.05 : 0.03)} pose={frame >= wave ? 'waving' : frame >= turn ? 'side_other' : 'back'} poseAt={frame >= wave ? wave : turn} />
+      <NightHill push={1 - pull} drop={pull * height * (isV ? 0.05 : 0.03)} pose={frame >= wave ? 'waving' : 'astronaut'} poseAt={frame >= wave ? wave : turn} />
       <div
         style={{
           position: 'absolute',

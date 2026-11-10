@@ -6,12 +6,27 @@ import { theme } from '../theme';
 export type Expr =
   | 'happy' | 'excited' | 'angry' | 'sad' | 'surprised' | 'embarrassed' | 'crying' | 'sleepy' | 'confused' | 'dizzy' | 'thinking_head';
 export type Pose =
-  | 'astronaut' | 'astronaut_sit' | 'casual' | 'winter' | 'front' | 'side' | 'back' | 'side_other'
-  | 'peace' | 'thumbs_up' | 'pointing' | 'waving' | 'thinking' | 'shy' | 'cheering' | 'crossed_arms' | 'proud';
+  | 'astronaut' | 'astronaut_sit' | 'waving' | 'thinking' | 'reading' | 'clipboard' | 'holding_sign';
 
-type Meta = { kind: string; w: number; h: number; baseline?: number; figureH?: number };
-export const SPRITES = sprites as Record<string, Meta>;
-export const FIGURE_H = 660; // cat-top → feet, in sprite pixels (all body sprites)
+type Meta = { kind: string; w: number; h: number; baseline?: number; anchorX?: number; head?: [number, number, number] };
+export const SPRITES = sprites as unknown as Record<string, Meta>;
+/**
+ * Every sprite is cut at the same pixel scale (scripts/make_sprites.py), so one constant
+ * converts "figure height" to sprite pixels for all poses: she never changes size
+ * between poses. 612 px = cat-top → feet of the standing walk frames.
+ */
+export const FIGURE_H = 612;
+
+/** Fraction from the top of a sprite where the cat ends (for the cat wobble). */
+export const catLine = (m: Meta) => (m.head ? Math.max(0, (m.head[1] - 0.93 * m.head[2]) / m.h) : 0);
+
+/** Head (helmet) centre and size for a figure whose feet are at (x, y), in px. */
+export const headPoint = (x: number, y: number, height: number, pose: Pose = 'astronaut') => {
+  const m = SPRITES[pose] ?? SPRITES.astronaut;
+  const k = height / FIGURE_H;
+  const [hx, hy, r] = m.head ?? [m.w / 2, m.h * 0.4, m.w * 0.4];
+  return { x: x + (hx - (m.anchorX ?? m.w / 2)) * k, y: y - ((m.baseline ?? m.h) - hy) * k, size: r * 2 * k * 0.64 };
+};
 
 /** Walk cycle: 11 fps, 8 frames. */
 export const walkFrame = (frame: number, fps: number) => `walk_${(Math.floor((frame * 11) / fps) % 8) + 1}`;
@@ -67,8 +82,8 @@ export const HostSprite: React.FC<HostProps> = ({
   const w = m.w * scale;
   const h = m.h * scale;
   const below = (m.h - (m.baseline ?? m.h)) * scale; // transparent space under the feet
-  const catLine = name.startsWith('walk') ? 0.27 : name === 'astronaut_sit' ? 0 : 0.25;
-  const catY = name === 'astronaut_sit' ? 0 : ((m.h - (m.baseline ?? m.h) - FIGURE_H) / m.h + 1) * 0 + catLine;
+  const ax = (m.anchorX ?? m.w / 2) * scale; // helmet centre, so poses don't shift sideways
+  const catY = catLine(m);
   const jitter = shiver ? Math.sin(frame * 2.7) * 3 * shiver : 0;
   const src = staticFile(`character/${name}.png`);
   const layer = (clip: string, extra: React.CSSProperties = {}) => (
@@ -81,12 +96,12 @@ export const HostSprite: React.FC<HostProps> = ({
     <div
       style={{
         position: 'absolute',
-        left: x - w / 2 + jitter,
+        left: x - ax + jitter,
         top: y - h + below - life.lift * height,
         width: w,
         height: h,
         opacity,
-        transformOrigin: `50% ${((h - below) / h) * 100}%`,
+        transformOrigin: `${(ax / w) * 100}% ${((h - below) / h) * 100}%`,
         transform: `rotate(${rotate}deg) scale(${(flip ? -1 : 1) * life.sx}, ${life.sy})`,
         pointerEvents: 'none',
         filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.35))',
@@ -163,8 +178,85 @@ export const ReactionBubble: React.FC<{ x: number; y: number; size: number; bubb
           style={{ position: 'absolute', left: '7%', top: '9%', width: '86%', height: '86%', objectFit: 'contain' }}
         />
       </div>
+      <BubbleMark expr={b.expr} size={size} k={k} />
     </div>
   );
+};
+
+/**
+ * Small hand-drawn mark on the bubble so emotions that share a face on the sheet
+ * still read differently: tears, anger vein, spiral, zZ, blush lines, heart, "?", "!".
+ */
+const BubbleMark: React.FC<{ expr: Expr; size: number; k: number }> = ({ expr, size, k }) => {
+  const frame = useCurrentFrame();
+  const t = frame / 30;
+  const s = size * 0.36;
+  const pop = Math.min(1, Math.max(0, (k - 4) / 6));
+  const wrap = (child: React.ReactNode, x = 0.78, y = 0.02, rot = 0) => (
+    <svg
+      width={s}
+      height={s}
+      viewBox="-10 -10 20 20"
+      style={{ position: 'absolute', left: size * x - s / 2, top: size * y - s / 2, overflow: 'visible', transform: `scale(${pop}) rotate(${rot}deg)` }}
+    >
+      {child}
+    </svg>
+  );
+  const stroke = { stroke: '#ffffff', strokeWidth: 1.4, strokeLinejoin: 'round' as const };
+  switch (expr) {
+    case 'crying':
+      return (
+        <>
+          {[0, 1].map((j) => {
+            const cyc = (t * 1.4 + j * 0.5) % 1;
+            return wrap(<path d="M0 -8 C0 -8 6 0 6 3 A6 6 0 0 1 -6 3 C-6 0 0 -8 0 -8 Z" fill="#8fd3ff" {...stroke} opacity={1 - cyc} />, j ? 0.2 : 0.8, 0.55 + cyc * 0.3);
+          })}
+        </>
+      );
+    case 'angry':
+      return wrap(
+        <g fill="none" stroke="#ff5a6e" strokeWidth={2.6} strokeLinecap="round">
+          <path d="M-7 -2 Q-2 -2 -2 -7 M2 -7 Q2 -2 7 -2 M7 2 Q2 2 2 7 M-2 7 Q-2 2 -7 2" />
+        </g>,
+        0.82,
+        0.04,
+        Math.sin(t * 10) * 6,
+      );
+    case 'dizzy':
+      return wrap(
+        <path d="M0 0 m0 -1 a1 1 0 1 1 -1 1 a2.5 2.5 0 1 1 3 2.5 a4.5 4.5 0 1 1 -6 -4.5 a7 7 0 1 1 9 7" fill="none" stroke="#b78cff" strokeWidth={2} strokeLinecap="round" />,
+        0.8,
+        0.0,
+        t * 200,
+      );
+    case 'sleepy':
+      return wrap(
+        <text x={-6} y={4} fontFamily="Fredoka, sans-serif" fontWeight={700} fontSize={12} fill="#9fc4ff" stroke="#fff" strokeWidth={0.8}>
+          zZ
+        </text>,
+        0.82,
+        0.02 - ((t * 0.3) % 0.1),
+      );
+    case 'embarrassed':
+      return wrap(
+        <g stroke="#ff8fae" strokeWidth={2.2} strokeLinecap="round">
+          <path d="M-7 -3 L-4 3 M-2 -3 L1 3 M3 -3 L6 3" />
+        </g>,
+        0.8,
+        0.06,
+      );
+    case 'happy':
+    case 'excited':
+      return wrap(<path d="M0 6 C-9 0 -8 -7 -3 -7 C-1 -7 0 -5 0 -4 C0 -5 1 -7 3 -7 C8 -7 9 0 0 6 Z" fill="#ff9fbd" {...stroke} />, 0.82, 0.04, Math.sin(t * 6) * 10);
+    case 'surprised':
+      return wrap(<text x={-3} y={6} fontFamily="Fredoka, sans-serif" fontWeight={700} fontSize={16} fill="#ff8fae" stroke="#fff" strokeWidth={0.9}>!</text>, 0.84, 0.02);
+    case 'confused':
+      return wrap(<text x={-5} y={6} fontFamily="Fredoka, sans-serif" fontWeight={700} fontSize={16} fill="#8fc4ff" stroke="#fff" strokeWidth={0.9}>?</text>, 0.84, 0.02, Math.sin(t * 5) * 12);
+    case 'sad':
+      return wrap(<path d="M0 -8 C0 -8 5 0 5 3 A5 5 0 0 1 -5 3 C-5 0 0 -8 0 -8 Z" fill="#8fd3ff" {...stroke} />, 0.84, 0.3);
+    default:
+      return null;
+  }
 };
 
 // ----------------------------------------------------------------- cute effects
@@ -309,7 +401,7 @@ export const HostFx: React.FC<{ hx: number; hy: number; size: number; fx: Fx[]; 
 export const Host: React.FC<HostProps & { bubbles?: Bubble[]; fx?: Fx[]; bubbleSide?: 'left' | 'right' }> = ({
   bubbles = [], fx = [], bubbleSide = 'right', ...p
 }) => {
-  const head = headPoint(p.x, p.y, p.height, p.pose === 'astronaut_sit');
+  const head = headPoint(p.x, p.y, p.height, p.pose);
   const dir = bubbleSide === 'right' ? 1 : -1;
   return (
     <>
@@ -320,8 +412,3 @@ export const Host: React.FC<HostProps & { bubbles?: Bubble[]; fx?: Fx[]; bubbleS
   );
 };
 
-/** Centre + size of the helmet/head for a figure standing at (x, y). */
-export const headPoint = (x: number, y: number, height: number, sitting = false) => {
-  const size = height * (sitting ? 0.5 : 0.42);
-  return { x, y: y - height * (sitting ? 0.62 : 0.68), size };
-};
