@@ -1,232 +1,237 @@
 {
  "walk_1": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 654
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   272.0,
+   203.76540628870254
+  ]
  },
  "walk_2": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 657
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   277.0,
+   203.27539546142816
+  ]
  },
  "walk_3": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 657
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   272.0,
+   202.5251984321951
+  ]
  },
  "walk_4": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 660
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   280.0,
+   203.47612734667428
+  ]
  },
  "walk_5": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 663
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   272.0,
+   203.76540628870254
+  ]
  },
  "walk_6": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 660
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   277.0,
+   203.27539546142816
+  ]
  },
  "walk_7": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 660
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   272.0,
+   202.5251984321951
+  ]
  },
  "walk_8": {
   "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 663
- },
- "astronaut_sit": {
-  "kind": "body",
-  "w": 720,
-  "h": 1000,
-  "baseline": 980,
-  "figureH": 933
+  "w": 491,
+  "h": 703,
+  "baseline": 683,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   280.0,
+   203.47612734667428
+  ]
  },
  "astronaut": {
   "kind": "body",
+  "w": 491,
+  "h": 720,
+  "baseline": 700,
+  "anchorX": 244.0,
+  "head": [
+   244.0,
+   275.0,
+   207.36281248092678
+  ]
+ },
+ "reading": {
+  "kind": "body",
+  "w": 453,
+  "h": 646,
+  "baseline": 626,
+  "anchorX": 238.78013479705564,
+  "head": [
+   238.78013479705564,
+   264.0239965044082,
+   195.4572206781866
+  ]
+ },
+ "clipboard": {
+  "kind": "body",
+  "w": 455,
+  "h": 655,
+  "baseline": 635,
+  "anchorX": 227.84112805720287,
+  "head": [
+   227.84112805720287,
+   271.597155016614,
+   205.07218323578667
+  ]
+ },
+ "astronaut_sit": {
+  "kind": "body",
+  "w": 494,
+  "h": 626,
+  "baseline": 606,
+  "anchorX": 253.08498976455544,
+  "head": [
+   253.08498976455544,
+   272.43861707352573,
+   205.70750642357712
+  ]
+ },
+ "thinking": {
+  "kind": "body",
+  "w": 461,
+  "h": 648,
+  "baseline": 628,
+  "anchorX": 235.41428656940863,
+  "head": [
+   235.41428656940863,
+   264.86545856132,
+   201.67933957231583
+  ]
+ },
+ "waving": {
+  "kind": "body",
+  "w": 541,
+  "h": 701,
+  "baseline": 681,
+  "anchorX": 269.91423090279045,
+  "head": [
+   269.91423090279045,
+   285.90200998411376,
+   211.63627432774743
+  ]
+ },
+ "holding_sign": {
+  "kind": "body",
   "w": 480,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 675
+  "h": 708,
+  "baseline": 688,
+  "anchorX": 243.82890713852615,
+  "head": [
+   243.82890713852615,
+   283.37762381337853,
+   221.2685636207368
+  ]
  },
  "happy": {
   "kind": "head",
-  "w": 460,
-  "h": 508
+  "w": 482,
+  "h": 527
  },
  "excited": {
   "kind": "head",
-  "w": 474,
-  "h": 511
- },
- "angry": {
-  "kind": "head",
-  "w": 477,
-  "h": 518
- },
- "sad": {
-  "kind": "head",
-  "w": 484,
-  "h": 521
+  "w": 471,
+  "h": 528
  },
  "surprised": {
   "kind": "head",
-  "w": 477,
-  "h": 521
- },
- "embarrassed": {
-  "kind": "head",
-  "w": 481,
-  "h": 531
- },
- "crying": {
-  "kind": "head",
-  "w": 481,
-  "h": 535
- },
- "sleepy": {
-  "kind": "head",
-  "w": 487,
-  "h": 531
+  "w": 439,
+  "h": 489
  },
  "confused": {
   "kind": "head",
-  "w": 481,
-  "h": 518
- },
- "dizzy": {
-  "kind": "head",
-  "w": 481,
-  "h": 528
+  "w": 444,
+  "h": 482
  },
  "thinking_head": {
   "kind": "head",
-  "w": 433,
-  "h": 518
+  "w": 457,
+  "h": 496
  },
- "peace": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 487
+ "crying": {
+  "kind": "head",
+  "w": 482,
+  "h": 534
  },
- "thumbs_up": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 504
+ "embarrassed": {
+  "kind": "head",
+  "w": 469,
+  "h": 506
  },
- "pointing": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 504
+ "angry": {
+  "kind": "head",
+  "w": 479,
+  "h": 517
  },
- "waving": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 508
+ "dizzy": {
+  "kind": "head",
+  "w": 482,
+  "h": 527
  },
- "thinking": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 518
+ "sleepy": {
+  "kind": "head",
+  "w": 469,
+  "h": 506
  },
- "shy": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 501
- },
- "cheering": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 501
- },
- "crossed_arms": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 514
- },
- "proud": {
-  "kind": "bust",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 511
- },
- "casual": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 660
- },
- "winter": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 782
- },
- "front": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 623
- },
- "side": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 623
- },
- "back": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 630
- },
- "side_other": {
-  "kind": "body",
-  "w": 420,
-  "h": 760,
-  "baseline": 740,
-  "figureH": 623
+ "sad": {
+  "kind": "head",
+  "w": 467,
+  "h": 505
  }
 }
