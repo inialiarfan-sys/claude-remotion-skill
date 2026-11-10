@@ -44,19 +44,30 @@ How the timing works (`src/lib/timeline.ts`, `scripts/refine-timings.mjs`):
 
 ## 2. Swap in a new character sheet
 
-1. Replace `public/character/sheet.png` (expressions, gestures, outfits, views) and `public/character/sheet-astronaut.png` (walk cycle and sitting pose).
-2. If the layout differs, update the crop boxes in `scripts/make_sprites.py`, then run:
+The host comes from two sheets on a flat green background (#00FF00 or close to it works best):
+
+- `public/character/sheet_new.png`: poses, in a 4×3 grid (order in `POSE_NAMES` in `scripts/make_sprites.py`).
+- `public/character/sheet_new_walk.png`: walk cycle. Row 1 is used for the walk; other frames supply the standing pose and some bubble faces.
+
+Old sheets are kept in `public/character/old/` and are not used.
+
+1. Replace the two sheets.
+2. If the poses or their order changed, edit `POSE_NAMES`, `SKIP`, `WALK_PICK` and `HEADS` in `scripts/make_sprites.py`, then run:
    ```bash
    pip install pillow numpy scipy
    npm run sprites
    ```
-3. Open `public/character/preview.png` to check the result.
+3. Check `public/character/preview.png` (every sprite on dark space-blue, with names) and `public/character/walk_test.gif`.
 
 The script:
-- Flood-fills the paper from outside each crop, so enclosed whites (suit, cat) stay solid.
-- Gives edges soft alpha with colour decontamination (no white halos).
+- Keys out the green with soft alpha, un-mixes edge colours and removes green spill (no halo; the dark outline stays).
+- Finds each character by connected components (no fixed grid crops) and pads each crop by 20 px.
+- Removes stars, sparkles and symbols; ones touching the character are cut off at thin necks. Poses whose decorations overlap the helmet or hands are skipped (`SKIP`).
 - Makes the helmet glass see-through.
-- Scales every body sprite to the same size with the feet on one baseline.
+- Scales every sprite to one helmet size. Walk frames share one canvas and baseline, so there is no jitter.
+- Writes `sprites.json` (size, baseline, horizontal anchor and head circle for every sprite), which the video uses to place bubbles and effects.
+
+The host wears the astronaut suit in every scene. Reaction bubbles use the head sprites (`happy`, `crying`, `angry`…) plus drawn marks (tears, vein, spiral, zZ…).
 
 ## 3. Preview and render
 
